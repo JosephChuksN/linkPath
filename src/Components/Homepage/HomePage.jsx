@@ -5,7 +5,7 @@ import Homebody from './Homebody'
 const HomePage = () => {
   return (
    <>
-   <div className='bg-blue-600 h-screen '>
+   <div className='bg-gray-100 h-screen'>
    <NavBar />
    <Homebody />
    </div>
