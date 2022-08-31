@@ -35,18 +35,44 @@ const handleLogin = async (e)=>{
     <div className=' flex flex-col gap-5'>
     <span className='text-2xl font-semibold'>Log In</span>
     <div className='flex flex-col'>
+
         <label className='p-1' htmlFor="">Your Email</label>
-        <input onChange={(e)=>{setEmail(e.target.value)}} className='rounded' type="email" value={email} />
+        <input className='rounded'
+         onChange={(e)=>{setEmail(e.target.value)}}
+         type="email" 
+         value={email}
+         required
+
+          />
+
     </div>
     <div className='flex flex-col'>
         <label className='p-1' htmlFor="">Password</label>
-        <input onChange={(e)=>{setPass(e.target.value)}} className='rounded' type="password" value={pass} />
+        <input className='rounded' 
+         onChange={(e)=>{setPass(e.target.value)}}
+         type="password"
+         value={pass}
+         required
+         />
     </div>
     
     <div className='flex items-center'>
-        <button disabled={loading} type="submit" className='bg-blue-600 w-full p-2 rounded'>Login</button>
+        <button className='bg-blue-600 w-full p-2 rounded' disabled={loading} 
+        type="submit" 
+        > 
+        
+        Login
+        
+        </button>
     </div>
-    <div className='p-1'>   <span>Don't have an account?</span> <Link to="/signup"><span className='text-blue-600'>Sign up</span></Link></div>
+    
+    <div className='p-1'>   
+    <span>Don't have an account?</span> 
+     <Link to="/signup">
+     <span className='text-blue-600'>Sign up</span>
+     </Link>
+     </div>
+
     </div>
   
  </form>

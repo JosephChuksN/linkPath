@@ -1,6 +1,7 @@
 import React, {  useState} from 'react'
 import {  Link, useNavigate  } from 'react-router-dom'
 import { useAuth } from '../Context/AuthContext'
+import { Spinner } from 'flowbite-react'
 
 const Signup = () => {
   const [error, setError] = useState('')
@@ -24,8 +25,8 @@ const Signup = () => {
 
     try{
       setError('')
-      await signUp(email, pass)
       setLoading(true)
+      await signUp(email, pass)
       navigate('/dashboard')
     } catch (e){
       setError(e.message)
@@ -38,6 +39,8 @@ const Signup = () => {
 
 
   return (
+    <>
+   
     <div className='px-3 py-36 h-screen lg:w-3/4 mx-auto'>
      
  <form action="" onSubmit={handleSubmit} className='p-3 shadow-md bg-gray-100 rounded lg:w-1/2 mx-auto py-5'>
@@ -100,8 +103,16 @@ const Signup = () => {
     </div>
   
  </form>
+ 
   
     </div>
+    <div className={`flex w-full h-screen top-0 z-20 bg-black/30 flex-wrap items-center gap-2 justify-center absolute ${loading? "block" : "hidden"}`}>
+  <Spinner
+    aria-label="Extra large spinner example"
+    size="xl"
+  />
+</div>
+    </>
   )
 }
 
