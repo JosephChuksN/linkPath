@@ -85,7 +85,7 @@ const Signup = () => {
     </div>
     <div className='flex items-center'>
         <button disabled={loading}
-         className='bg-blue-600 w-full p-2 rounded' 
+         className='bg-blue-600 w-full p-2 rounded text-white' 
          type='submit'>
 
           Sign Up

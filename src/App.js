@@ -10,7 +10,7 @@ import { AuthProvider } from './Context/AuthContext';
 
 const App = () => {
   return (
-  <div className=''>
+  <div className='bg-gray-100'>
       <AuthProvider>
     <Routes>
     

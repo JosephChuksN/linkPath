@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { useAuth } from '../Context/AuthContext';
 import {  Link, useNavigate  } from 'react-router-dom';
-import { Alert } from 'flowbite-react/lib/esm/components';
+import { Alert, Spinner } from 'flowbite-react/lib/esm/components';
 
 
 const Login = () => {
@@ -16,8 +16,8 @@ const handleLogin = async (e)=>{
  e.preventDefault()
 
  try{
-  await login(email, pass)
   setLoading(true)
+  await login(email, pass)
   navigate("/dashboard")
   
  } catch{
@@ -28,6 +28,7 @@ const handleLogin = async (e)=>{
 
 
   return (
+    <>
   <div className='px-3 py-36 h-screen lg:w-3/4 mx-auto'>
  <form onSubmit={handleLogin} className='p-3 shadow-md bg-gray-100 rounded lg:w-1/2 mx-auto py-5'>
   <Alert>{error}</Alert>
@@ -57,7 +58,7 @@ const handleLogin = async (e)=>{
     </div>
     
     <div className='flex items-center'>
-        <button className='bg-blue-600 w-full p-2 rounded' disabled={loading} 
+        <button className='bg-blue-600 w-full p-2 rounded text-white' disabled={loading} 
         type="submit" 
         > 
         
@@ -78,6 +79,13 @@ const handleLogin = async (e)=>{
  </form>
   
     </div>
+    <div className={`flex w-full h-screen top-0 z-20 bg-black/30 flex-wrap items-center gap-2 justify-center absolute ${loading? "block" : "hidden"}`}>
+  <Spinner
+    aria-label="Extra large spinner example"
+    size="xl"
+  />
+</div>
+    </>
   )
 }
 
