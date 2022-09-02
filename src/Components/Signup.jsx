@@ -1,5 +1,5 @@
 import React, {  useState} from 'react'
-import {  Link, useNavigate  } from 'react-router-dom'
+import {  Link, useNavigate,  } from 'react-router-dom'
 import { useAuth } from '../Context/AuthContext'
 import { Spinner } from 'flowbite-react'
 
@@ -12,7 +12,7 @@ const Signup = () => {
   const navigate = useNavigate()
 
  
-  const {signUp} = useAuth()
+  const {signUp, } = useAuth()
  
   //creates a user account
   const handleSubmit = async (e) =>{
@@ -47,6 +47,8 @@ const Signup = () => {
  
     <div className=' flex flex-col gap-5 mt-3'>
     <span className='text-2xl font-semibold'>Sign Up</span>
+   
+    
     <div className='flex flex-col'>
 
         <label className='p-1' htmlFor="">Your Email</label>
@@ -95,7 +97,7 @@ const Signup = () => {
     <div className='p-1'>  
 
      <span>Already have an account?</span> 
-     <Link to="/login">
+     <Link to="login">
      <span className='text-blue-600'>Log in</span>
      </Link>
 

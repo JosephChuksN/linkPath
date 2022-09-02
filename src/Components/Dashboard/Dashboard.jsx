@@ -1,8 +1,8 @@
 import React from 'react'
 import Header from './Header'
-import DashboardNav from './DashboardNav'
+import DashboardNav from './Navbar'
 import { useAuth } from '../../Context/AuthContext'
-import { useNavigate } from 'react-router'
+import { useNavigate, Outlet } from 'react-router'
 
 const Dashboard = () => {
  const {user, logout} = useAuth()
@@ -12,16 +12,17 @@ const Dashboard = () => {
     
     try{
         await logout()
-        navigate('/login')
+        navigate('login')
     } catch (e) {
         alert(e.message)
     }
  }
 
   return (
-    <div className='flex flex-col  lg:mx-24    bg-white'>
-      <Header user={user} />
+    <div className='flex flex-col  lg:mx-24  h-full min-h-screen  bg-white'>
+      <Header  />
       <DashboardNav />
+      <Outlet />
     </div>
   )
 }
