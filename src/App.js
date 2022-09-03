@@ -12,7 +12,8 @@ import { AuthProvider } from './Context/AuthContext';
 
 
 const App = () => {
-
+  
+ 
   const [siteInfo, setSiteInfo] =useState(siteData)
 
   return (

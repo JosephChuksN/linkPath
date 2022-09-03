@@ -8,7 +8,7 @@ import { auth, db } from "../firebase";
 export const AuthProvider = ({children}) =>{
 
   const [user, setUser] = useState()
-
+ 
 //creating a user account 
 const signUp = (email, password) => {
   return createUserWithEmailAndPassword(
@@ -23,7 +23,8 @@ const login = (email, password) =>{
   return signInWithEmailAndPassword(
     auth, 
     email, 
-    password
+    password,
+   
     )
 }
 
