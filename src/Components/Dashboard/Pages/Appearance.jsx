@@ -1,0 +1,81 @@
+import React, { useState} from 'react'
+import { useAuth } from '../../../Context/AuthContext'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPen, faCheck } from '@fortawesome/free-solid-svg-icons'
+
+
+const Appearance = ({avater}) => {
+
+const { user } = useAuth()
+const prflName = user.email.substring(0, user.email.indexOf("@")).replace(/[0-9]/g, '')
+const [ profilName, setProfileName] = useState(prflName)
+
+  return (
+    <div className='flex flex-col md:flex-row mx-2 gap-3'>
+        <div className='w-full md:w-1/2'>
+            <span className='text-cyan-700 font-semibold '>LAYOUT</span>
+         <div className='w-full items-center mx-auto  border p-5 rounded bg-gray-100'>
+            <span className='font-medium'>Choose a layout of your Linkpath</span>
+              
+        <div className='flex md:flex-row flex-col w-full items-center mx-auto gap-5 mt-3'>
+            <span className='absolute w-8 h-8 rounded-full bg-green-500 lg:left-[25.2rem] lg:top-[15.5rem] right-4 top-80 flex items-center justify-center'> <FontAwesomeIcon className='text-white' icon={faCheck} /></span>
+    <div className=' w-full rounded bg-white'>
+    <div className='flex flex-col items-center justify-center gap-3'>
+       <div className='flex flex-col w-full items-center justify-center gap-2 pt-3'>
+       <span className='w-24 h-24 bg-cyan-600/10 rounded-full'></span>
+       <span className='h-8 w-2/5 bg-cyan-600/10 rounded-md'></span>
+       </div>
+       <div className='flex flex-col w-full items-center gap-3 my-2'>
+        <span className='w-3/4 h-16 bg-cyan-600/10 rounded-md'></span>
+        <span className='w-3/4 h-16 bg-cyan-600/10 rounded-md'></span>
+        <span className='w-3/4 h-16 bg-cyan-600/10 rounded-md'></span>
+        <span className='w-3/4 h-16 bg-cyan-600/10 rounded-md'></span>
+       </div>
+    </div>
+    </div>
+    <div className='w-full py-6 rounded bg-white'>
+    <div className='flex flex-col items-center justify-center  '>
+       <div className='flex flex-col w-full items-center justify-center'>
+       <span className='w-3/5 h-32 border'></span>
+       <span className='h-16 w-3/4 bg-slate-900/10 border-b'></span>
+       </div>
+       <div className='flex flex-col w-full items-center'>
+        <span className='w-3/4 h-14 bg-cyan-600/10 border-b '></span>
+        <span className='w-3/4 h-14 bg-cyan-600/10 border-b '></span>
+        <span className='w-3/4 h-14 bg-cyan-600/10 border-b '></span>
+        <span className='w-3/4 h-14 bg-cyan-600/10 border-b'></span>
+       </div>
+    </div>
+    </div>
+    </div>
+        </div>
+        </div> 
+
+   <div className='w-full md:w-1/2'>
+   <span className='text-cyan-700 font-semibold '>PROFILE NAME AND IMAGE</span>
+ 
+ 
+   <div className='flex flex-col gap-4 border rounded  p-3 '>
+    <div className='flex gap-4'>
+        <span className='w-28 h-28 rounded-full flex items-center bg-no-repeat bg-cover'style={{backgroundImage: `url(${avater.profilePic})`}}></span>
+       <span className='flex items-center'><button className='p-2 rounded bg-cyan-600 text-white hover:bg-cyan-600/80 transition-all delay-150 duration-500 ease-in-out'>Upload Image</button></span>
+    </div>
+    <div className='flex flex-col w-full lg:w-3/4'>
+        <span className='flex justify-between'><input className='font-semibold focus:border-none focus:ring-0  outline-none' 
+        value={profilName} 
+        onChange={(e)=>{setProfileName(e.target.value)}} />
+        <span className='text-sm text-slate-400'><FontAwesomeIcon icon={faPen} /></span></span>
+        <span className='text-sm text-slate-400'>Profile Title</span>
+    </div>
+    <div className='flex flex-col gap-4 w-full lg:w-3/4'>
+        <span className='flex justify-between items-center'><span>Hide Image</span><span className='w-14 h-5 bg-slate-400 rounded-full flex items-center px-0.5'><span className='w-4 h-4 rounded-full bg-white'></span></span></span>
+        <span className='flex justify-between items-center'><span>Hide Name</span><span className='w-14 h-5 bg-slate-400 rounded-full flex items-center px-0.5'><span className='w-4 h-4 rounded-full bg-white'></span></span></span>
+    </div>
+    
+  </div>
+   </div>
+    </div>
+  )
+}
+
+export default Appearance

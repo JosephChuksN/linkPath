@@ -12,7 +12,7 @@ const LinkPageData = ({siteInfo}) => {
           <span className='w-14 h-14 bg-green-400 rounded'></span>
           <div className='flex flex-col gap-3'>
                 <span className='text-[1rem] font-medium'>{siteInfo.siteName}<span className='text-slate-300 text-[0.8rem] pl-2'><FontAwesomeIcon icon={faPen} /></span></span>
-                <span className='text-purple-500'>{siteInfo.siteLink}<span className='text-slate-300  text-[0.8rem] pl-2'><FontAwesomeIcon icon={faPen} /></span></span>
+                <span className='text-purple-500 '>{siteInfo.siteLink}<span className='text-slate-300  text-[0.8rem] pl-2'><FontAwesomeIcon icon={faPen} /></span></span>
           </div>
      </div>
            

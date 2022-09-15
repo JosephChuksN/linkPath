@@ -1,34 +1,35 @@
-import React, {useState, useRef} from 'react'
+import React, {useState, useRef, useEffect} from 'react'
 import LinkPageData from './LinkPageData'
 import {v4 as uuidv4} from 'uuid'
+import { useAuth } from '../../../Context/AuthContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLink } from '@fortawesome/free-solid-svg-icons'
 
 
+
 const LinkPage = ({siteData, setSiteData}) => {
-
+const { user } = useAuth()
   const formRef = useRef()
-const [siteLink, setLink] = useState("")
+  const [input, setInput] = useState("")
+  // const [siteLink, setLink] = useState([{siteData}])
 
 
-
-
-
+const addNewSite = (siteName, siteLink) =>{ return setSiteData([...siteData, {id:uuidv4(), siteName, siteLink}])}
  
-const addNewSite = (siteName, siteLink) =>{
- 
-  setSiteData([...siteData, {id:uuidv4, siteName, siteLink}])
-}
+
 //adds new link
-const handleAddLink = (e) => {
-  e.preventDefault()
-  
-  //extracts Url hostname
-  let siteName = new URL(siteLink).hostname.replace("www", "")
-  addNewSite(siteName, siteLink)
-  setLink('')
- 
+const handleAddLink = async (e) => {
+    e.preventDefault()
+   
+   //extracts Url hostname
+  let siteName = new URL(input).hostname.replace("www", "")
+  let link = input
+  addNewSite(siteName, link)
+  setInput('')
+
 }
+
+
 
   return (
      <div className='flex flex-col gap-10 px-2 md:px-0 items-center '>
@@ -41,8 +42,8 @@ const handleAddLink = (e) => {
              <input className='bg-transparent p-3 text-black  outline-none focus:bg-cyan-600/10 focus:border-none focus:ring-0 rounded-l-xl md:rounded-full border-none w-full' 
              type="url" 
              name="siteLink" 
-                value={siteLink}
-                onChange={(e)=>{setLink(e.target.value)}}
+                value={input}
+                onChange={(e)=>{setInput(e.target.value)}}
                 required
                 />
             </span>
