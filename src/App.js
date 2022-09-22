@@ -35,6 +35,7 @@ const App = () => {
           <Route  path='/dashboard/appearance' 
          element={<Appearance  
           avater={avater} 
+          setAvater={setAvater}
          />} />
          
         

@@ -26,6 +26,7 @@ const handleAddLink = async (e) => {
   let link = input
   addNewSite(siteName, link)
   setInput('')
+  
 
 }
 
@@ -53,7 +54,11 @@ const handleAddLink = async (e) => {
         </form>
  <div className='flex flex-col items-center justify-center w-[100%]'>{
   siteData.map((data)=>(
-    <LinkPageData key={data.id} siteInfo={data}  />
+    <LinkPageData 
+      key={data.id} 
+      siteInfo={data}
+      siteData={siteData}
+      setSiteData={setSiteData}  />
   ))
      }
  </div>

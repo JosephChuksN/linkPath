@@ -25,7 +25,7 @@ const NavBar = () => {
    
    <div className='md:flex '>
     <span onClick={handleToggle} className='md:hidden absolute right-3 top-3 p-1 text-2xl'>{!show ? <FontAwesomeIcon icon={faBars} /> : <FontAwesomeIcon icon={faClose} /> }</span>
-  <ul className={`flex flex-col bg-white md:bg-transparent md:flex-row gap-2.5 absolute md:static top-14 w-full text-xl z-40 ${show ? "right-0" : "right-[24.5rem]"} transition-all ease-in-out shadow-md lg:shadow-none delay-150 duration-300`}>
+  <ul className={`flex flex-col bg-white md:bg-transparent md:flex-row gap-2.5 absolute md:static top-14 w-full text-xl z-40 ${show ? "right-0" : "right-[28rem]"} transition-all ease-in-out shadow-md md:shadow-none delay-150 duration-300`}>
     <li className='pl-3 py-3'>About</li>
     <li className='pl-3 py-3'>Services</li>
     <li className='pl-3 py-3'>Contact</li>

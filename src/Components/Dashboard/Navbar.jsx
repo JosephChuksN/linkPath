@@ -8,11 +8,10 @@ const DashboardNav = () => {
 
   const { user } = useAuth()
 
-    const isActiveLink =" border-b-4 border-green-400 "
+    const isActiveLink =" border-b-4 border-green-400 transitional-all  ease-linear"
 const navData = [
-    {id:1, name:'Link', link:'link'},
+    {id:1, name:'Links', link:'link'},
     {id:2, name:'Appearance', link:'appearance'},
-    {id:3, name:'Analytics', link:'analytics'},
     {id:4, name:'Settings', link:'settings'},
     
 

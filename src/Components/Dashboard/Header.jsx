@@ -14,19 +14,19 @@ const Header = ({avater}) => {
   const navigate = useNavigate()
  
 const handleShow =() =>{
-  setLogoutShow(!logoutShow)
+  setLogoutShow(true)
 }
 
-// const handleOutsideclick = (e) =>{
-//    if(logoutSecRef.current && !logoutSecRef.current.contains(e.target)){
-//     setLogoutShow(false)
-//    }
-// }
+const handleOutsideclick = (e) =>{
+   if(logoutSecRef.current && !logoutSecRef.current.contains(e.target)){
+    setLogoutShow(false)
+   }
+}
 
-// useEffect(()=>{
-//   document.addEventListener('mousedown', handleOutsideclick)
-//   return document.removeEventListener('mousedown', handleLogout)
-// })
+useEffect(()=>{
+  document.addEventListener('mousedown', handleOutsideclick)
+  return document.removeEventListener('mousedown', handleLogout)
+})
     
  const handleLogout = async () =>{
     

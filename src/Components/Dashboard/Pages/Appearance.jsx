@@ -1,24 +1,36 @@
-import React, { useState} from 'react'
+import React, { useState, useRef} from 'react'
 import { useAuth } from '../../../Context/AuthContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPen, faCheck } from '@fortawesome/free-solid-svg-icons'
 
 
-const Appearance = ({avater}) => {
 
+const Appearance = ({avater, setAvater}) => {
+
+  const imgInputRef = useRef()
 const { user } = useAuth()
 const prflName = user.email.substring(0, user.email.indexOf("@")).replace(/[0-9]/g, '')
 const [ profilName, setProfileName] = useState(prflName)
+const [active, setActive] = useState(false)
+
+const handleActivebtn = ()=>{
+   setActive(!active)
+}
+
+const handleImgUpload = (e)=>{   
+    setAvater({"profilePic":URL.createObjectURL(e.target.files[0])}) 
+}
+
 
   return (
-    <div className='flex flex-col md:flex-row mx-2 gap-3'>
-        <div className='w-full md:w-1/2'>
+    <div className='flex flex-col lg:flex-row mx-2 gap-3'>
+        <div className='w-full lg:w-1/2'>
             <span className='text-cyan-700 font-semibold '>LAYOUT</span>
          <div className='w-full items-center mx-auto  border p-5 rounded bg-gray-100'>
             <span className='font-medium'>Choose a layout of your Linkpath</span>
               
         <div className='flex md:flex-row flex-col w-full items-center mx-auto gap-5 mt-3'>
-            <span className='absolute w-8 h-8 rounded-full bg-green-500 lg:left-[25.2rem] lg:top-[15.5rem] right-4 top-80 flex items-center justify-center'> <FontAwesomeIcon className='text-white' icon={faCheck} /></span>
+            <span className='absolute w-8 h-8 rounded-full bg-green-500 lg:left-[25.2rem] md:left-[24rem] md:top-[15.5rem] right-4 top-80 flex items-center justify-center'> <FontAwesomeIcon className='text-white' icon={faCheck} /></span>
     <div className=' w-full rounded bg-white'>
     <div className='flex flex-col items-center justify-center gap-3'>
        <div className='flex flex-col w-full items-center justify-center gap-2 pt-3'>
@@ -51,14 +63,21 @@ const [ profilName, setProfileName] = useState(prflName)
         </div>
         </div> 
 
-   <div className='w-full md:w-1/2'>
+   <div className='w-full lg:w-1/2'>
    <span className='text-cyan-700 font-semibold '>PROFILE NAME AND IMAGE</span>
  
  
    <div className='flex flex-col gap-4 border rounded  p-3 '>
     <div className='flex gap-4'>
         <span className='w-28 h-28 rounded-full flex items-center bg-no-repeat bg-cover'style={{backgroundImage: `url(${avater.profilePic})`}}></span>
-       <span className='flex items-center'><button className='p-2 rounded bg-cyan-600 text-white hover:bg-cyan-600/80 transition-all delay-150 duration-500 ease-in-out'>Upload Image</button></span>
+        <input ref={imgInputRef}
+          type="file" 
+          accept="image/*" 
+          name="img"
+          className="hidden"
+          onChange={handleImgUpload}
+         />
+       <span className='flex items-center'><button onClick={()=>imgInputRef.current.click()} className='p-2 rounded bg-cyan-600 text-white hover:bg-cyan-600/80 transition-all delay-150 duration-500 ease-in-out'>Upload Image</button></span>
     </div>
     <div className='flex flex-col w-full lg:w-3/4'>
         <span className='flex justify-between'><input className='font-semibold focus:border-none focus:ring-0  outline-none' 
@@ -68,8 +87,12 @@ const [ profilName, setProfileName] = useState(prflName)
         <span className='text-sm text-slate-400'>Profile Title</span>
     </div>
     <div className='flex flex-col gap-4 w-full lg:w-3/4'>
-        <span className='flex justify-between items-center'><span>Hide Image</span><span className='w-14 h-5 bg-slate-400 rounded-full flex items-center px-0.5'><span className='w-4 h-4 rounded-full bg-white'></span></span></span>
-        <span className='flex justify-between items-center'><span>Hide Name</span><span className='w-14 h-5 bg-slate-400 rounded-full flex items-center px-0.5'><span className='w-4 h-4 rounded-full bg-white'></span></span></span>
+        <span className='flex justify-between items-center'><span>Hide Image</span><span className='flex gap-3 items-center'>
+          <span onClick={handleActivebtn} className={`w-14 h-5  rounded-full flex items-center px-0.5 ${active? 'bg-green-500' : 'bg-slate-400' }`}>
+          <span  className={`w-4 h-4 relative rounded-full transition-all duration-1000 delay-300 ease-in-out bg-white ${active? 'left-9': " "}`}>
+          </span></span><span className='transition-all delay-700 duration-500'>{active?<span>ON</span>:<span>OFF</span>}</span></span></span>
+        <span className='flex justify-between items-center'><span>Hide Name</span><span className='flex gap-3 items-center'><span className='w-14 h-5 bg-slate-400 rounded-full flex items-center px-0.5'><span className='w-4 h-4 rounded-full bg-white'></span></span><span>OFF</span></span></span>
+        
     </div>
     
   </div>
