@@ -21,10 +21,10 @@ const navData = [
 
   return (
    <>
-    <div className= 'mb-8 md:mb-5 sticky bg-white z-20 top-0'>
+    <div className= ' md:mb-5 sticky bg-white z-20 top-0'>
         <ul className='flex  px-3 gap-10 text-[1rem] font-normal text-cyan-600 border-b'>{
         navData.map((data)=>(
-           <NavLink className={({isActive})=> isActive? isActiveLink : null} key={data.id} to={data.link}><li className='py-5'>{data.name}</li></NavLink>
+           <NavLink className={({isActive})=> isActive? isActiveLink : null} key={data.id} to={data.link}><li className='py-3'>{data.name}</li></NavLink>
         ))    
             }</ul>
     </div>

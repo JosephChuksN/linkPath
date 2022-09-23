@@ -26,7 +26,7 @@ const App = () => {
       <Route exact path='/' element={<HomePage />} />
       <Route eaxct path='signup' element={<Signup />} />
       <Route eaxct path='login' element={<Login />} />
-      <Route eaxct path='dashboard' element={<PrivateRoute><Dashboard avater={avater} /></PrivateRoute>}>
+      <Route eaxct path='dashboard' element={<PrivateRoute><Dashboard avater={avater} siteData={siteInfo} /></PrivateRoute>}>
         <Route  path='/dashboard/link' 
          element={<LinkPage 
          siteData={siteInfo} 

@@ -11,22 +11,15 @@ const [siteName, setSiteName] = useState(siteInfo.siteName)
 const [siteLink, setSiteLink] = useState(siteInfo.siteLink)
 
 
-const editedInfo = {id, siteName, siteLink}
 
-const handleedit = (id, editedInfo)=>{
-   
-  setSiteData(siteData.map(details => details.id === id ? editedInfo : details))
- 
-  
-}
 
 
 
 
 useEffect(()=>{
-   
-  console.log(siteData)
- return handleedit(id, editedInfo)
+  const editedInfo = {id, siteName, siteLink}
+ const handleEdit = (id, editedInfo)=>{ setSiteData(siteData.map(details => details.id === id ? editedInfo : details))}
+ return handleEdit(id, editedInfo)
 }, [siteName, siteLink])
 
 

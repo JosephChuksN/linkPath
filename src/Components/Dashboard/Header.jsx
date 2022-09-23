@@ -39,7 +39,7 @@ useEffect(()=>{
 }
   return (
    <>
-    <div className='flex flex-col gap-10 md:flex-row md:justify-between md:items-center py-5 px-2'>
+    <div className='flex flex-col gap-10 md:flex-row md:justify-between md:items-center py-5 px-2 border-b'>
         
             <span className='text-2xl font-semibold text-cyan-700'>Linkpath</span>
          <div className='flex gap-5 items-center w-full md:w-[40%] px-2'>
@@ -49,7 +49,7 @@ useEffect(()=>{
             </span>
           <span className='text-[1.3rem] text-slate-400/60 md:static absolute top-[1.4rem] right-20 '><FontAwesomeIcon icon={faBell} /></span>
             <span onClick={handleShow} className=' z-20 md:w-14 w-12 h-12 md:h-14 rounded-full absolute top-2.5 right-3 md:static flex items-center bg-no-repeat bg-cover' style={{backgroundImage: `url(${avater.profilePic})`}}></span>
-            <span className='w-4 h-4 bg-red-600 rounded-full absolute top-[1.4rem] right-[4.5rem] lg:right-[12.2rem] lg:top-8 text-white text-sm text-[0.7rem] flex items-center justify-center'>3</span>
+            <span className='w-4 h-4 bg-red-600 rounded-full absolute top-[1.4rem] right-[4.5rem] lg:right-[30rem] lg:top-8 text-white text-sm text-[0.7rem] flex items-center justify-center'>3</span>
          </div>
         
     </div>

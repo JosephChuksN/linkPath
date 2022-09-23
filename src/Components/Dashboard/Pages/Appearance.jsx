@@ -24,13 +24,13 @@ const handleImgUpload = (e)=>{
 
   return (
     <div className='flex flex-col lg:flex-row mx-2 gap-3'>
-        <div className='w-full lg:w-1/2'>
+        <div className='w-full lg:w-[55%]'>
             <span className='text-cyan-700 font-semibold '>LAYOUT</span>
          <div className='w-full items-center mx-auto  border p-5 rounded bg-gray-100'>
-            <span className='font-medium'>Choose a layout of your Linkpath</span>
+            <span className='font-medium '>Choose a layout of your Linkpath</span>
               
         <div className='flex md:flex-row flex-col w-full items-center mx-auto gap-5 mt-3'>
-            <span className='absolute w-8 h-8 rounded-full bg-green-500 lg:left-[25.2rem] md:left-[24rem] md:top-[15.5rem] right-4 top-80 flex items-center justify-center'> <FontAwesomeIcon className='text-white' icon={faCheck} /></span>
+            <span className='absolute w-8 h-8 rounded-full bg-green-500 lg:left-[19rem] md:left-[24rem] md:top-[15.5rem] right-4 top-80 flex items-center justify-center'> <FontAwesomeIcon className='text-white' icon={faCheck} /></span>
     <div className=' w-full rounded bg-white'>
     <div className='flex flex-col items-center justify-center gap-3'>
        <div className='flex flex-col w-full items-center justify-center gap-2 pt-3'>
@@ -63,7 +63,7 @@ const handleImgUpload = (e)=>{
         </div>
         </div> 
 
-   <div className='w-full lg:w-1/2'>
+   <div className='w-full lg:w-[45%]'>
    <span className='text-cyan-700 font-semibold '>PROFILE NAME AND IMAGE</span>
  
  
