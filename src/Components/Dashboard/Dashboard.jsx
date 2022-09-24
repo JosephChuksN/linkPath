@@ -12,7 +12,7 @@ const prflName = user.email.substring(0, user.email.indexOf("@")).replace(/[0-9]
 
   return (
     <div className='lg:flex lg:mx-6  bg-white'>
-    <div className='flex flex-col   h-full min-h-screen  border-r lg:w-3/4'>
+    <div className='flex flex-col  h-full min-h-screen  border-r lg:w-3/4'>
       <Header avater={avater} />
       <DashboardNav />
       <Outlet />
@@ -22,7 +22,8 @@ const prflName = user.email.substring(0, user.email.indexOf("@")).replace(/[0-9]
         <span className='w-12 h-1 bg-gray-600 absolute top-[4.8rem] rounded-md'></span>
         <span className='w-10 h-10 bg-gray-600 absolute bottom-28 rounded-full'></span>
        
-        <div className='flex flex-col w-full px-8 h-full bg-cyan-600/20 items-center overflow-y-auto'>
+        <div className='flex flex-col w-full px-8 h-full bg-cyan-600/20 items-center overflow-y-auto justify-between'>
+          <div className='flex flex-col w-full'>
          <div className='flex flex-col h-44 items-center justify-center gap-1 w-full bg-no-repeat bg-cover py-1' style={{backgroundImage: `url(${avater.profilePic})`}}>
           <span className='w-40 h-40 bg-no-repeat bg-cover ' style={{backgroundImage: `url(${avater.profilePic})`}}></span>
          </div>
@@ -35,6 +36,7 @@ const prflName = user.email.substring(0, user.email.indexOf("@")).replace(/[0-9]
           ))
           }
          
+         </div>
          </div>
          <span className='flex w-full justify-end pr-3 py-4  font-semibold text-xl '><span>Linkpath</span></span>
        </div>

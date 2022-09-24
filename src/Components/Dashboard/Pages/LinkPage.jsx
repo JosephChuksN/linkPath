@@ -1,9 +1,10 @@
 import React, {useState, useRef, useEffect} from 'react'
 import LinkPageData from './LinkPageData'
+import { useNavigate } from 'react-router'
 import {v4 as uuidv4} from 'uuid'
 import { useAuth } from '../../../Context/AuthContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLink } from '@fortawesome/free-solid-svg-icons'
+import { faLink, faEye } from '@fortawesome/free-solid-svg-icons'
 
 
 
@@ -11,6 +12,7 @@ const LinkPage = ({siteData, setSiteData}) => {
 const { user } = useAuth()
   const formRef = useRef()
   const [input, setInput] = useState("")
+  const navigate = useNavigate()
   // const [siteLink, setLink] = useState([{siteData}])
 
 
@@ -29,11 +31,14 @@ const handleAddLink = async (e) => {
   
 
 }
+const handleNavigate = () =>{
+  return navigate("/preview")
+}
 
 
 
   return (
-     <div className='flex flex-col gap-10 px-2 md:px-0 items-center '>
+     <div className='flex flex-col gap-10 px-2 md:px-0 items-center mt-3 lg:mt-0'>
       <form ref={formRef} action="" onSubmit={handleAddLink} className='md:w-3/4 w-full'>
         <div className='flex  justify-center   '>
         <div className='flex w-full items-center justify-center lg:w-3/4 md:gap-5 '>
@@ -63,6 +68,7 @@ const handleAddLink = async (e) => {
      }
  </div>
        
+<span onClick={handleNavigate} className=' lg:hidden absolute bottom-8 rounded-full left-36 bg-cyan-600 text-white p-2 flex gap-2 items-center text-xl '><span className='text-sm'><FontAwesomeIcon icon={faEye} /></span>  Check</span>
 
     </div>
   )

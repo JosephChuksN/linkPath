@@ -6,6 +6,7 @@ import Login from './Components/Login';
 import Dashboard from './Components/Dashboard/Dashboard';
 import LinkPage from './Components/Dashboard/Pages/LinkPage';
 import Appearance from './Components/Dashboard/Pages/Appearance';
+import Preview from './Components/Preview';
 import PrivateRoute from './Routes/PrivateRoute';
 import { Routes, Route  } from 'react-router-dom';
 import { siteData, imgPic } from './fakeData';
@@ -26,8 +27,9 @@ const App = () => {
       <Route exact path='/' element={<HomePage />} />
       <Route eaxct path='signup' element={<Signup />} />
       <Route eaxct path='login' element={<Login />} />
+      <Route exact path='preview' element={<PrivateRoute><Preview siteData={siteInfo} avater={avater} /></PrivateRoute>} />
       <Route eaxct path='dashboard' element={<PrivateRoute><Dashboard avater={avater} siteData={siteInfo} /></PrivateRoute>}>
-        <Route  path='/dashboard/link' 
+        <Route  path='/dashboard/link' index
          element={<LinkPage 
          siteData={siteInfo} 
          setSiteData={setSiteInfo} 

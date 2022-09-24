@@ -14,7 +14,7 @@ const Header = ({avater}) => {
   const navigate = useNavigate()
  
 const handleShow =() =>{
-  setLogoutShow(true)
+  setLogoutShow(!logoutShow)
 }
 
 const handleOutsideclick = (e) =>{
