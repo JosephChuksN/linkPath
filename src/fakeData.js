@@ -7,8 +7,11 @@ const imgPic = { profilePic: randAvatar()}
 //  let link = ""
 //   let domain = new URL(link).hostname.replace("www", "")
 
+
+const description = " "
+
 const siteData = [
     
 ]
 
-export {siteData, imgPic}
+export {siteData, imgPic, description}

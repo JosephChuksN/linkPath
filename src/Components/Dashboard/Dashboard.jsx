@@ -4,7 +4,7 @@ import DashboardNav from './Navbar'
 import { useAuth } from '../../Context/AuthContext'
 import {  Outlet } from 'react-router'
 
-const Dashboard = ({avater, siteData}) => {
+const Dashboard = ({avater, siteData, description}) => {
      
 const { user } = useAuth()
 const prflName = user.email.substring(0, user.email.indexOf("@")).replace(/[0-9]/g, '')
@@ -27,7 +27,10 @@ const prflName = user.email.substring(0, user.email.indexOf("@")).replace(/[0-9]
          <div className='flex flex-col h-44 items-center justify-center gap-1 w-full bg-no-repeat bg-cover py-1' style={{backgroundImage: `url(${avater.profilePic})`}}>
           <span className='w-40 h-40 bg-no-repeat bg-cover ' style={{backgroundImage: `url(${avater.profilePic})`}}></span>
          </div>
-         <span className='text-md font-medium  py-3 w-full text-center bg-cyan-600 text-white'>{prflName}</span>
+        <span className='flex flex-col   py-3 w-full text-center bg-cyan-600'> 
+             <span className='text-md font-medium  text-white'>{prflName}</span>
+             <span className='text-[10px] text-gray-100 whitespace-pre-wrap '>{description}</span>
+        </span>
          <div className='w-full'>{
           siteData.map(data =>(
             <div className='flex flex-col items-center ' key={data.id}>

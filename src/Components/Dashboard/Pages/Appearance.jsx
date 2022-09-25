@@ -5,7 +5,7 @@ import { faPen, faCheck } from '@fortawesome/free-solid-svg-icons'
 
 
 
-const Appearance = ({avater, setAvater}) => {
+const Appearance = ({avater, setAvater, description, setDescription}) => {
 
   const imgInputRef = useRef()
 const { user } = useAuth()
@@ -29,8 +29,8 @@ const handleImgUpload = (e)=>{
          <div className='w-full items-center mx-auto  border p-5 rounded bg-gray-100'>
             <span className='font-medium '>Choose a layout of your Linkpath</span>
               
-        <div className='flex md:flex-row flex-col w-full items-center mx-auto gap-5 mt-3'>
-            <span className='absolute w-8 h-8 rounded-full bg-green-500 lg:left-[19rem] md:left-[24rem] md:top-[15.5rem] right-4 top-80 flex items-center justify-center'> <FontAwesomeIcon className='text-white' icon={faCheck} /></span>
+        <div className='flex md:flex-row  flex-col-reverse w-full items-center mx-auto gap-5 mt-3'>
+            <span className='absolute w-8 h-8 rounded-full bg-green-500 lg:left-[19rem] md:left-[24rem] md:top-[15.5rem] right-4 top-[17rem] flex items-center justify-center'> <FontAwesomeIcon className='text-white' icon={faCheck} /></span>
     <div className=' w-full rounded bg-white'>
     <div className='flex flex-col items-center justify-center gap-3'>
        <div className='flex flex-col w-full items-center justify-center gap-2 pt-3'>
@@ -48,11 +48,11 @@ const handleImgUpload = (e)=>{
     <div className='w-full py-6 rounded bg-white'>
     <div className='flex flex-col items-center justify-center  '>
        <div className='flex flex-col w-full items-center justify-center'>
-       <span className='w-3/5 h-32 border'></span>
+       <span className='w-3/4 h-36 border flex items-center justify-center'><span className='w-[70%] h-[85%] border bg-slate-900/10'></span></span>
        <span className='h-16 w-3/4 bg-slate-900/10 border-b'></span>
        </div>
        <div className='flex flex-col w-full items-center'>
-        <span className='w-3/4 h-14 bg-cyan-600/10 border-b '></span>
+        <span className='w-3/4 h-14  bg-cyan-600/10 border-b '></span>
         <span className='w-3/4 h-14 bg-cyan-600/10 border-b '></span>
         <span className='w-3/4 h-14 bg-cyan-600/10 border-b '></span>
         <span className='w-3/4 h-14 bg-cyan-600/10 border-b'></span>
@@ -63,7 +63,7 @@ const handleImgUpload = (e)=>{
         </div>
         </div> 
 
-   <div className='w-full lg:w-[45%]'>
+   <div className='w-full lg:w-[45%] flex flex-col gap-1'>
    <span className='text-cyan-700 font-semibold '>PROFILE NAME AND IMAGE</span>
  
  
@@ -94,8 +94,21 @@ const handleImgUpload = (e)=>{
         <span className='flex justify-between items-center'><span>Hide Name</span><span className='flex gap-3 items-center'><span className='w-14 h-5 bg-slate-400 rounded-full flex items-center px-0.5'><span className='w-4 h-4 rounded-full bg-white'></span></span><span>OFF</span></span></span>
         
     </div>
+   
     
   </div>
+  <span className='text-cyan-700 font-semibold pt-2 '>DESCRIPTION</span>
+  <div>
+      <textarea className='w-full resize-none rounded border-slate-400/30'
+      name="description" 
+      id="" 
+      rows="7"
+      value={description}
+      maxLength="50"
+      onChange={(e)=>setDescription(e.target.value)}
+      
+      />
+    </div>
    </div>
     </div>
   )

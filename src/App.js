@@ -9,7 +9,7 @@ import Appearance from './Components/Dashboard/Pages/Appearance';
 import Preview from './Components/Preview';
 import PrivateRoute from './Routes/PrivateRoute';
 import { Routes, Route  } from 'react-router-dom';
-import { siteData, imgPic } from './fakeData';
+import { siteData, imgPic, description } from './fakeData';
 import { AuthProvider } from './Context/AuthContext';
 
 
@@ -18,6 +18,7 @@ const App = () => {
  
   const [siteInfo, setSiteInfo] =useState(siteData)
   const [avater, setAvater] = useState(imgPic)
+  const [bio, setBio] = useState(description)
 
   return (
   <div className='bg-gray-100 h-full'>
@@ -27,8 +28,16 @@ const App = () => {
       <Route exact path='/' element={<HomePage />} />
       <Route eaxct path='signup' element={<Signup />} />
       <Route eaxct path='login' element={<Login />} />
-      <Route exact path='preview' element={<PrivateRoute><Preview siteData={siteInfo} avater={avater} /></PrivateRoute>} />
-      <Route eaxct path='dashboard' element={<PrivateRoute><Dashboard avater={avater} siteData={siteInfo} /></PrivateRoute>}>
+      <Route exact path='preview' element={<PrivateRoute><Preview siteData={siteInfo} avater={avater} description={bio} /></PrivateRoute>} />
+      <Route eaxct path='dashboard' element={
+       <PrivateRoute>
+        <Dashboard 
+
+          avater={avater} 
+          siteData={siteInfo}
+          description={bio} />
+          
+       </PrivateRoute>}>
         <Route  path='/dashboard/link' index
          element={<LinkPage 
          siteData={siteInfo} 
@@ -38,6 +47,8 @@ const App = () => {
          element={<Appearance  
           avater={avater} 
           setAvater={setAvater}
+          description={bio}
+          setDescription={setBio}
          />} />
          
         

@@ -68,7 +68,7 @@ const handleNavigate = () =>{
      }
  </div>
        
-<span onClick={handleNavigate} className=' lg:hidden absolute bottom-8 rounded-full left-36 bg-cyan-600 text-white p-2 flex gap-2 items-center text-xl '><span className='text-sm'><FontAwesomeIcon icon={faEye} /></span>  Check</span>
+<span onClick={handleNavigate} className=' lg:hidden absolute bottom-2 rounded-full left-40 bg-cyan-600 text-white p-2 flex gap-2 items-center text-xl '><span className='text-sm'><FontAwesomeIcon icon={faEye} /></span>  Check</span>
 
     </div>
   )
