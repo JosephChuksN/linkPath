@@ -24,8 +24,8 @@ const prflName = user.email.substring(0, user.email.indexOf("@")).replace(/[0-9]
        
         <div className='flex flex-col w-full px-8 h-full bg-cyan-600/20 items-center overflow-y-auto justify-between'>
           <div className='flex flex-col w-full'>
-         <div className='flex flex-col h-44 items-center justify-center gap-1 w-full bg-no-repeat bg-cover py-1' style={{backgroundImage: `url(${avater.profilePic})`}}>
-          <span className='w-40 h-40 bg-no-repeat bg-cover ' style={{backgroundImage: `url(${avater.profilePic})`}}></span>
+         <div className='flex flex-col h-44 items-center justify-center gap-1 w-full bg-no-repeat bg-cover py-1 backdrop-blur-sm bg-black/30 ' style={{backgroundImage: `url(${avater.profilePic})`}}>
+          <span className='w-40 h-44 bg-no-repeat  bg-cover z-20 drop-shadow-2xl' style={{backgroundImage: `url(${avater.profilePic})`}}></span>
          </div>
         <span className='flex flex-col   py-3 w-full text-center bg-cyan-600'> 
              <span className='text-md font-medium  text-white'>{prflName}</span>

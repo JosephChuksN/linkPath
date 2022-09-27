@@ -23,39 +23,39 @@ const handleImgUpload = (e)=>{
 
 
   return (
-    <div className='flex flex-col lg:flex-row mx-2 gap-3'>
-        <div className='w-full lg:w-[55%] flex flex-col gap-1'>
+    <div className='grid grid-cols-1 lg:grid-cols-2 mx-2 gap-3'>
+        <div className='  flex flex-col gap-1'>
             <span className='text-cyan-700 font-semibold '>LAYOUT</span>
          <div className='w-full items-center mx-auto  border p-5 rounded '>
             <span className='font-medium '>Choose a layout of your Linkpath</span>
               
-        <div className='flex md:flex-row-reverse  flex-col-reverse w-2/3  lg:px-0 px-3 items-center mx-auto gap-5 mt-3'>
-            <span className='absolute w-5 h-5 rounded-full bg-green-500 lg:left-[19.3rem] md:left-[24rem] md:top-[15.3rem] right-[5.5rem] top-[17.5rem] flex items-center justify-center'> <FontAwesomeIcon className='text-white text-sm' icon={faCheck} /></span>
+        <div className='flex md:flex-row-reverse  flex-col-reverse w-2/3  lg:px-0 px-3 items-center mx-auto gap-9 mt-3'>
+            <span className='absolute w-5 h-5 rounded-full bg-green-500 lg:left-[17.3rem] md:left-[24rem] md:top-[15.3rem] right-[5.5rem] top-[17.5rem] flex items-center justify-center'> <FontAwesomeIcon className='text-white text-sm' icon={faCheck} /></span>
     <div className=' w-full rounded-lg py-2 bg-cyan-600/10'>
     <div className='flex flex-col items-center justify-center gap-2'>
        <div className='flex flex-col w-full items-center justify-center gap-1 pt-3'>
        <span className='w-16 h-16 bg-slate-900/30 rounded-full'></span>
-       <span className='h-6 w-2/5  bg-cyan-600 rounded-md'></span>
+       <span className='h-5 w-2/5  bg-cyan-600 rounded-md'></span>
        </div>
        <div className='flex flex-col w-full items-center gap-2 my-2'>
-        <span className='w-3/4 h-8 bg-white rounded-md'></span>
-        <span className='w-3/4 h-8 bg-white rounded-md'></span>
-        <span className='w-3/4 h-8 bg-white rounded-md'></span>
-        <span className='w-3/4 h-8 bg-white rounded-md'></span>
+        <span className='w-3/4 h-4 bg-white rounded-md'></span>
+        <span className='w-3/4 h-4 bg-white rounded-md'></span>
+        <span className='w-3/4 h-4 bg-white rounded-md'></span>
+        <span className='w-3/4 h-4 bg-white rounded-md'></span>
        </div>
     </div>
     </div>
-    <div className='w-full py-6 rounded-lg bg-cyan-600/10'>
+    <div className='w-full py-4 rounded-lg bg-cyan-600/10'>
     <div className='flex flex-col items-center justify-center  '>
        <div className='flex flex-col w-full items-center justify-center'>
-       <span className='w-3/4 h-24 border flex items-center justify-center bg-slate-900/10'><span className='w-[70%] h-[85%] border bg-slate-900/30'></span></span>
-       <span className='h-7 w-3/4 bg-cyan-600 border-b'></span>
+       <span className='w-3/4 h-24 border flex items-center justify-center bg-slate-900/10'><span className='w-[70%] h-[95%] border bg-slate-900/30'></span></span>
+       <span className='h-5 w-3/4 bg-cyan-600 border-b'></span>
        </div>
        <div className='flex flex-col w-full items-center'>
-        <span className='w-3/4 h-8 bg-white border-b '></span>
-        <span className='w-3/4 h-8 bg-white border-b '></span>
-        <span className='w-3/4 h-8 bg-white border-b '></span>
-        <span className='w-3/4 h-8 bg-white border-b'></span>
+        <span className='w-3/4 h-5 bg-white border-b '></span>
+        <span className='w-3/4 h-5 bg-white border-b '></span>
+        <span className='w-3/4 h-5 bg-white border-b '></span>
+        <span className='w-3/4 h-5 bg-white border-b'></span>
        </div>
     </div>
     </div>
@@ -63,11 +63,11 @@ const handleImgUpload = (e)=>{
         </div>
         </div> 
 
-   <div className='w-full lg:w-[45%] flex flex-col gap-1'>
+   <div className=' flex flex-col gap-1'>
    <span className='text-cyan-700 font-semibold '>PROFILE NAME AND IMAGE</span>
  
  
-   <div className='flex flex-col gap-4 border rounded  p-3 '>
+   <div className='flex flex-col gap-5 border rounded  p-3 py-5 '>
     <div className='flex gap-4'>
         <span className='w-28 h-28 rounded-full flex items-center bg-no-repeat bg-cover'style={{backgroundImage: `url(${avater.profilePic})`}}></span>
         <input ref={imgInputRef}
@@ -97,18 +97,23 @@ const handleImgUpload = (e)=>{
    
     
   </div>
-  <span className='text-cyan-700 font-semibold pt-2 '>DESCRIPTION</span>
+ 
   <div>
-      <textarea className='w-full resize-none rounded border-slate-400/30'
+  
+    </div>
+   </div>
+   <div>
+   <span className='text-cyan-700 font-semibold pt-2 '>DESCRIPTION</span>
+      <textarea className='w-full resize-none rounded border-slate-400/30 bg-gray-50'
       name="description" 
       id="" 
-      rows="7"
+      rows="4"
       value={description}
       maxLength="50"
+      placeholder='Description'
       onChange={(e)=>setDescription(e.target.value)}
       
       />
-    </div>
    </div>
     </div>
   )
