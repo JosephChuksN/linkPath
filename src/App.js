@@ -6,6 +6,7 @@ import Login from './Components/Login';
 import Dashboard from './Components/Dashboard/Dashboard';
 import LinkPage from './Components/Dashboard/Pages/LinkPage';
 import Appearance from './Components/Dashboard/Pages/Appearance';
+import Settings from './Components/Dashboard/Pages/Settings';
 import Preview from './Components/Preview';
 import PrivateRoute from './Routes/PrivateRoute';
 import { Routes, Route  } from 'react-router-dom';
@@ -49,6 +50,12 @@ const App = () => {
           setAvater={setAvater}
           description={bio}
           setDescription={setBio}
+         />} />
+         
+         <Route  path='/dashboard/settings' 
+         element={<Settings  
+          
+          
          />} />
          
         
