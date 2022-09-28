@@ -29,8 +29,8 @@ const handleImgUpload = (e)=>{
          <div className='w-full items-center mx-auto  border p-5 rounded '>
             <span className='font-medium '>Choose a layout of your Linkpath</span>
               
-        <div className='flex md:flex-row-reverse  flex-col-reverse w-2/3  lg:px-0 px-3 items-center mx-auto gap-9 mt-3'>
-            <span className='absolute w-5 h-5 rounded-full bg-green-500 lg:left-[17.3rem] md:left-[24rem] md:top-[15.3rem] right-[5.5rem] top-[17.5rem] flex items-center justify-center'> <FontAwesomeIcon className='text-white text-sm' icon={faCheck} /></span>
+        <div className='flex md:flex-row-reverse  flex-col-reverse w-2/3  lg:px-0 px-5 items-center mx-auto gap-9 mt-3'>
+            <span className='absolute w-5 h-5 rounded-full bg-green-500 lg:left-[15.7rem] md:left-[24rem] md:top-[15.3rem] right-[5.8rem] top-[18.3rem] flex items-center justify-center'> <FontAwesomeIcon className='text-white text-sm' icon={faCheck} /></span>
     <div className=' w-full rounded-lg py-2 bg-cyan-600/10'>
     <div className='flex flex-col items-center justify-center gap-2'>
        <div className='flex flex-col w-full items-center justify-center gap-1 pt-3'>

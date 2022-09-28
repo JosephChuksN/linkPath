@@ -16,7 +16,7 @@ const { user } = useAuth()
   // const [siteLink, setLink] = useState([{siteData}])
 
 
-const addNewSite = (siteName, siteLink) =>{ return setSiteData([...siteData, {id:uuidv4(), siteName, siteLink}])}
+const addNewSite = (siteName, siteLink, siteImg) =>{ return setSiteData([...siteData, {id:uuidv4(), siteName, siteLink, siteImg}])}
  
 
 //adds new link
@@ -24,9 +24,10 @@ const handleAddLink = async (e) => {
     e.preventDefault()
    
    //extracts Url hostname
-  let siteName = new URL(input).hostname.replace("www", "")
+  var siteName = new URL(input).hostname.replace("www", "")
   let link = input
-  addNewSite(siteName, link)
+  let siteImg = ""
+  addNewSite(siteName, link, siteImg)
   setInput('')
   
 
@@ -69,7 +70,7 @@ const handleNavigate = () =>{
  </div>
        
 <span onClick={handleNavigate} className=' lg:hidden absolute bottom-2 rounded-full left-40 bg-cyan-600 text-white p-2 flex gap-2 items-center text-xl '><span className='text-sm'><FontAwesomeIcon icon={faEye} /></span>  Check</span>
-
+  
     </div>
   )
 }

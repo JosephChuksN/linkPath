@@ -12,20 +12,20 @@ const prflName = user.email.substring(0, user.email.indexOf("@")).replace(/[0-9]
 
   return (
     <div className='lg:flex lg:mx-6  bg-white'>
-    <div className='flex flex-col  h-full min-h-screen  border-r lg:w-3/4'>
+    <div className='flex flex-col  h-full min-h-screen  border-r lg:w-3/4 relative'>
       <Header avater={avater} />
       <DashboardNav />
       <Outlet />
     </div>
    <div className='hidden lg:block h-screen w-[20%] fixed right-14 '>
-       <div className='h-[80%] mt-12 flex items-center justify-center flex-col rounded-3xl  border-x-[10px] border-black border-y-[60px]  '>
+       <div className='h-[80%] mt-12 flex items-center justify-center flex-col rounded-3xl  border-x-[10px] border-black shadow-2xl border-y-[60px]  '>
         <span className='w-12 h-1 bg-gray-600 absolute top-[4.8rem] rounded-md'></span>
         <span className='w-10 h-10 bg-gray-600 absolute bottom-28 rounded-full'></span>
        
-        <div className='flex flex-col w-full px-8 h-full bg-cyan-600/20 items-center overflow-y-auto justify-between'>
+        <div className='flex flex-col w-full px-6 h-full bg-cyan-600/20 items-center overflow-y-auto justify-between'>
           <div className='flex flex-col w-full'>
-         <div className='flex flex-col h-44 items-center justify-center gap-1 w-full bg-no-repeat bg-cover py-1 backdrop-blur-sm bg-black/30 ' style={{backgroundImage: `url(${avater.profilePic})`}}>
-          <span className='w-40 h-44 bg-no-repeat  bg-cover z-20 drop-shadow-2xl' style={{backgroundImage: `url(${avater.profilePic})`}}></span>
+          <div className='flex flex-col h-44 items-center justify-center gap-1 w-full bg-no-repeat bg-cover  ' style={{backgroundImage: `url(${avater.profilePic})`}}>
+          <span className='w-full h-full flex items-center justify-center bg-black/40 py-1 '><span className='w-[85%] h-full bg-no-repeat bg-cover border border-transparent ' style={{backgroundImage: `url(${avater.profilePic})`}}></span></span>
          </div>
         <span className='flex flex-col   py-3 w-full text-center bg-cyan-600'> 
              <span className='text-md font-medium  text-white'>{prflName}</span>
@@ -33,8 +33,12 @@ const prflName = user.email.substring(0, user.email.indexOf("@")).replace(/[0-9]
         </span>
          <div className='w-full'>{
           siteData.map(data =>(
-            <div className='flex flex-col items-center ' key={data.id}>
-            <span className='px-3 py-4 font-medium w-full border-b bg-white'><a href={data.siteLink}>{data.siteName}</a></span>
+            <div className='flex  items-center py-4 bg-white justify-between px-1 border-b' key={data.id}>
+             <div className='flex gap-3 items-center'>
+             <span className='w-8 h-8 rounded bg-no-repeat bg-cover' style={{backgroundImage: `url(${data.siteImg})`}}></span>
+              <span className='font-medium'><a href={data.siteLink} target="blank">{data.siteName}</a></span>
+             </div>
+            <span className='px-1 bg-gray-300/40 rounded'><a href={data.siteLink} target="blank">Visit</a></span>
             </div>
           ))
           }
