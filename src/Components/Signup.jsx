@@ -1,39 +1,34 @@
-import React, {  useState} from 'react'
-import {  Link, useNavigate,  } from 'react-router-dom'
+import React, {  useState, useEffect} from 'react'
+import {  Link  } from 'react-router-dom'
 import { useAuth } from '../Context/AuthContext'
 import { Spinner } from 'flowbite-react'
 
 const Signup = () => {
-  const [error, setError] = useState('')
-  const [loading, setLoading] = useState(false)
+  
+  
+  const [username, setUsername] = useState("")
   const [email, setEmail] = useState("")
   const [pass, setPass] = useState("")
   const [confirmPass, setConFirmPass] = useState("")
-  const navigate = useNavigate()
+  
+  
+  
+  
 
  
-  const {signUp, } = useAuth()
+  const { signUp, error, setError, loading } = useAuth()
  
   //creates a user account
-  const handleSubmit = async (e) =>{
+  const handleSubmit =  (e) =>{
     e.preventDefault()
-    setError('')
+      
     if(pass !== confirmPass){
       setError('password must match')
       return alert(error)
     }
-
-    try{
-      setError('')
-      setLoading(true)
-      await signUp(email, pass)
-      navigate('/dashboard')
-    } catch (e){
-      setError(e.message)
-      alert(error)
-      
-    }
-    setLoading(false)
+      signUp(email, pass, username)
+   
+    
   }
 
 
@@ -41,26 +36,38 @@ const Signup = () => {
   return (
     <>
    
-    <div className='px-3 py-36 h-screen lg:w-3/4 mx-auto'>
+    <div className='px-3 py-36 h-screen lg:w-3/4 mx-auto relative'>
      
- <form action="" onSubmit={handleSubmit} className='p-3 shadow-md bg-gray-100 rounded lg:w-1/2 mx-auto py-5'>
- 
+ <form action="" onSubmit={handleSubmit} className='p-3 shadow-md bg-gray-100 rounded lg:w-1/2 mx-auto border py-5'>
+ <span className={`${error === ""? "hidden": "block"} bg-red-200 text-red-600 p-3 rounded`}>{error}</span>
     <div className=' flex flex-col gap-5 mt-3'>
     <span className='text-2xl font-semibold'>Sign Up</span>
    
-    
+ 
     <div className='flex flex-col'>
 
-        <label className='p-1' htmlFor="">Your Email</label>
+        <label className='p-1' htmlFor="">Username</label>
         <input className='rounded'
-         onChange={(e)=>{setEmail(e.target.value)}}
-         type="email" 
-         value={email}
-         name="email" 
+         onChange={(e)=>{setUsername(e.target.value)}}
+         type="text" 
+         value={username}
+         name="username" 
          required 
          />
 
     </div>
+    <div className='flex flex-col'>
+
+       <label className='p-1' htmlFor="">Your Email</label>
+       <input className='rounded'
+        onChange={(e)=>{setEmail(e.target.value)}}
+        type="email" 
+        value={email}
+        name="email" 
+        required 
+         />
+
+</div>
     <div className='flex flex-col'>
 
         <label className='p-1' htmlFor="">Password</label>

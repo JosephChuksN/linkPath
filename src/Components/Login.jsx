@@ -47,6 +47,7 @@ const handleLogin = async (e)=>{
           />
 
     </div>
+    
     <div className='flex flex-col'>
         <label className='p-1' htmlFor="">Password</label>
         <input className='rounded' 

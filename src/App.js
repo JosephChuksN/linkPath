@@ -27,18 +27,19 @@ const App = () => {
     <Routes>
     
       <Route exact path='/' element={<HomePage />} />
-      <Route eaxct path='signup' element={<Signup />} />
-      <Route eaxct path='login' element={<Login />} />
-      <Route exact path='preview' element={<PrivateRoute><Preview siteData={siteInfo} avater={avater} description={bio} /></PrivateRoute>} />
-      <Route eaxct path='dashboard' element={
-       <PrivateRoute>
+      <Route exact path='signup' element={<Signup />} />
+      <Route exact path='login' element={<Login />} />
+      <Route element={<PrivateRoute />}>
+      <Route exact path='preview' element={<Preview siteData={siteInfo} avater={avater} description={bio} />} />
+      <Route exact path='dashboard' element={
+       
         <Dashboard 
 
           avater={avater} 
           siteData={siteInfo}
           description={bio} />
           
-       </PrivateRoute>}>
+       }>
         <Route  path='/dashboard/link' index
          element={<LinkPage 
          siteData={siteInfo} 
@@ -61,6 +62,9 @@ const App = () => {
         
         </Route>
 
+
+      </Route>
+    
     
     </Routes>
     </AuthProvider>
