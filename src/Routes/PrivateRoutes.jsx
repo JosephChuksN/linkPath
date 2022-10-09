@@ -1,7 +1,7 @@
 import {Outlet, useNavigate } from 'react-router'
 import { useAuth } from '../Context/AuthContext'
 
-const PrivateRoute = () => {
+const PrivateRoutes = () => {
     const {user} = useAuth()
     const navigate = useNavigate()
   
@@ -10,4 +10,4 @@ const PrivateRoute = () => {
   
 }
 
-export default PrivateRoute
+export default PrivateRoutes

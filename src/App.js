@@ -8,7 +8,7 @@ import LinkPage from './Components/Dashboard/Pages/LinkPage';
 import Appearance from './Components/Dashboard/Pages/Appearance';
 import Settings from './Components/Dashboard/Pages/Settings';
 import Preview from './Components/Preview';
-import PrivateRoute from './Routes/PrivateRoute';
+import PrivateRoutes from './Routes/PrivateRoutes';
 import { Routes, Route  } from 'react-router-dom';
 import { siteData, imgPic, description } from './fakeData';
 import { AuthProvider } from './Context/AuthContext';
@@ -29,7 +29,7 @@ const App = () => {
       <Route exact path='/' element={<HomePage />} />
       <Route exact path='signup' element={<Signup />} />
       <Route exact path='login' element={<Login />} />
-      <Route element={<PrivateRoute />}>
+      <Route element={<PrivateRoutes />}>
       <Route exact path='preview' element={<Preview siteData={siteInfo} avater={avater} description={bio} />} />
       <Route exact path='dashboard' element={
        
