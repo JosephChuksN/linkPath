@@ -7,7 +7,7 @@ import {  Outlet } from 'react-router'
 const Dashboard = ({avater, siteData, description}) => {
      
 const { user } = useAuth()
-const prflName = user.email.substring(0, user.email.indexOf("@")).replace(/[0-9]/g, '')
+const prflName = user.name
 
 
   return (

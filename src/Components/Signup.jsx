@@ -1,37 +1,43 @@
 import React, {  useState, useEffect} from 'react'
-import {  Link  } from 'react-router-dom'
+import {  Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../Context/AuthContext'
 import { Spinner } from 'flowbite-react'
 
 const Signup = () => {
   
   
-  const [username, setUsername] = useState("")
+  const [name, setname] = useState("")
   const [email, setEmail] = useState("")
-  const [pass, setPass] = useState("")
+  const [password, setPassword] = useState("")
   const [confirmPass, setConFirmPass] = useState("")
+  const navigate = useNavigate()
   
   
   
   
 
  
-  const { signUp, error, setError, loading } = useAuth()
+  const {user, registerUser, error, setError, loading } = useAuth()
  
   //creates a user account
   const handleSubmit =  (e) =>{
     e.preventDefault()
       
-    if(pass !== confirmPass){
-      setError('password must match')
-      return alert(error)
+    if(password !== confirmPass){
+    return  setError('password must match')
+      
     }
-      signUp(email, pass, username)
-   
+
+    
+    registerUser(name, email, password)
     
   }
 
-
+useEffect(()=>{
+  if(user){
+    navigate('/dashboard')
+  }
+}, [user, navigate])
 
   return (
     <>
@@ -48,9 +54,9 @@ const Signup = () => {
 
         <label className='p-1' htmlFor="">Username</label>
         <input className='rounded'
-         onChange={(e)=>{setUsername(e.target.value)}}
+         onChange={(e)=>{setname(e.target.value)}}
          type="text" 
-         value={username}
+         value={name}
          name="username" 
          required 
          />
@@ -72,9 +78,9 @@ const Signup = () => {
 
         <label className='p-1' htmlFor="">Password</label>
         <input className='rounded' 
-        onChange={(e)=>{setPass(e.target.value)}}
+        onChange={(e)=>{setPassword(e.target.value)}}
         type="password" 
-        value={pass} 
+        value={password} 
         name="pass" 
         required 
         />

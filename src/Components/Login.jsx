@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { useAuth } from '../Context/AuthContext';
 import {  Link, useNavigate  } from 'react-router-dom';
 import { Alert, Spinner } from 'flowbite-react/lib/esm/components';
@@ -8,23 +8,23 @@ const Login = () => {
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const [email, setEmail] = useState("")
-  const [pass, setPass] = useState("")
-  const { login } = useAuth()
+  const [password, setPassword] = useState("")
+  const { login, user } = useAuth()
   const navigate = useNavigate()
 
-const handleLogin = async (e)=>{
+const handleLogin =  (e)=>{
  e.preventDefault()
 
- try{
-  setLoading(true)
-  await login(email, pass)
-  navigate("/dashboard")
+ 
+ login(email, password)
   
- } catch{
-  setError('There was a problem')
- }
-  setLoading(false)
+  
 }
+// useEffect(()=>{
+//   if(user){
+//     navigate('/dashboard')
+//   }
+// }, [user, navigate])
 
 
   return (
@@ -51,9 +51,9 @@ const handleLogin = async (e)=>{
     <div className='flex flex-col'>
         <label className='p-1' htmlFor="">Password</label>
         <input className='rounded' 
-         onChange={(e)=>{setPass(e.target.value)}}
+         onChange={(e)=>{setPassword(e.target.value)}}
          type="password"
-         value={pass}
+         value={password}
          required
          />
     </div>

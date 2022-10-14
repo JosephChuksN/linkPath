@@ -9,7 +9,7 @@ const Appearance = ({avater, setAvater, description, setDescription}) => {
 
   const imgInputRef = useRef()
 const { user } = useAuth()
-const prflName = user.email.substring(0, user.email.indexOf("@")).replace(/[0-9]/g, '')
+const prflName = user.name
 const [ profilName, setProfileName] = useState(prflName)
 const [active, setActive] = useState(false)
 

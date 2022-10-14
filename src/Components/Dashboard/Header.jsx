@@ -25,7 +25,7 @@ const handleOutsideclick = (e) =>{
 
 useEffect(()=>{
   document.addEventListener('mousedown', handleOutsideclick)
-  return document.removeEventListener('mousedown', handleLogout)
+  return document.removeEventListener('mousedown', handleOutsideclick)
 })
     
  const handleLogout = async () =>{
@@ -44,7 +44,7 @@ useEffect(()=>{
             <span className='text-2xl font-semibold text-cyan-700'>Linkpath</span>
          <div className='flex gap-5 items-center w-full md:w-[40%] px-2'>
             <span onMouseOver={()=>{setShow(true)}} onMouseOut={()=>{setShow(false)}} className='flex justify-between  cursor-pointer  text-cyan-600 bg-slate-300/30  rounded-full  md:px-4 md:py-1 p-2 w-full md:w-[75%] '>
-                {`linkpath//${user.email.substring(0, user.email.indexOf("@")).replace(/[0-9]/g, '')}`}
+                {`linkpath//${user.name}`}
                 <span className={`${show? 'lg:block' : "lg:hidden"}`}><FontAwesomeIcon icon={faCopy} /></span>
             </span>
           <span className='text-[1.3rem] text-slate-400/60 md:static absolute top-[1.4rem] right-20 '><FontAwesomeIcon icon={faBell} /></span>
@@ -56,7 +56,7 @@ useEffect(()=>{
     <div ref={logoutSecRef} className={`absolute h-56  right-5 top-16 z-30 lg:top-20 lg:right-10 p-3 ${logoutShow? "block" : "hidden"} bg-white shadow-md border transition-all ease-in-out delay-300 duration-500 rounded-md`}>
        <div className='flex  flex-col p-1 gap-5 h-full justify-evenly'>
         <span className='flex items-center flex-col gap-3 border-b p-1 pb-4'>
-        <span className='font-medium '>{`${user.email.substring(0, user.email.indexOf("@")).replace(/[0-9]/g, '')}`}</span>
+        <span className='font-medium '>{`${user.name}`}</span>
         <span className='text-slate-400 md:text-[0.8rem] text-[1rem]'>{`${user.email}`}</span>
         </span>
         <div className='flex flex-col p-1 gap-2'>
