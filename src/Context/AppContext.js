@@ -91,7 +91,7 @@ const login = async (email, password) =>{
   try {
     setError('')
     setLoading(true)
-  const {data} =  await axios.post('https://infinite-earth-50565.herokuapp.com/api/v1/auth/login', { email, password}, {headers:{Origin: 'https://linkpath-josephn.vercel.app'}})
+  const {data} =  await axios.post('https://infinite-earth-50565.herokuapp.com/api/v1/auth/login', { email, password}, {headers:{'Origin': 'https://linkpath-josephn.vercel.app'}})
     
     const {user, token} = data
     addToLocalStorage({user, token})
