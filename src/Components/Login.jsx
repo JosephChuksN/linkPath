@@ -83,6 +83,7 @@ const handleLogin =  (e)=>{
   <Spinner
     aria-label="Extra large spinner example"
     size="xl"
+    color="success"
   />
 </div>
     </>

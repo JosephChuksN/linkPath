@@ -11,38 +11,25 @@ const Signup = () => {
   const [password, setPassword] = useState("")
   const [confirmPass, setConFirmPass] = useState("")
   const navigate = useNavigate()
-  
-  
-  
-  
-
- 
   const {user, registerUser, error, setError, loading } = useAuth()
  
   //creates a user account
   const handleSubmit =  (e) =>{
     e.preventDefault()
-      
-    if(password !== confirmPass){
-    return  setError('password must match')
-      
-    }
+    if(password !== confirmPass){return  setError('password must match')}
 
-    
     registerUser(name, email, password)
     
   }
 
-useEffect(()=>{
-  if(user){
-    navigate('/dashboard')
-  }
-}, [user, navigate])
+  useEffect(()=>{
+  if(user){navigate('/dashboard')}
+   }, [user, navigate])
 
-  return (
-    <>
+return (
+<>
    
-    <div className='px-5 md:px-12 py-36 md:py-24 h-screen lg:w-3/5 mx-auto relative'>
+<div className='px-5 md:px-12 py-36 md:py-24 h-screen lg:w-3/5 mx-auto relative'>
      
  <form action="" onSubmit={handleSubmit} className='p-3 shadow-md bg-white rounded-md border-t-4 border-cyan-600 lg:w-1/2 mx-auto py-5'>
  <span className={`${error === ""? "hidden": "block"} bg-red-200 text-red-600 p-3 rounded`}>{error}</span>
@@ -98,6 +85,7 @@ useEffect(()=>{
         />
 
     </div>
+
     <div className='flex items-center'>
         <button disabled={loading}
          className='bg-cyan-600 w-full p-2 rounded text-white' 
@@ -128,7 +116,7 @@ useEffect(()=>{
     color="success"
   />
 </div>
-    </>
+</>
   )
 }
 

@@ -7,11 +7,11 @@ import { faPen, faTrash, faCamera } from '@fortawesome/free-solid-svg-icons'
 
 
 const LinkPageData = ({siteInfo, siteData, setSiteData}) => {
+
 const id = siteInfo._id
 const {editLinks, deleteLink}= useAuth()
 const imgInputRef = useRef()
-
-
+const [showDelete, setShowDelete] = useState(false)
 const [siteName, setSiteName] = useState(siteInfo.siteName)
 const [siteLink, setSiteLink] = useState(siteInfo.siteLink)
 const [siteImg, setSiteImg]   = useState(siteInfo.siteImg)
@@ -24,15 +24,12 @@ const handleDelete = ()=>(
   deleteLink(id)
 )
 
+const handleShowDeleteModal = ()=>{ setShowDelete(!showDelete)}
 
 useEffect( ()=>{
-//   const editedInfo = {id, siteName, siteLink, siteImg}
-//  const handleEdit = (id, editedInfo)=>{ setSiteData(siteData.map(details => details.id === id ? editedInfo : details))}
-const editData =  ()=>{
+   const editData =  ()=>{
     editLinks(id, siteLink, siteName)
-   console.log(id)
-}
- 
+    }
  return  editData
 }, [siteName, siteLink, siteImg])
 
@@ -42,6 +39,8 @@ const editData =  ()=>{
 
 <>
 <div className='flex items-center justify-center px-1 py-2  w-full  lg:w-3/4'>
+
+  
   <div className='flex items-center shadow-md border w-full rounded md:w-[70%] p-5 gap-3 justify-between'>
          
     <div className='flex gap-5'>
@@ -74,11 +73,23 @@ const editData =  ()=>{
     </div>
     
            <div className='h-full'>
-              <span onClick={handleDelete} className=' text-slate-300 z-10'><FontAwesomeIcon icon={faTrash} /></span>
+              <span onClick={handleShowDeleteModal} className=' text-slate-300 z-10'><FontAwesomeIcon icon={faTrash} /></span>
            </div>
   </div>
            
 </div>
+{showDelete ? <div className='flex w-full h-screen top-0 z-20 bg-black/10 flex-wrap items-center gap-2 justify-center absolute'>
+<div className='w-3/5 md:w-1/5 bg-white flex flex-col gap-6 md:gap-4 justify-center items-center md:p-5 p-8 rounded-lg shadow-lg border'>
+ <span className='text-red-600 text-xl'>Delete this link</span>
+ <span className='flex gap-5'>
+  <button  onClick={handleShowDeleteModal} className='hover:bg-cyan-600/60 bg-cyan-600 text-white p-1 rounded-md transition-all duration-200 delay-200'>Cancel</button>
+  <button onClick={handleDelete} className='hover:bg-red-600/60 bg-red-600 text-white p-1 rounded-md transition-all duration-200 delay-200'>Delete</button>
+ </span>
+</div>
+</div> : null
+
+}
+
     
     </>
 

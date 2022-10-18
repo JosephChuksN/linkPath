@@ -156,8 +156,10 @@ const editLinks = async (id, siteLink, siteName)=>{
 
 const deleteLink = async (id)=>{
   try {
+    setLoading(true)
     await authFetch.delete(`/links/${id}`)
     await  getLinks()
+    setLoading(false)
    } catch (error) {
      console.log(error)
    }
