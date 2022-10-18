@@ -70,7 +70,7 @@ const registerUser = async (name, email, password)=>{
   //     headers: { 'Content-Type': 'application/json' },
   //     body: JSON.stringify(name, email, password)
   // };
-  const {data} =  await axios.post('http://localhost:5000/api/v1/auth/register', {name, email, password})
+  const {data} =  await axios.post('https://infinite-earth-50565.herokuapp.com/api/v1/auth/register', {name, email, password})
     
     const {user, token} = data
     addToLocalStorage({user, token})
