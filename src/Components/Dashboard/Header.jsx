@@ -1,5 +1,5 @@
 import React, {useState, useRef, useEffect} from 'react'
-import { useAuth } from '../../Context/AuthContext'
+import { useAuth } from '../../Context/AppContext'
 import {useNavigate, Link}   from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCopy, faArrowRightFromBracket, faBell, faGear } from '@fortawesome/free-solid-svg-icons'

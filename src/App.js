@@ -11,7 +11,7 @@ import Preview from './Components/Preview';
 import PrivateRoutes from './Routes/PrivateRoutes';
 import { Routes, Route  } from 'react-router-dom';
 import { siteData, imgPic, description } from './fakeData';
-import { AuthProvider } from './Context/AuthContext';
+import { AuthProvider } from './Context/AppContext';
 
 
 const App = () => {

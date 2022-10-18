@@ -1,12 +1,12 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { NavLink } from 'react-router-dom';
-import { useAuth } from '../../Context/AuthContext';
+
 
 
 
 const DashboardNav = () => {
 
-  const { user } = useAuth()
+
 
     const isActiveLink =" border-b-4 border-cyan-600 transitional-all  ease-linear"
 const navData = [

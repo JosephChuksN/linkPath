@@ -1,15 +1,15 @@
-import React, {useState, useRef, useEffect} from 'react'
+import React, {useState, useRef} from 'react'
 import LinkPageData from './LinkPageData'
 import { useNavigate } from 'react-router'
 import {v4 as uuidv4} from 'uuid'
-import { useAuth } from '../../../Context/AuthContext'
+import { useAuth } from '../../../Context/AppContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLink, faEye } from '@fortawesome/free-solid-svg-icons'
 
 
 
 const LinkPage = ({siteData, setSiteData}) => {
-const { user } = useAuth()
+const { CreateSitelink, links, } = useAuth()
   const formRef = useRef()
   const [input, setInput] = useState("")
   const navigate = useNavigate()
@@ -23,11 +23,13 @@ const addNewSite = (siteName, siteLink, siteImg) =>{ return setSiteData([...site
 const handleAddLink = async (e) => {
     e.preventDefault()
    
+    
    //extracts Url hostname
   var siteName = new URL(input).hostname.replace("www", "")
-  let link = input
+  let siteLink = input
   let siteImg = ""
-  addNewSite(siteName, link, siteImg)
+  CreateSitelink(siteLink, siteName)
+  addNewSite(siteName, siteLink, siteImg)
   setInput('')
   
 
@@ -59,11 +61,12 @@ const handleNavigate = () =>{
         </div>
         </form>
  <div className='flex flex-col items-center justify-center w-[100%]'>{
-  siteData.map((data)=>(
+  links.map((data)=>(
     <LinkPageData 
-      key={data.id} 
+      key={data._id} 
       siteInfo={data}
       siteData={siteData}
+      
       setSiteData={setSiteData}  />
   ))
      }

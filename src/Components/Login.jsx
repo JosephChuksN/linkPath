@@ -1,16 +1,15 @@
-import React, {useState, useEffect} from 'react'
-import { useAuth } from '../Context/AuthContext';
-import {  Link, useNavigate  } from 'react-router-dom';
-import { Alert, Spinner } from 'flowbite-react/lib/esm/components';
+import React, {useState,} from 'react'
+import { useAuth } from '../Context/AppContext';
+import {  Link } from 'react-router-dom';
+import {  Spinner } from 'flowbite-react/lib/esm/components';
 
 
 const Login = () => {
-  const [error, setError] = useState('')
-  const [loading, setLoading] = useState(false)
+
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const { login, user } = useAuth()
-  const navigate = useNavigate()
+  const { login, error, loading } = useAuth()
+ 
 
 const handleLogin =  (e)=>{
  e.preventDefault()
@@ -29,15 +28,15 @@ const handleLogin =  (e)=>{
 
   return (
     <>
-  <div className='px-3 py-36 h-screen lg:w-3/4 mx-auto'>
- <form onSubmit={handleLogin} className='p-3 shadow-md bg-gray-100 rounded lg:w-1/2 mx-auto py-5'>
-  <Alert>{error}</Alert>
+  <div className='px-5 md:px-12 py-36 h-screen lg:w-3/5 mx-auto '>
+ <form action='' onSubmit={handleLogin} className='p-3 shadow-md bg-white rounded-md border-t-4 border-cyan-600  lg:w-1/2 mx-auto py-5'>
+ <span className={`${error === ""? "hidden": "block"} bg-red-200 text-red-600 p-3 rounded`}>{error}</span>
    
     <div className=' flex flex-col gap-5'>
-    <span className='text-2xl font-semibold'>Log In</span>
+    <span className='text-2xl font-semibold flex items-center justify-center'>Log In</span>
     <div className='flex flex-col'>
 
-        <label className='p-1' htmlFor="">Your Email</label>
+        <label className='p-1 mb-2' htmlFor="">Your Email</label>
         <input className='rounded'
          onChange={(e)=>{setEmail(e.target.value)}}
          type="email" 
@@ -49,7 +48,7 @@ const handleLogin =  (e)=>{
     </div>
     
     <div className='flex flex-col'>
-        <label className='p-1' htmlFor="">Password</label>
+        <label className='p-1 mb-2' htmlFor="">Password</label>
         <input className='rounded' 
          onChange={(e)=>{setPassword(e.target.value)}}
          type="password"
@@ -59,7 +58,7 @@ const handleLogin =  (e)=>{
     </div>
     
     <div className='flex items-center'>
-        <button className='bg-blue-600 w-full p-2 rounded text-white' disabled={loading} 
+        <button className='bg-cyan-600 w-full p-2 rounded text-white my-2' disabled={loading} 
         type="submit" 
         > 
         
@@ -68,10 +67,10 @@ const handleLogin =  (e)=>{
         </button>
     </div>
     
-    <div className='p-1'>   
-    <span>Don't have an account?</span> 
+    <div className='p-1 flex items-center justify-center gap-3'>   
+    <span>Don't have an account? </span> 
      <Link to="/signup">
-     <span className='text-blue-600'>Sign up</span>
+     <span className='text-cyan-600'>Sign up</span>
      </Link>
      </div>
 

@@ -1,6 +1,6 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { Link } from 'react-router-dom'
-import { useAuth } from '../Context/AuthContext'
+import { useAuth } from '../Context/AppContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClose } from '@fortawesome/free-solid-svg-icons'
 
@@ -8,8 +8,14 @@ import { faClose } from '@fortawesome/free-solid-svg-icons'
 
 
 const Preview = ({avater, siteData, description}) => {
-    const { user } = useAuth()
-    const prflName = user.email.substring(0, user.email.indexOf("@")).replace(/[0-9]/g, '')
+    const { user, links, getLinks } = useAuth()
+
+useEffect(()=>{
+  getLinks()
+}, [])
+
+
+    const prflName = user.name
   return (
     <div className='h-full min-h-screen  mx-auto bg-cyan-600/20 flex flex-col justify-between items-center relative'>
 
@@ -22,7 +28,7 @@ const Preview = ({avater, siteData, description}) => {
              <span className='text-[10px] text-gray-100 whitespace-pre-wrap '>{description}</span>
         </span>
          <div className='w-full'>{
-           siteData.map(data =>(
+           links.map(data =>(
             <div className='flex  items-center py-4 bg-white justify-between px-1 border-b' key={data.id}>
              <div className='flex gap-3 items-center'>
              <span className='w-10 h-10 rounded bg-no-repeat bg-cover' style={{backgroundImage: `url(${data.siteImg})`}}></span>
