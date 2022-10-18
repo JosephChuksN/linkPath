@@ -70,7 +70,7 @@ const registerUser = async (name, email, password)=>{
   //     headers: { 'Content-Type': 'application/json' },
   //     body: JSON.stringify(name, email, password)
   // };
-  const {data} =  await axios.post('http://localhost:5000/api/v1/auth/register', {name, email, password}, {headers:{Origin: 'https://linkpath-josephn.vercel.app'}})
+  const {data} =  await axios.post('http://localhost:5000/api/v1/auth/register', {name, email, password})
     
     const {user, token} = data
     addToLocalStorage({user, token})
@@ -91,7 +91,7 @@ const login = async (email, password) =>{
   try {
     setError('')
     setLoading(true)
-  const {data} =  await axios.post('https://infinite-earth-50565.herokuapp.com/api/v1/auth/login', { email, password}, {headers:{'Origin': 'https://linkpath-josephn.vercel.app'}})
+  const {data} =  await axios.post('https://infinite-earth-50565.herokuapp.com/api/v1/auth/login', { email, password})
     
     const {user, token} = data
     addToLocalStorage({user, token})
