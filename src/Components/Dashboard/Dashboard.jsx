@@ -42,7 +42,7 @@ useEffect(()=>{
           links.map(data =>(
            <div className='flex  items-center py-4 bg-white justify-between px-1 border-b' key={data._id}>
              <div className='flex gap-3 items-center'>
-              <span className='w-8 h-8 rounded bg-no-repeat bg-cover' style={{backgroundImage: `url(${data.siteImg})`}}></span>
+              <span className='w-8 h-8 rounded bg-no-repeat bg-cover' style={{backgroundImage: `url(${data.siteLink}/favicon.ico)`}}></span>
               <span className='font-medium'><a href={data.siteLink} target="blank">{data.siteName}</a></span>
              </div>
             <span className='px-1 bg-gray-300/40 rounded'><a href={data.siteLink} target="blank">Visit</a></span>

@@ -23,7 +23,7 @@ const LinkPage = ({siteData, setSiteData}) => {
    //extracts Url hostname
   var siteName = new URL(input).hostname.replace("www.", "")
   let siteLink = input
-  let siteImg = ""
+  let siteFavicon = `${input}/favicon.ico`
   CreateSitelink(siteLink, siteName)
   setInput('')
   
@@ -58,7 +58,7 @@ const LinkPage = ({siteData, setSiteData}) => {
 
  <div className='flex flex-col items-center justify-center w-[100%]'>{
   loading? 
-  <div className='flex w-full top-0 z-20  flex-wrap items-center gap-2 justify-center h-full'>
+  <div className='flex w-full top-0 z-20  flex-wrap items-center gap-2 justify-center h-full min-h-screen'>
     <span className='text-4xl text-cyan-600'><Spinner
       aria-label="Extra large spinner example"
       size="xl"
