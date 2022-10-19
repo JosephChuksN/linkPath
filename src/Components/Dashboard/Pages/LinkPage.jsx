@@ -58,7 +58,7 @@ const LinkPage = ({siteData, setSiteData}) => {
 
  <div className='flex flex-col items-center justify-center w-[100%]'>{
   loading? 
-  <div className='flex w-full top-0 z-20  flex-wrap items-center gap-2 justify-center h-full min-h-screen'>
+  <div className='flex w-full top-0 z-20  flex-wrap items-center gap-2 justify-center h-full '>
     <span className='text-4xl text-cyan-600'><Spinner
       aria-label="Extra large spinner example"
       size="xl"
