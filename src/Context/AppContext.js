@@ -23,9 +23,7 @@ export const AuthProvider = ({children}) =>{
 
   authFetch.interceptors.request.use(
    (config) => {
-     if(token){
-      config.headers['Authorization'] = `Bearer ${token}`
-     }
+     if(token){config.headers['Authorization'] = `Bearer ${token}`}
       return config
     },
     (error) => {
@@ -35,11 +33,10 @@ export const AuthProvider = ({children}) =>{
   // response
 
   authFetch.interceptors.response.use(
-    (response) => {
-      return response
-    },
+    (response) => { return response },
+     
     (error) => {
-      // console.log(error.response)
+    
       if (error.code === 401) {
         logout()
       }
@@ -65,13 +62,7 @@ const registerUser = async (name, email, password)=>{
   try {
     setError('')
     setLoading(true)
-  //   const requestOptions = {
-  //     method: 'POST',
-  //     headers: { 'Content-Type': 'application/json' },
-  //     body: JSON.stringify(name, email, password)
-  // };
   const {data} =  await axios.post('https://linkpath-api.onrender.com/api/v1/auth/register', {name, email, password})
-    
     const {user, token} = data
     addToLocalStorage({user, token})
 

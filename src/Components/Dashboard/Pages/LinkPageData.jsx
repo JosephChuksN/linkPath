@@ -14,7 +14,7 @@ const imgInputRef = useRef()
 const [showDelete, setShowDelete] = useState(false)
 const [siteName, setSiteName] = useState(siteInfo.siteName)
 const [siteLink, setSiteLink] = useState(siteInfo.siteLink)
-const [siteImg, setSiteImg]   = useState( `${siteLink}/favicon.ico`)
+const [siteImg, setSiteImg]   = useState(`https://${new URL(siteLink).hostname}/favicon.ico`)
 
 
 
@@ -38,7 +38,7 @@ useEffect( ()=>{
   return (
 
 <>
-<div className='flex items-center justify-center px-1 py-2  w-full  lg:w-3/4'>
+<div className='flex items-center justify-center px-1 py-2  w-full  lg:w-3/4 relative'>
 
   
   <div className='flex items-center shadow-md border w-full rounded md:w-[70%] p-5 gap-3 justify-between'>
@@ -78,7 +78,7 @@ useEffect( ()=>{
   </div>
            
 </div>
-{showDelete ? <div className='flex w-full h-full min-h-screen top-0 z-20 bg-black/10 flex-wrap items-center gap-2 justify-center absolute'>
+{showDelete ? <div className='flex w-full h-full top-0 z-20 bg-black/10 flex-wrap items-center gap-2 justify-center absolute'>
 <div className='w-3/5 md:w-1/5 bg-white flex flex-col gap-6 md:gap-4 justify-center items-center md:p-5 p-8 rounded-lg shadow-lg border'>
  <span className='text-red-600 text-xl'>Delete this link</span>
  <span className='flex gap-5'>

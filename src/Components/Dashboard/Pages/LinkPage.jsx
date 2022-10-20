@@ -23,7 +23,6 @@ const LinkPage = ({siteData, setSiteData}) => {
    //extracts Url hostname
   var siteName = new URL(input).hostname.replace("www.", "")
   let siteLink = input
-  let siteFavicon = `${input}/favicon.ico`
   CreateSitelink(siteLink, siteName)
   setInput('')
   
