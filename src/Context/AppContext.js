@@ -1,6 +1,6 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState } from 'react';
 import {  useNavigate  } from 'react-router-dom';
-import axios from "axios";
+import axios from 'axios';
 
 
  const AuthContext = createContext()
@@ -13,11 +13,12 @@ export const AuthProvider = ({children}) =>{
   const user = Uuser ? JSON.parse(Uuser) : null
   const token = localStorage.getItem('token')
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState('')
+  const [regError, setRegError] = useState('')
+  const [loginError, setLoginError] = useState('')
   const navigate = useNavigate()
   
   const authFetch = axios.create({
-    baseURL: 'https://linkpath-api.onrender.com/api/v1',
+    baseURL: 'http://localhost:5000/api/v1',
   })
   // request
 
@@ -60,17 +61,18 @@ const removeUserFromLocalStorage = ()=>{
 const registerUser = async (name, email, password)=>{
 
   try {
-    setError('')
+    setRegError('')
     setLoading(true)
-  const {data} =  await axios.post('https://linkpath-api.onrender.com/api/v1/auth/register', {name, email, password})
+  const {data} =  await axios.post('http://localhost:5000/api/v1/auth/register', {name, email, password})
     const {user, token} = data
     addToLocalStorage({user, token})
 
    setLoading(false)
   } catch (error) {
-    console.log(error.message)
+    console.log(error)
+    console.log(error.response.data.msg)
     setLoading(false)
-    setError(error.message)
+    setRegError(error.response.data.msg)
   }
  
 
@@ -80,9 +82,9 @@ const registerUser = async (name, email, password)=>{
 //login fn
 const login = async (email, password) =>{
   try {
-    setError('')
+    setLoginError('')
     setLoading(true)
-  const {data} =  await axios.post('https://linkpath-api.onrender.com/api/v1/auth/login', { email, password})
+  const {data} =  await axios.post('http://localhost:5000/api/v1/auth/login', { email, password})
     
     const {user, token} = data
     addToLocalStorage({user, token})
@@ -91,7 +93,7 @@ const login = async (email, password) =>{
   } catch (error) {
     console.log(error.message)
     setLoading(false)
-    setError(error.message)
+    setLoginError(error.message)
   }
  
    
@@ -105,23 +107,14 @@ const logout = () =>{
 
 const getLinks = async ()=>{
    
-  try {
-  const {data }= await authFetch.get('/links')
-  
+    const {data }= await authFetch.get('/links')
     setLinks(data.links)
     
-      
-      
-  } catch (error) {
-    console.log(error)
-  }
-  
   }
 
 const CreateSitelink = async (siteLink, siteName) =>{
 
   try {
-    // let header = new Headers({ 'Authorization': 'Bearer ' + token }) 
     
      await  authFetch.post('/links', {siteLink, siteName})
      getLinks()
@@ -146,14 +139,11 @@ const editLinks = async (id, siteLink, siteName)=>{
 
 
 const deleteLink = async (id)=>{
-  try {
     setLoading(true)
     await authFetch.delete(`/links/${id}`)
     await  getLinks()
     setLoading(false)
-   } catch (error) {
-     console.log(error)
-   }
+  
 }
 
 
@@ -162,7 +152,8 @@ const deleteLink = async (id)=>{
 
 const value ={
   user,
-  error,
+  regError,
+  loginError,
   loading,
   links,
   registerUser,
@@ -172,7 +163,8 @@ const value ={
   getLinks,
   editLinks,
   deleteLink,
-  setError,
+  setRegError,
+  setLoginError,
   setLoading
  
   

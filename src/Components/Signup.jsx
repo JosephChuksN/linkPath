@@ -11,12 +11,12 @@ const Signup = () => {
   const [password, setPassword] = useState("")
   const [confirmPass, setConFirmPass] = useState("")
   const navigate = useNavigate()
-  const {user, registerUser, error, setError, loading } = useAuth()
+  const {user, registerUser, regError, setRegError, loading } = useAuth()
  
   //creates a user account
   const handleSubmit =  (e) =>{
     e.preventDefault()
-    if(password !== confirmPass){return  setError('password must match')}
+    if(password !== confirmPass){return  setRegError('Password must match')}
 
     registerUser(name, email, password)
     
@@ -29,12 +29,13 @@ const Signup = () => {
 return (
 <>
    
-<div className='px-5 md:px-12 py-36 md:py-24 h-screen lg:w-3/5 mx-auto relative'>
+<div className='px-5 md:px-12 py-28 md:py-16 h-screen lg:w-3/5 mx-auto relative'>
      
  <form action="" onSubmit={handleSubmit} className='p-3 shadow-md bg-white rounded-md border-t-4 border-cyan-600 lg:w-1/2 mx-auto py-5'>
- <span className={`${error === ""? "hidden": "block"} bg-red-200 text-red-600 p-3 rounded`}>{error}</span>
+ <span className='text-2xl font-semibold flex items-center justify-center my-5'>Sign Up</span>
+ <span className={`${regError === ""? "hidden": "block"} border border-red-600 bg-red-200 text-red-600 p-3 rounded`}>{regError}</span>
     <div className=' flex flex-col gap-5 mt-3'>
-    <span className='text-2xl font-semibold flex items-center justify-center'>Sign Up</span>
+    
    
  
     <div className='flex flex-col'>

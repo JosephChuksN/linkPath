@@ -8,7 +8,7 @@ const Login = () => {
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const { login, error, loading } = useAuth()
+  const { login, loginError, loading } = useAuth()
  
 
 const handleLogin =  (e)=>{
@@ -30,7 +30,7 @@ const handleLogin =  (e)=>{
     <>
   <div className='px-5 md:px-12 py-36 h-screen lg:w-3/5 mx-auto '>
  <form action='' onSubmit={handleLogin} className='p-3 shadow-md bg-white rounded-md border-t-4 border-cyan-600  lg:w-1/2 mx-auto py-5'>
- <span className={`${error === ""? "hidden": "block"} bg-red-200 text-red-600 p-3 rounded`}>{error}</span>
+ <span className={`${loginError === ""? "hidden": "block"} border border-red-600 bg-red-200 text-red-600 p-3 rounded`}>{loginError}</span>
    
     <div className=' flex flex-col gap-5'>
     <span className='text-2xl font-semibold flex items-center justify-center'>Log In</span>
