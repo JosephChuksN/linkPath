@@ -40,7 +40,7 @@ return (
  
     <div className='flex flex-col'>
 
-        <label className='p-1' htmlFor="">Username</label>
+        <label className='p-1 font-medium' htmlFor="">Username</label>
         <input className='rounded'
          onChange={(e)=>{setname(e.target.value)}}
          type="text" 
@@ -52,7 +52,7 @@ return (
     </div>
     <div className='flex flex-col'>
 
-       <label className='p-1 mb-2' htmlFor="">Your Email</label>
+       <label className='p-1 mb-2 font-medium' htmlFor="">Your Email</label>
        <input className='rounded'
         onChange={(e)=>{setEmail(e.target.value)}}
         type="email" 
@@ -64,7 +64,7 @@ return (
 </div>
     <div className='flex flex-col'>
 
-        <label className='p-1 mb-2' htmlFor="">Password</label>
+        <label className='p-1 mb-2 font-medium' htmlFor="">Password</label>
         <input className='rounded' 
         onChange={(e)=>{setPassword(e.target.value)}}
         type="password" 
@@ -76,7 +76,7 @@ return (
     </div>
     <div className='flex flex-col'>
 
-        <label className='p-1 mb-2' htmlFor="">Confirm Password</label>
+        <label className='p-1 mb-2 font-medium' htmlFor="">Confirm Password</label>
         <input className='rounded' 
         onChange={(e)=>{setConFirmPass(e.target.value)}}
         type="password" 

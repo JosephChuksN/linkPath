@@ -33,10 +33,10 @@ const handleLogin =  (e)=>{
  <span className={`${loginError === ""? "hidden": "block"} border border-red-600 bg-red-200 text-red-600 p-3 rounded`}>{loginError}</span>
    
     <div className=' flex flex-col gap-5'>
-    <span className='text-2xl font-semibold flex items-center justify-center'>Log In</span>
+    <span className='text-2xl font-semibold flex items-center justify-center'>Login</span>
     <div className='flex flex-col'>
 
-        <label className='p-1 mb-2' htmlFor="">Your Email</label>
+        <label className='p-1 mb-2 font-medium' htmlFor="">Your Email</label>
         <input className='rounded'
          onChange={(e)=>{setEmail(e.target.value)}}
          type="email" 
@@ -48,7 +48,7 @@ const handleLogin =  (e)=>{
     </div>
     
     <div className='flex flex-col'>
-        <label className='p-1 mb-2' htmlFor="">Password</label>
+        <label className='p-1 mb-2 font-medium' htmlFor="">Password</label>
         <input className='rounded' 
          onChange={(e)=>{setPassword(e.target.value)}}
          type="password"
