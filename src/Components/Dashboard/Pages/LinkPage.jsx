@@ -73,7 +73,7 @@ const LinkPage = ({siteData, setSiteData}) => {
      ))}
  </div>
        
- <span onClick={handleNavigate} className=' lg:hidden absolute bottom-2 rounded-full left-40 bg-cyan-600 text-white p-2 flex gap-2 items-center text-xl '>
+ <span onClick={handleNavigate} className=' lg:hidden absolute bottom-2 rounded-full left-40 md:left-96 bg-cyan-600 text-white p-2 flex gap-2 items-center text-xl '>
     <span className='text-sm'>
      <FontAwesomeIcon icon={faEye} />
     </span>  
