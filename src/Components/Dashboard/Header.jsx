@@ -15,6 +15,7 @@ const Header = ({avater}) => {
   const logoutSecRef = useRef()
   const navigate = useNavigate()
 
+  
   const notify = ()=>{
     toast.success('Link has been copied',{
      autoClose: 2000
@@ -60,7 +61,7 @@ useEffect(()=>{
             </span>
             <ToastContainer limit={2} />
           <span className='text-[1.3rem] text-slate-400/60 md:static absolute top-[1.4rem] right-20 '><FontAwesomeIcon icon={faBell} /></span>
-            <span onClick={handleShow} className=' z-20 md:w-14 w-12 h-12 md:h-14 rounded-full absolute top-2.5 right-3 md:static flex items-center bg-no-repeat bg-cover' style={{backgroundImage: `url(${avater.profilePic})`}}></span>
+            <span onClick={handleShow} className=' z-20 md:w-16 w-14 h-14 md:h-16 rounded-full absolute top-2 right-3 md:static flex items-center bg-no-repeat bg-cover' style={{backgroundImage: `url(${avater.profilePic})`}}></span>
             <span className='w-1.5 h-1.5 bg-red-600 rounded-full absolute top-[1.8rem] right-[5rem] lg:right-[7.3rem] lg:top-10 text-white text-sm text-[0.7rem] flex items-center justify-center'></span>
          </div>
         
@@ -72,7 +73,7 @@ useEffect(()=>{
         <span className='text-slate-400 md:text-[0.8rem] text-[1rem]'>{`${user.email}`}</span>
         </span>
         <div className='flex flex-col p-1 gap-2'>
-       <Link to="/dashboard/settings"><span className=' rounded hover:bg-slate-300/40 cursor-pointer'><span className='pr-3 text-slate-400'><FontAwesomeIcon icon={faGear} /></span>settings</span></Link>
+       <Link onClick={handleShow} to="/dashboard/settings"><span className=' rounded hover:bg-slate-300/40 cursor-pointer'><span className='pr-3 text-slate-400'><FontAwesomeIcon icon={faGear} /></span>settings</span></Link>
         <span onClick={handleLogout} className='text-cyan-600  rounded hover:bg-slate-300/40 cursor-pointer'><span className='pr-3'><FontAwesomeIcon icon={faArrowRightFromBracket} /></span>Logout</span>
         </div>
       
