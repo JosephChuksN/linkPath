@@ -3,15 +3,23 @@ import { useAuth } from '../../Context/AppContext'
 import {useNavigate, Link}   from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCopy, faArrowRightFromBracket, faBell, faGear } from '@fortawesome/free-solid-svg-icons'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
 const Header = ({avater}) => {
   const {user, logout} = useAuth()
-    const [show, setShow] = useState(false)
-    const [logoutShow, setLogoutShow] = useState(false)
-    const logoutSecRef = useRef()
+  const [show, setShow] = useState(false)
+  const [logoutShow, setLogoutShow] = useState(false)
+  const logoutSecRef = useRef()
   const navigate = useNavigate()
+
+  const notify = ()=>{
+    toast.success('Link has been copied',{
+     autoClose: 2000
+    })
+  }
  
 const handleShow =() =>{
   setLogoutShow(!logoutShow)
@@ -36,20 +44,24 @@ useEffect(()=>{
   } catch (e) {
       alert(e.message)
   }
+
 }
+
   return (
    <>
     <div className='flex flex-col gap-10 md:flex-row md:justify-between md:items-center py-5 px-2 border-b '>
         
             <span className='text-2xl font-semibold text-cyan-700'>Linkpath</span>
-         <div className='flex gap-5 items-center w-full md:w-[40%] px-2'>
-            <span onMouseOver={()=>{setShow(true)}} onMouseOut={()=>{setShow(false)}} className='flex justify-between  cursor-pointer  text-cyan-600 bg-slate-300/30  rounded-full  md:px-4 md:py-1 p-2 w-full md:w-[75%] '>
-                {`linkpath//${user.name}`}
-                <span className={`${show? 'lg:block' : "lg:hidden"}`}><FontAwesomeIcon icon={faCopy} /></span>
+         <div className='flex gap-5 items-center w-full md:w-[60%] px-1'>
+            <span  className='flex justify-between  cursor-pointer  text-cyan-600 bg-slate-300/30  rounded-lg  md:px-4 md:py-1 p-2 w-full md:w-[75%] '>
+                {`linkpath-josephn.vercel.app/${user.name.toLowerCase()}`}
+                <span onClick={()=>{navigator.clipboard.writeText(`https://linkpath-josephn.vercel.app/${user.name.toLowerCase()}`);notify()}} className=''><FontAwesomeIcon icon={faCopy} /></span>
+               
             </span>
+            <ToastContainer limit={2} />
           <span className='text-[1.3rem] text-slate-400/60 md:static absolute top-[1.4rem] right-20 '><FontAwesomeIcon icon={faBell} /></span>
             <span onClick={handleShow} className=' z-20 md:w-14 w-12 h-12 md:h-14 rounded-full absolute top-2.5 right-3 md:static flex items-center bg-no-repeat bg-cover' style={{backgroundImage: `url(${avater.profilePic})`}}></span>
-            <span className='w-1.5 h-1.5 bg-red-600 rounded-full absolute top-[1.8rem] right-[5rem] lg:right-[5.7rem] lg:top-10 text-white text-sm text-[0.7rem] flex items-center justify-center'></span>
+            <span className='w-1.5 h-1.5 bg-red-600 rounded-full absolute top-[1.8rem] right-[5rem] lg:right-[7.3rem] lg:top-10 text-white text-sm text-[0.7rem] flex items-center justify-center'></span>
          </div>
         
     </div>
