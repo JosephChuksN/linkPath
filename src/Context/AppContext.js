@@ -18,7 +18,7 @@ export const AuthProvider = ({children}) =>{
   const navigate = useNavigate()
   
   const authFetch = axios.create({
-    baseURL: 'http://localhost:5000/api/v1',
+    baseURL: 'https://linkpath-api.onrender.com/api/v1',
   })
   // request
 
@@ -63,7 +63,7 @@ const registerUser = async (name, email, password)=>{
   try {
     setRegError('')
     setLoading(true)
-  const {data} =  await axios.post('http://localhost:5000/api/v1/auth/register', {name, email, password})
+  const {data} =  await axios.post('https://linkpath-api.onrender.com/api/v1/auth/register', {name, email, password})
     const {user, token} = data
     addToLocalStorage({user, token})
 
@@ -84,7 +84,7 @@ const login = async (email, password) =>{
   try {
     setLoginError('')
     setLoading(true)
-  const {data} =  await axios.post('http://localhost:5000/api/v1/auth/login', { email, password})
+  const {data} =  await axios.post('https://linkpath-api.onrender.com/api/v1/auth/login', { email, password})
     
     const {user, token} = data
     addToLocalStorage({user, token})
