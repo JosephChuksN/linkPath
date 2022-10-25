@@ -10,16 +10,16 @@ import Settings from './Components/Dashboard/Pages/Settings';
 import Preview from './Components/Preview';
 import PrivateRoutes from './Routes/PrivateRoutes';
 import { Routes, Route  } from 'react-router-dom';
-import { siteData, imgPic, description } from './fakeData';
+import {  imgPic, } from './fakeData';
 import { AuthProvider } from './Context/AppContext';
 
 
 const App = () => {
   
  
-  const [siteInfo, setSiteInfo] =useState(siteData)
+ 
   const [avater, setAvater] = useState(imgPic)
-  const [bio, setBio] = useState(description)
+  
 
   return (
   <div className='bg-gray-100 h-full'>
@@ -30,32 +30,29 @@ const App = () => {
       <Route exact path='signup' element={<Signup />} />
       <Route exact path='login' element={<Login />} />
       <Route element={<PrivateRoutes />}>
-      <Route exact path='preview' element={<Preview siteData={siteInfo} avater={avater} description={bio} />} />
+      <Route exact path='preview' element={<Preview  avater={avater} />} />
       <Route exact path='dashboard' element={
        
         <Dashboard 
 
           avater={avater} 
-          siteData={siteInfo}
-          description={bio} />
+           />
           
        }>
         <Route  path='/dashboard/link' index
-         element={<LinkPage 
-         siteData={siteInfo} 
-         setSiteData={setSiteInfo} 
+         element={<LinkPage  
          />} />
           <Route  path='/dashboard/appearance' 
          element={<Appearance  
           avater={avater} 
           setAvater={setAvater}
-          description={bio}
-          setDescription={setBio}
+         
          />} />
          
          <Route  path='/dashboard/settings' 
-         element={<Settings  
-          
+          element={<Settings  
+          avater={avater} 
+          setAvater={setAvater}
           
          />} />
          

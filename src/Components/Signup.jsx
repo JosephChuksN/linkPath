@@ -41,7 +41,7 @@ return (
     <div className='flex flex-col'>
 
         <label className='p-1 font-medium' htmlFor="">Username</label>
-        <input className='rounded'
+        <input className='rounded lowercase'
          onChange={(e)=>{setname(e.target.value)}}
          type="text" 
          value={name}

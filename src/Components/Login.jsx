@@ -37,7 +37,7 @@ const handleLogin =  (e)=>{
     <div className='flex flex-col'>
 
         <label className='p-1 mb-2 font-medium' htmlFor="">Your Email</label>
-        <input className='rounded'
+        <input className='rounded lowercase'
          onChange={(e)=>{setEmail(e.target.value)}}
          type="email" 
          value={email}

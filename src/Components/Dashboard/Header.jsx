@@ -61,7 +61,7 @@ useEffect(()=>{
             </span>
             <ToastContainer limit={2} />
           <span className='text-[1.3rem] text-slate-400/60 md:static absolute top-[1.4rem] right-20 '><FontAwesomeIcon icon={faBell} /></span>
-            <span onClick={handleShow} className=' z-20 md:w-16 w-14 h-14 md:h-16 rounded-full absolute top-2 right-3 md:static flex items-center bg-no-repeat bg-cover' style={{backgroundImage: `url(${avater.profilePic})`}}></span>
+            <span onClick={handleShow} className=' z-20 md:w-16 w-14 h-14 md:h-16 rounded-full absolute top-2 right-3 md:static flex items-center bg-no-repeat bg-cover border-2 border-white' style={{backgroundImage: `url(${avater.profilePic})`}}></span>
             <span className='w-1.5 h-1.5 bg-red-600 rounded-full absolute top-[1.8rem] right-[5rem] lg:right-[7.3rem] lg:top-10 text-white text-sm text-[0.7rem] flex items-center justify-center'></span>
          </div>
         

@@ -4,9 +4,9 @@ import DashboardNav from './Navbar'
 import { useAuth } from '../../Context/AppContext'
 import {  Outlet } from 'react-router'
 
-const Dashboard = ({avater, siteData, description}) => {
+const Dashboard = ({avater, siteData}) => {
      
-const { user, links, getLinks } = useAuth()
+const { user, links, getLinks, bio } = useAuth()
 const prflName = user.name
 
 
@@ -36,7 +36,7 @@ useEffect(()=>{
        </div>
           <span className='flex flex-col   py-3 w-full text-center bg-cyan-600'> 
              <span className='text-md font-medium  text-white'>{prflName}</span>
-             <span className='text-[10px] text-gray-100 whitespace-pre-wrap '>{description}</span>
+             <span className='text-[10px] text-gray-100 whitespace-pre-wrap '>{bio}</span>
           </span>
          <div className='w-full'>{
           links.map(data =>(

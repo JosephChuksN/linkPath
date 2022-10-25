@@ -3,22 +3,24 @@ import {  useNavigate  } from 'react-router-dom';
 import axios from 'axios';
 
 
+
  const AuthContext = createContext()
 
 export const AuthProvider = ({children}) =>{
 
   
   const [links, setLinks] = useState([])
-  const Uuser = localStorage.getItem('user')
-  const user = Uuser ? JSON.parse(Uuser) : null
+  const currentUser = localStorage.getItem('user')
+  const user = currentUser ? JSON.parse(currentUser) : null
   const token = localStorage.getItem('token')
+  const bio = localStorage.getItem('bio')
   const [loading, setLoading] = useState(false)
   const [regError, setRegError] = useState('')
   const [loginError, setLoginError] = useState('')
   const navigate = useNavigate()
   
   const authFetch = axios.create({
-    baseURL: 'https://linkpath-api.onrender.com/api/v1',
+    baseURL: 'http://localhost:5000/api/v1',
   })
   // request
 
@@ -45,16 +47,18 @@ export const AuthProvider = ({children}) =>{
     }
   )
 
-const addToLocalStorage = ({user, token})=>{
+const addToLocalStorage = ({user, token, bio})=>{
    
   localStorage.setItem('user', JSON.stringify(user))
   localStorage.setItem('token', token)
+  localStorage.setItem('bio', bio)
 
 }
 
 const removeUserFromLocalStorage = ()=>{
   localStorage.removeItem('user')
   localStorage.removeItem('token')
+  localStorage.removeItem('bio')
 }
 
 //creating a user account 
@@ -63,14 +67,14 @@ const registerUser = async (name, email, password)=>{
   try {
     setRegError('')
     setLoading(true)
-  const {data} =  await axios.post('https://linkpath-api.onrender.com/api/v1/auth/register', {name, email, password})
-    const {user, token} = data
-    addToLocalStorage({user, token})
+  const {data} =  await axios.post('http://localhost:5000/api/v1/auth/register', {name, email, password})
+    const {user, token, bio} = data
+    console.log(data)
+    addToLocalStorage({user, token, bio})
 
    setLoading(false)
   } catch (error) {
-    console.log(error)
-    console.log(error.response.data.msg)
+    
     setLoading(false)
     setRegError(error.response.data.msg)
   }
@@ -84,21 +88,36 @@ const login = async (email, password) =>{
   try {
     setLoginError('')
     setLoading(true)
-  const {data} =  await axios.post('https://linkpath-api.onrender.com/api/v1/auth/login', { email, password})
+  const {data} =  await axios.post('http://localhost:5000/api/v1/auth/login', { email, password})
     
-    const {user, token} = data
-    addToLocalStorage({user, token})
+    const {user, token, bio} = data
+    addToLocalStorage({user, token, bio})
     navigate('/dashboard')
    setLoading(false)
   } catch (error) {
-    console.log(error.message)
+    
     setLoading(false)
-    setLoginError(error.message)
+    setLoginError(error.response.data.msg)
   }
  
    
     
 }
+
+//update user
+const updateUser = async(name, email, _bio) =>{
+
+  try {
+    const {data} = await authFetch.patch('/auth/updateuser', {name, email, bio:_bio})
+    console.log(data)
+    const {user, token, bio} = data
+   addToLocalStorage({user, token, bio})
+  } catch (error) {
+    console.log(error.response.data)
+  }
+  
+}
+
 //logging out
 const logout = () =>{
    removeUserFromLocalStorage()
@@ -152,12 +171,14 @@ const deleteLink = async (id)=>{
 
 const value ={
   user,
+  bio,
   regError,
   loginError,
   loading,
   links,
   registerUser,
   login,
+  updateUser,
   logout,
   CreateSitelink,
   getLinks,

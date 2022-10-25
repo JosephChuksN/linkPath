@@ -7,8 +7,8 @@ import { faClose } from '@fortawesome/free-solid-svg-icons'
 
 
 
-const Preview = ({avater, siteData, description}) => {
-    const { user, links, getLinks } = useAuth()
+const Preview = ({avater, siteData}) => {
+    const { user, links, getLinks, bio } = useAuth()
 
 useEffect(()=>{
   getLinks()
@@ -24,8 +24,8 @@ useEffect(()=>{
           <span className='w-full h-full flex items-center justify-center bg-black/40 py-1 '><span className='w-[85%] h-full bg-no-repeat bg-cover border border-transparent ' style={{backgroundImage: `url(${avater.profilePic})`}}></span></span>
          </div>
          <span className='flex flex-col   py-3 w-full text-center bg-cyan-600'> 
-             <span className='text-md font-medium  text-white'>{prflName}</span>
-             <span className='text-[10px] text-gray-100 whitespace-pre-wrap '>{description}</span>
+             <span className='text-xl font-medium  text-white'>{prflName}</span>
+             <span className='text-[15px] text-gray-100 whitespace-pre-wrap '>{bio}</span>
         </span>
          <div className='w-full'>{
            links.map(data =>(
