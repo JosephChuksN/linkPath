@@ -54,32 +54,12 @@ const handleActivebtn = ()=>{
     </div>
     </div>
         </div>
-        <div className='flex flex-col gap-5 border rounded  p-3 py-5 '>
-        <div className='flex flex-col gap-4 w-full lg:w-3/4'>
-        <span className='flex justify-between items-center'><span>Hide Image</span><span className='flex gap-3 items-center'>
-          <span onClick={handleActivebtn} className={`w-14 h-5  rounded-full flex items-center px-0.5 ${active? 'bg-green-500' : 'bg-slate-400' }`}>
-          <span  className={`w-4 h-4 relative rounded-full transition-all duration-1000 delay-300 ease-in-out bg-white ${active? 'left-9': " "}`}>
-          </span></span><span className='transition-all delay-700 duration-500'>{active?<span>ON</span>:<span>OFF</span>}</span></span></span>
-        <span className='flex justify-between items-center'><span>Hide Name</span><span className='flex gap-3 items-center'><span className='w-14 h-5 bg-slate-400 rounded-full flex items-center px-0.5'><span className='w-4 h-4 rounded-full bg-white'></span></span><span>OFF</span></span></span>
-        
-    </div>
-        </div> 
-
-   
-  
- 
- 
-
-    
-    
-   
     
   </div>
- 
   <div>
   
-    </div>
-   </div>
+</div>
+</div>
    
     
   )
