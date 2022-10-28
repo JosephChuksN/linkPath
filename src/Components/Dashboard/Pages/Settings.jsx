@@ -92,7 +92,7 @@ return (
 
         <div className='flex items-center justify-end  w-full'>
            <button 
-           onClick={handleShowModal} 
+          //  onClick={handleShowModal} 
            className='py-1 px-2 rounded bg-cyan-600 text-white'>
            Edit
            </button>

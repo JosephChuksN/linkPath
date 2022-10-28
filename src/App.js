@@ -3,6 +3,7 @@ import './App.css';
 import HomePage from './Components/Homepage/HomePage';
 import Signup from './Components/Signup';
 import Login from './Components/Login';
+import Profile from './Components/Profile';
 import Dashboard from './Components/Dashboard/Dashboard';
 import LinkPage from './Components/Dashboard/Pages/LinkPage';
 import Appearance from './Components/Dashboard/Pages/Appearance';
@@ -29,6 +30,7 @@ const App = () => {
       <Route exact path='/' element={<HomePage />} />
       <Route exact path='signup' element={<Signup />} />
       <Route exact path='login' element={<Login />} />
+      <Route exact path='/:name' element={<Profile avater={avater} />} />
       <Route element={<PrivateRoutes />}>
       <Route exact path='preview' element={<Preview  avater={avater} />} />
       <Route exact path='dashboard' element={
