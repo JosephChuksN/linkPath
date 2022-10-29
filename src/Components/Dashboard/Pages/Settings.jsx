@@ -22,10 +22,10 @@ const Settings = ({avater, setAvater}) => {
   // const [profilePic, setProfilePic] = useState()
   const fileInputRef = useRef()
 
-//   const handleShowModal = (e)=>{ 
-//    e.preventDefault()
-//    setShowModal(!showModal)
-// }
+  const handleShowModal = (e)=>{ 
+   e.preventDefault()
+   setShowModal(!showModal)
+}
 
   
   const notify = ()=>{
@@ -33,7 +33,11 @@ const Settings = ({avater, setAvater}) => {
     autoClose: 1000
    })
  }
-
+ const updateNotify = ()=>{
+  toast.info('profile updated',{
+   autoClose: 1000
+  })
+}
   const handleImageChange = (e) =>{
   
   setAvater({'profilePic':URL.createObjectURL(e.target.files[0])})
@@ -44,11 +48,12 @@ const Settings = ({avater, setAvater}) => {
    
   updateUser(username, email, descrip)
   setShowModal(!showModal)
+  updateNotify()
   } 
 
 
 return (
-<div className='flex flex-col  w-full px-3 lg:w-3/4 items-center mx-auto gap-5 '>
+<div className='flex flex-col  w-full px-3 md:w-3/4 items-center mx-auto gap-5 '>
 
    <form className='flex flex-col  w-full  lg:w-3/5  items-center gap-3 shadow-md p-3 border rounded'>
               <span className='w-full text-cyan-600 font-medium text-lg'>Edit Profile</span>
@@ -92,7 +97,7 @@ return (
 
         <div className='flex items-center justify-end  w-full'>
            <button 
-          //  onClick={handleShowModal} 
+           onClick={handleShowModal} 
            className='py-1 px-2 rounded bg-cyan-600 text-white'>
            Edit
            </button>
@@ -100,7 +105,7 @@ return (
 
    </form>
    <ToastContainer limit={2} />
-   <div className='flex items-center justify-start w-full'><span onClick={notify} className=" text-cyan-600 font-medium">Change password</span></div>
+   <div className='flex items-center justify-start w-full lg:w-3/5'><span onClick={notify} className=" text-cyan-600 font-medium">Change password</span></div>
 
    {/* <form className='flex flex-col  w-full  lg:w-3/5  items-center gap-3 shadow-md p-3 border rounded'>
              <span className='w-full text-cyan-600 font-medium text-lg'>Change your password</span>
@@ -129,16 +134,16 @@ return (
         </div>
        
    </form> */}
-{/* 
+
      {showModal ?<div onClick={handleShowModal} className='flex w-full h-full top-0 z-20 bg-black/10 flex-wrap items-center gap-2 justify-center absolute'>
-        <div onClick={(e)=>{e.stopPropagation()}} className='w-3/5 md:w-1/5 bg-white flex flex-col gap-6 md:gap-4 justify-center items-center md:p-5 p-8 rounded-lg shadow-lg border'>
+        <div onClick={(e)=>{e.stopPropagation()}} className='w-3/5 md:w-2/5 lg:w-1/5 bg-white flex flex-col gap-6 md:gap-4 justify-center items-center md:p-5 p-8 rounded-lg shadow-lg border'>
           <span className='text-cyan-600 text-xl'>Update Profile</span>
           <span className='flex gap-5'>
           <button  onClick={handleShowModal} className='hover:bg-gray-600/60 bg-gray-300 text-white p-1 rounded-md transition-all duration-200 delay-200'>Cancel</button>
           <button onClick={handleUserUpdate} className='hover:bg-cyan-600/60 bg-cyan-600 text-white p-1 rounded-md transition-all duration-200 delay-200'>Save</button>
          </span>
         </div>
-     </div>: null} */}
+     </div>: null}
 
     </div>
   )

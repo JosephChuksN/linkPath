@@ -19,11 +19,13 @@ export const AuthProvider = ({children}) =>{
   const [loginError, setLoginError] = useState('')
   const navigate = useNavigate()
   
-  const authFetch = axios.create({
-    baseURL: 'http://localhost:5000/api/v1',
-  })
-  // request
 
+
+  const authFetch = axios.create({
+    baseURL: 'https://linkpath-api.onrender.com/api/v1',
+  })
+
+  // request
   authFetch.interceptors.request.use(
    (config) => {
      if(token){config.headers['Authorization'] = `Bearer ${token}`}
@@ -33,8 +35,8 @@ export const AuthProvider = ({children}) =>{
       return Promise.reject(error)
     }
   )
-  // response
 
+  // response
   authFetch.interceptors.response.use(
     (response) => { return response },
      
@@ -67,7 +69,7 @@ const registerUser = async (name, email, password)=>{
   try {
     setRegError('')
     setLoading(true)
-  const {data} =  await axios.post('http://localhost:5000/api/v1/auth/register', {name, email, password})
+  const {data} =  await axios.post('https://linkpath-api.onrender.com/api/v1/auth/register', {name, email, password})
     const {user, token, bio} = data
     console.log(data)
     addToLocalStorage({user, token, bio})
@@ -88,7 +90,7 @@ const login = async (email, password) =>{
   try {
     setLoginError('')
     setLoading(true)
-  const {data} =  await axios.post('http://localhost:5000/api/v1/auth/login', { email, password})
+  const {data} =  await axios.post('https://linkpath-api.onrender.com/api/v1/auth/login', { email, password})
     
     const {user, token, bio} = data
     addToLocalStorage({user, token, bio})

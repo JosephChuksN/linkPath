@@ -33,22 +33,16 @@ const App = () => {
       <Route exact path='/:name' element={<Profile avater={avater} />} />
       <Route element={<PrivateRoutes />}>
       <Route exact path='preview' element={<Preview  avater={avater} />} />
-      <Route exact path='dashboard' element={
+      <Route exact path='dashboard' element={ <Dashboard  avater={avater}  />}>
        
-        <Dashboard 
-
-          avater={avater} 
-           />
-          
-       }>
+       
         <Route  path='/dashboard/link' index
-         element={<LinkPage  
-         />} />
-          <Route  path='/dashboard/appearance' 
+         element={<LinkPage />} 
+        />
+        <Route  path='/dashboard/appearance' 
          element={<Appearance  
-          avater={avater} 
-          setAvater={setAvater}
-         
+         avater={avater} 
+         setAvater={setAvater}
          />} />
          
          <Route  path='/dashboard/settings' 
@@ -58,7 +52,6 @@ const App = () => {
           
          />} />
          
-        
         </Route>
 
 
