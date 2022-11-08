@@ -20,11 +20,11 @@ useEffect(()=>{
    <div className='h-full min-h-screen  mx-auto bg-cyan-600/20 flex flex-col justify-between items-center relative'>
 
       <div className='flex flex-col w-full lg:w-1/4 px-10 h-full  items-center overflow-y-auto'>
-         <div className='flex flex-col h-64 items-center justify-center gap-1 w-full bg-no-repeat bg-cover  ' style={{backgroundImage: `url(${avater.profilePic})`}}>
-            <span className='w-full h-full flex items-center justify-center bg-black/40 py-1 '><span className='w-[85%] h-full bg-no-repeat bg-cover border border-transparent ' style={{backgroundImage: `url(${avater.profilePic})`}}></span></span>
+         <div className='flex flex-col h-64 items-center justify-center gap-1 w-full bg-no-repeat bg-cover  ' style={{backgroundImage: `url(${user.profileImg})`}}>
+            <span className='w-full h-full flex items-center justify-center bg-black/40 py-1 '><span className='w-[85%] h-full bg-no-repeat bg-cover border border-transparent ' style={{backgroundImage: `url(${user.profileImg})`}}></span></span>
          </div>
            <span className='flex flex-col   py-3 w-full text-center bg-cyan-600'> 
-             <span className='text-xl font-medium  text-white'>{prflName}</span>
+             <span className='text-xl font-medium  text-white capitalize'>{prflName}</span>
              <span className='text-[15px] text-gray-100 whitespace-pre-wrap '>{bio}</span>
            </span>
          <div className='w-full'>{

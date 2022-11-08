@@ -43,7 +43,7 @@ useEffect( ()=>{
     <div className='flex items-center shadow-md border w-full rounded md:w-[70%] p-5 gap-3 justify-between'>         
      <div className='flex gap-5'>
               <span className='w-14 h-14 bg-slate-400/60 rounded flex items-center justify-center bg-no-repeat bg-cover' style={{backgroundImage: `url(${siteImg})`}}><span onClick={()=>{imgInputRef.current.click()}} className='text-gray-100'></span></span>
-       <div className='flex flex-col gap-3'>
+       <form className='flex flex-col gap-3'>
         <div>
               <input ref={siteNameInputRef} className='text-[1rem] font-medium  focus:border-none focus:ring-0  outline-none'
                 value={siteName}
@@ -64,7 +64,7 @@ useEffect( ()=>{
               />
               <span onClick={()=>{siteLinkInputRef.current.click()}} className='text-slate-300 z-10 text-[0.8rem] pl-2'><FontAwesomeIcon icon={faPen} /></span>
         </div>
-       </div>
+       </form>
      </div>
     
            <div className='h-full'>

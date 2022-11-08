@@ -60,9 +60,9 @@ const LinkPage = ({siteData, setSiteData}) => {
   <div className='flex w-full top-0 z-20  flex-wrap items-center gap-2 justify-center h-full '>
     <span className='text-4xl text-cyan-600'><Spinner
       aria-label="Extra large spinner example"
-      size="xl"
+      size="lg"
       color="success"
-    />Retriving Data</span>
+    /></span>
   </div>:
     links.map((data)=>(
      <LinkPageData 
@@ -77,7 +77,7 @@ const LinkPage = ({siteData, setSiteData}) => {
     <span className='text-sm'>
      <FontAwesomeIcon icon={faEye} />
     </span>  
-     Check
+     Preview
  </span>
   
 </div>
