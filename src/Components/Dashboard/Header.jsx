@@ -53,11 +53,11 @@ useEffect(()=>{
     <div className='flex flex-col gap-10 md:flex-row md:justify-between md:items-center py-5 px-2 border-b '>
         
             <span className='text-2xl font-semibold text-cyan-700'>Linkpath</span>
-         <div className='flex gap-5 items-center justify-center  w-full md:w-[60%] '>
+         <div className='flex gap-5 items-center justify-center  w-full md:w-[70%] lg:w-[60]'>
           <div className='w-full md:w-[65%]'>
           <span  className='flex justify-between cursor-pointer  text-cyan-600 bg-slate-300/30  rounded-lg  md:px-4 md:py-1 p-2 w-full  '>
                 {`linkpath-josephn.vercel.app/${user.name.toLowerCase()}`}
-                <span onClick={()=>{navigator.clipboard.writeText(`https://linkpath-josephn.vercel.app/${user.name.toLowerCase()}`);notify()}} className=''><FontAwesomeIcon icon={faCopy} /></span>
+                <span onClick={()=>{navigator.clipboard.writeText(`https://linkpath-josephn.vercel.app/${user.name}`);notify()}} className=''><FontAwesomeIcon icon={faCopy} /></span>
                
             </span>
             <ToastContainer limit={2} />
@@ -65,7 +65,7 @@ useEffect(()=>{
            
           <span className='text-[1.3rem] text-slate-400/60 md:static absolute top-[1.4rem] right-20 '><FontAwesomeIcon icon={faBell} /></span>
             <span onClick={handleShow} className=' z-20 md:w-16 w-14 h-14 md:h-16 rounded-full absolute top-2 right-3 md:static flex items-center bg-no-repeat bg-cover border-2 border-white' style={{backgroundImage: `url(${user.profileImg})`}}></span>
-            <span className='w-1.5 h-1.5 bg-red-600 rounded-full absolute top-[1.8rem] right-[5rem] lg:right-[5.3rem] lg:top-10 text-white text-sm text-[0.7rem] flex items-center justify-center'></span>
+            <span className='w-1.5 h-1.5 bg-red-600 rounded-full absolute top-[1.8rem] right-[5rem] lg:right-[5.3rem] lg:top-10 md:right-[8.2rem] md:top-11 text-white text-sm text-[0.7rem] flex items-center justify-center'></span>
          </div>
         
     </div>

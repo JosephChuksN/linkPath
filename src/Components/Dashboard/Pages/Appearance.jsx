@@ -18,7 +18,7 @@ const Appearance = () => {
             <span className='absolute w-5 h-5 rounded-full bg-green-500 lg:left-[15.4rem] lg:top-20  md:left-[23.3rem]  right-[5.5rem] top-[4.6rem] flex items-center justify-center'> <FontAwesomeIcon className='text-white text-sm' icon={faCheck} /></span>
             <span className='absolute w-5 h-5 rounded-full bg-white lg:left-[27rem] lg:top-20 md:right-56 bottom-60 right-[5.5rem] flex items-center justify-center border border-black/40'> <FontAwesomeIcon className=' text-sm' icon={faLock} /></span>
 
-    <div className=' w-full rounded-lg py-2 bg-gray-600/30  '>
+    <div className=' w-full rounded-lg py-2 bg-gray-600/30   '>
     <div className='flex flex-col items-center justify-center gap-2 '>
        <div className='flex flex-col w-full items-center justify-center gap-1 pt-3'>
        <span className='w-16 h-16 bg-slate-900/10 rounded-full'></span>

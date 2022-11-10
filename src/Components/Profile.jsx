@@ -14,7 +14,7 @@ const Profile = ({avater}) => {
     const getLinks = async(name) => {
       
       try {
-        const {data} = await axios.get(`https://linkpath-api.onrender.com/api/v1/link/${name}`)
+        const {data} = await axios.get(`http://localhost:5000/api/v1/link/${name}`)
         const {user, link} = data
 
       setUser(user)
@@ -33,7 +33,7 @@ const Profile = ({avater}) => {
   return (
   <>{!error ?  <div className='h-full min-h-screen  mx-auto bg-cyan-600/20 flex flex-col justify-between items-center relative'>
 
-  <div className='flex flex-col w-full lg:w-1/4 px-10 h-full  items-center overflow-y-auto'>
+  <div className='flex flex-col w-full lg:w-1/4 md:w-1/2 px-10 h-full  items-center overflow-y-auto'>
     <div className='flex flex-col h-64 items-center justify-center gap-1 w-full bg-no-repeat bg-cover  ' style={{backgroundImage: `url(${user.profileImg})`}}>
            <span className='w-full h-full flex items-center justify-center bg-black/40 py-1 '><span className='w-[85%] h-full bg-no-repeat bg-cover border border-transparent ' style={{backgroundImage: `url(${user.profileImg})`}}></span></span>
     </div>

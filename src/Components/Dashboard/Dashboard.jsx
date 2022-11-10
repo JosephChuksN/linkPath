@@ -6,7 +6,7 @@ import {  Outlet } from 'react-router'
 
 const Dashboard = ({avater, siteData}) => {
      
-const { user, links, getLinks, bio } = useAuth()
+const { user, links, getLinks, description } = useAuth()
 const prflName = user.name
 
 
@@ -31,12 +31,12 @@ useEffect(()=>{
        
        <div className='flex flex-col w-full px-6 h-full bg-cyan-600/20 items-center overflow-y-auto justify-between'>
           <div className='flex flex-col w-full'>
-          <div className='flex flex-col h-44 items-center justify-center gap-1 w-full bg-no-repeat bg-cover  ' style={{backgroundImage: `url(${avater.profilePic})`}}>
-          <span className='w-full h-full flex items-center justify-center bg-black/40 py-1 '><span className='w-[85%] h-full bg-no-repeat bg-cover border border-transparent ' style={{backgroundImage: `url(${avater.profilePic})`}}></span></span>
+          <div className='flex flex-col h-44 items-center justify-center gap-1 w-full bg-no-repeat bg-cover  ' style={{backgroundImage: `url(${user.profileImg})`}}>
+          <span className='w-full h-full flex items-center justify-center bg-black/40 py-1 '><span className='w-[85%] h-full bg-no-repeat bg-cover border border-transparent ' style={{backgroundImage: `url(${user.profileImg})`}}></span></span>
        </div>
           <span className='flex flex-col   py-3 w-full text-center bg-cyan-600'> 
-             <span className='text-md font-medium  text-white'>{prflName}</span>
-             <span className='text-[10px] text-gray-100 whitespace-pre-wrap '>{bio}</span>
+             <span className='text-md font-medium  text-white capitalize'>{prflName}</span>
+             <span className='text-[10px] text-gray-100 whitespace-pre-wrap '>{description}</span>
           </span>
          <div className='w-full'>{
           links.map(data =>(
