@@ -1,5 +1,5 @@
 import React, {useRef, useState,} from 'react'
-import { useAuth } from '../../../Context/AppContext'
+import { useAuth } from '../../Context/AppContext';
 import {  Spinner } from 'flowbite-react/lib/esm/components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCamera, } from '@fortawesome/free-solid-svg-icons'

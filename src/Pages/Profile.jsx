@@ -32,14 +32,15 @@ const Profile = ({avater}) => {
     }, [])
 
   return (
-  <>{!error ?  <div className='h-full min-h-screen  mx-auto bg-cyan-600/20 flex flex-col justify-between items-center relative'>
+  <>
+   <div className='h-full min-h-screen  mx-auto bg-cyan-600/20 flex flex-col justify-between items-center relative'>
 
-  <div className='flex flex-col w-full lg:w-1/4 md:w-1/2 px-10 h-full  items-center overflow-y-auto'>
+  <div className='flex flex-col w-full lg:w-1/2 xl:w-2/5  md:w-1/2 px-10 h-full  items-center overflow-y-auto'>
     <div className='flex flex-col h-64 items-center justify-center gap-1 w-full bg-no-repeat bg-cover  ' style={{backgroundImage: `url(${user.profileImg})`}}>
            <span className='w-full h-full flex items-center justify-center bg-black/40 py-1 '><span className='w-[85%] h-full bg-no-repeat bg-cover border border-transparent ' style={{backgroundImage: `url(${user.profileImg})`}}></span></span>
     </div>
        <span className='flex flex-col   py-3 w-full text-center bg-cyan-600'> 
-        <span className='text-xl font-medium  text-white capitalize'>{user.name}</span>
+        <span className='text-xl font-medium  text-white capitalize'>{user.name || error}</span>
         <span className='text-[15px] text-gray-100 whitespace-pre-wrap '>{user.bio}</span>
        </span>
 
@@ -58,11 +59,9 @@ const Profile = ({avater}) => {
        
   </div>
       <span className='flex w-full justify-end pr-5 py-4  font-semibold text-xl '><span>Linkpath</span></span>
-  </div> :
-   <div className='w-full bg-white h-screen'>
-     <span className='text-black text-4xl flex items-center justify-center w-full h-screen '>{error}</span>
-  </div>
-   }</>
+  </div> 
+   
+   </>
   )
 }
 

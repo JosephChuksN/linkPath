@@ -1,7 +1,7 @@
 import React, {useState, useRef} from 'react'
-import LinkPageData from './LinkPageData'
 import { useNavigate } from 'react-router'
-import { useAuth } from '../../../Context/AppContext'
+import { useAuth } from '../../Context/AppContext'
+import LinkPageData from './LinkPageData'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLink, faEye } from '@fortawesome/free-solid-svg-icons'
 import { Spinner } from 'flowbite-react'
@@ -73,13 +73,15 @@ const LinkPage = ({siteData, setSiteData}) => {
       setSiteData={setSiteData}  />
      ))}
  </div>
-       
- <span onClick={handleNavigate} className=' lg:hidden absolute bottom-2 rounded-full left-40 md:left-96 bg-cyan-600 text-white p-2 flex gap-2 items-center text-xl '>
+ <div className='flex w-full justify-center items-center'>
+        
+ <span onClick={handleNavigate} className=' xl:hidden absolute rounded-full  bg-cyan-600 text-white p-2 flex gap-2 items-center text-xl '>
     <span className='text-sm'>
      <FontAwesomeIcon icon={faEye} />
     </span>  
      Preview
  </span>
+ </div>
   
 </div>
   )

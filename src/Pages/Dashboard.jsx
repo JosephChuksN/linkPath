@@ -1,8 +1,9 @@
 import React, { useEffect} from 'react'
-import Header from './Header'
-import DashboardNav from './Navbar'
-import { useAuth } from '../../Context/AppContext'
+import { useAuth } from '../Context/AppContext'
 import {  Outlet } from 'react-router'
+import Header from '../Components/Dashboard/Header'
+import DashboardNav from '../Components/Dashboard/Navbar'
+
 
 const Dashboard = ({avater, siteData}) => {
      
@@ -19,12 +20,12 @@ useEffect(()=>{
 
   return (
     <div className='lg:flex lg:mx-6  bg-white'>
-    <div className='flex flex-col  h-full min-h-screen  border-r lg:w-3/4 relative'>
+    <div className='flex flex-col  h-full min-h-screen w-full border-r xl:w-3/4 relative'>
       <Header avater={avater} />
       <DashboardNav />
       <Outlet />
     </div>
-   <div className='hidden lg:block h-screen w-[20%] fixed right-14 '>
+   <div className='hidden xl:block h-screen w-[20%] fixed right-14 '>
      <div className='h-[80%] mt-12 flex items-center justify-center flex-col rounded-3xl  border-x-[10px] border-black shadow-2xl border-y-[60px]  '>
         <span className='w-12 h-1 bg-gray-600 absolute top-[4.8rem] rounded-md'></span>
         <span className='w-10 h-10 bg-gray-600 absolute bottom-28 rounded-full'></span>

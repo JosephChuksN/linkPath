@@ -1,27 +1,20 @@
-import { useState } from 'react';
-import './App.css';
-import HomePage from './Components/Homepage/HomePage';
-import Signup from './Components/Signup';
-import Login from './Components/Login';
-import Profile from './Components/Profile';
-import Dashboard from './Components/Dashboard/Dashboard';
-import LinkPage from './Components/Dashboard/Pages/LinkPage';
-import Appearance from './Components/Dashboard/Pages/Appearance';
-import Settings from './Components/Dashboard/Pages/Settings';
-import Preview from './Components/Preview';
-import PrivateRoutes from './Routes/PrivateRoutes';
 import { Routes, Route  } from 'react-router-dom';
-import {  imgPic, } from './fakeData';
 import { AuthProvider } from './Context/AppContext';
+import './App.css';
+import HomePage from './Pages/HomePage';
+import Signup from './Pages/Signup';
+import Login from './Pages/Login';
+import Profile from './Pages/Profile';
+import Dashboard from './Pages/Dashboard';
+import LinkPage from './Components/Dashboard/LinkPage';
+import Appearance from './Components/Dashboard/Appearance';
+import Settings from './Components/Dashboard/Settings';
+import Preview from './Pages/Preview';
+import PrivateRoutes from './Routes/PrivateRoutes';
 
 
 const App = () => {
   
- 
- 
-  const [avater, setAvater] = useState(imgPic)
-  
-
   return (
   <div className='bg-gray-100 h-full'>
       <AuthProvider>
@@ -30,27 +23,14 @@ const App = () => {
       <Route exact path='/' element={<HomePage />} />
       <Route exact path='signup' element={<Signup />} />
       <Route exact path='login' element={<Login />} />
-      <Route exact path='/:name' element={<Profile avater={avater} />} />
+      <Route exact path='/:name' element={<Profile />} />
       <Route element={<PrivateRoutes />}>
-      <Route exact path='preview' element={<Preview  avater={avater} />} />
-      <Route exact path='dashboard' element={ <Dashboard  avater={avater}  />}>
+      <Route exact path='preview' element={<Preview  />} />
+      <Route exact path='dashboard' element={ <Dashboard   />}>
        
-       
-        <Route  path='/dashboard/link' index
-         element={<LinkPage />} 
-        />
-        <Route  path='/dashboard/appearance' 
-         element={<Appearance  
-         avater={avater} 
-         setAvater={setAvater}
-         />} />
-         
-         <Route  path='/dashboard/settings' 
-          element={<Settings  
-          avater={avater} 
-          setAvater={setAvater}
-          
-         />} />
+        <Route  path='/dashboard/link' index element={<LinkPage />} />
+        <Route  path='/dashboard/appearance' element={<Appearance />} />
+        <Route  path='/dashboard/settings' element={<Settings />}/>
          
         </Route>
 
