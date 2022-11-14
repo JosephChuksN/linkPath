@@ -14,7 +14,7 @@ const Profile = ({avater}) => {
     const getLinks = async(name) => {
       
       try {
-        const {data} = await axios.get(`http://localhost:5000/api/v1/link/${name}`)
+        const {data} = await axios.get(`https://linkpath-api.onrender.com/api/v1/link/${name}`)
         const {user, link} = data
 
       setUser(user)

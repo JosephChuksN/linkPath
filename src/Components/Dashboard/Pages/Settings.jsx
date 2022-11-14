@@ -15,7 +15,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Settings = ({avater, setAvater}) => {
 
-  const { user, description, updateUser, loading } = useAuth()
+  const { user, description, updateUser, loading, updateError } = useAuth()
   const [name, setName] = useState(user.name)
   const [email, setEmail] = useState(user.email)
   const [bio, setBio] = useState(description)

@@ -17,6 +17,7 @@ export const AuthProvider = ({children}) =>{
   const [loading, setLoading] = useState(false)
   const [regError, setRegError] = useState('')
   const [loginError, setLoginError] = useState('')
+  const [updateError, setUpdateError] = useState('')
   const navigate = useNavigate()
   
 
@@ -117,7 +118,7 @@ const updateUser = async(myData) =>{
    addToLocalStorage({user, token, bio})
    setLoading(false)
   } catch (error) {
-    console.log(error.response.data)
+    setUpdateError(error.response.data.msg)
   }
   
 }
@@ -180,6 +181,7 @@ const value ={
   loginError,
   loading,
   links,
+  updateError,
   registerUser,
   login,
   updateUser,
