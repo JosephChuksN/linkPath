@@ -43,7 +43,7 @@ useEffect(()=>{
            <div className='flex  items-center py-4 bg-white justify-between px-1 border-b' key={data._id}>
              <div className='flex gap-3 items-center'>
               <span className='w-8 h-8 rounded bg-no-repeat bg-cover' style={{backgroundImage: `url(${data.siteLink}/favicon.ico)`}}></span>
-              <span className='font-medium'><a href={data.siteLink} target="blank">{data.siteName}</a></span>
+              <span className='font-medium capitalize'><a href={data.siteLink} target="blank">{data.siteName.replace(".com", " ")}</a></span>
              </div>
             <span className='px-1 bg-gray-300/40 rounded'><a href={data.siteLink} target="blank">Visit</a></span>
            </div>

@@ -153,6 +153,7 @@ const editLinks = async (id, siteLink, siteName)=>{
    
   try {
    await authFetch.patch(`/links/${id}`, {siteLink, siteName})
+   console.log('patch')
    await  getLinks()
   } catch (error) {
     console.log(error)

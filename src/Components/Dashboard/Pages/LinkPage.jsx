@@ -43,6 +43,7 @@ const LinkPage = ({siteData, setSiteData}) => {
              name="siteLink" 
              value={input}
              onChange={(e)=>{setInput(e.target.value)}}
+             placeholder="http://example.com"
              required
             />
             </span>
