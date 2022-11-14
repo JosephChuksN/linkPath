@@ -132,7 +132,8 @@ const logout = () =>{
 const getLinks = async ()=>{
    
     const {data }= await authFetch.get('/links')
-    setLinks(data.links)
+    const {links} = data
+    setLinks(links)
     
   }
 
