@@ -70,7 +70,7 @@ return (
               <span className='w-full text-cyan-600 font-medium text-lg'>Edit Profile</span>
       <div  className='flex flex-col items-center justify-end gap-4 w-full'>
          <div className='flex items-center justify-start w-full my-3 gap-5 relative'>
-              <span  className='w-28  h-28 rounded-full flex items-center bg-no-repeat cursor-pointer  bg-cover'style={{backgroundImage: `url(${previewImg || user.profileImg})`}}></span>
+              <span  className={`${!user.profileImg || !previewImg ? "bg-cyan-600" : null} w-28  h-28 rounded-full flex items-center bg-no-repeat cursor-pointer  bg-cover capitalize justify-center font-bold text-3xl`}style={{backgroundImage: `url(${previewImg || user.profileImg})`}}>{!user.profileImg || !previewImg ? user.name.charAt(0) : null}</span>
               <span onClick={()=>{fileInputRef.current.click()}} className='bg-transparent absolute cursor-pointer w-28  h-28 text-white/80 flex items-center justify-center text-3xl'><FontAwesomeIcon icon={faCamera} /></span>
               <span onClick={()=>{fileInputRef.current.click()}} className='text-cyan-600 cursor-pointer '>Edit</span>
          </div>

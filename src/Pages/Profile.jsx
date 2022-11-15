@@ -36,8 +36,8 @@ const Profile = ({avater}) => {
    <div className='h-full min-h-screen  mx-auto bg-cyan-600/20 flex flex-col justify-between items-center relative'>
 
   <div className='flex flex-col w-full lg:w-1/2 xl:w-2/5  md:w-1/2 px-10 h-full  items-center overflow-y-auto'>
-    <div className='flex flex-col h-64 items-center justify-center gap-1 w-full bg-no-repeat bg-cover  ' style={{backgroundImage: `url(${user.profileImg})`}}>
-           <span className='w-full h-full flex items-center justify-center bg-black/40 py-1 '><span className='w-[85%] h-full bg-no-repeat bg-cover border border-transparent ' style={{backgroundImage: `url(${user.profileImg})`}}></span></span>
+    <div className={`${!user.profileImg &&  !error ? "bg-white" : null} flex flex-col h-64 items-center justify-center gap-1 w-full bg-no-repeat bg-cover `} style={{backgroundImage: `url(${user.profileImg})`}}>
+           <span className={`${!user.profileImg &&  !error ? "bg-white" : "bg-black/40"} w-full h-full flex items-center justify-center  py-1 `}><span className='w-[85%] h-full bg-no-repeat bg-cover border border-transparent flex items-center justify-center capitalize font-bold text-6xl ' style={{backgroundImage: `url(${user.profileImg})`}}>{!user.profileImg &&  !error ? name.charAt(0) : null}</span></span>
     </div>
        <span className='flex flex-col   py-3 w-full text-center bg-cyan-600'> 
         <span className='text-xl font-medium  text-white capitalize'>{user.name || error}</span>
