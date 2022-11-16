@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom';
+import { useAuth } from '../Context/AppContext';
 import axios from 'axios'
+import {  Spinner } from 'flowbite-react/lib/esm/components';
 
 
 const Profile = ({avater}) => {
@@ -9,19 +11,22 @@ const Profile = ({avater}) => {
     const [user, setUser] = useState({})
     const [links, setLinks] = useState([])
     const [error, setError] = useState('')
+    const { loading, setLoading } = useAuth()
     
 
     const getLinks = async(name) => {
       
       try {
+        setLoading(true)
         const {data} = await axios.get(`https://linkpath-api.onrender.com/api/v1/link/${name}`)
         console.log(data)
         const {user, link} = data
 
       setUser(user)
       setLinks(link)
+      setLoading(false)
       } catch (error) {
-    
+        setLoading(false)
         setError(error.response.data.msg)
     
       }
@@ -59,6 +64,13 @@ const Profile = ({avater}) => {
        
   </div>
       <span className='flex w-full justify-end pr-5 py-4  font-semibold text-xl '><span>Linkpath</span></span>
+  <div className={`flex w-full h-screen top-0 z-20 bg-black/30 flex-wrap items-center gap-2 justify-center absolute ${loading? "block" : "hidden"}`}>
+    <Spinner
+    aria-label="Extra large spinner example"
+    size="xl"
+    color="success"
+  />
+  </div>
   </div> 
    
    </>

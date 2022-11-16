@@ -1,10 +1,14 @@
 import React, {useRef, useState,} from 'react'
 import { useAuth } from '../../Context/AppContext';
+import { storage } from '../../firebaseConfig'
+import {ref, uploadBytes, getDownloadURL} from 'firebase/storage'
 import {  Spinner } from 'flowbite-react/lib/esm/components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCamera, } from '@fortawesome/free-solid-svg-icons'
 import { ToastContainer, toast } from 'react-toastify';
+import { v4 } from 'uuid'
 import 'react-toastify/dist/ReactToastify.css';
+
 
 
 
@@ -15,16 +19,28 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Settings = ({avater, setAvater}) => {
 
-  const { user, description, updateUser, loading } = useAuth()
-  const [name, setName] = useState(user.name)
+  const { user, description, updateUser, loading,  setLoading, updateError } = useAuth()
+  const [username, setusername] = useState(user.name)
   const [email, setEmail] = useState(user.email)
   const [bio, setBio] = useState(description)
   const [showModal, setShowModal] = useState(false)
-  const [profileImg, setProfileImg] = useState()
+  const [profileImg, setProfileImg] = useState(null)
   const [previewImg, setPreviewImg] = useState()
   const fileInputRef = useRef()
   
   
+//Fn handles photo upload and user update
+const handlePhotoUpload =  async() =>{
+  setLoading(true)
+  if(profileImg == null) return updateUser(username, email, bio, profileImg) //this handles update if no photo to upload
+  
+  const fileName =  profileImg.name + v4()
+  const storageRef = ref(storage, `/images/${fileName}`)
+  await uploadBytes(storageRef, profileImg);
+  await getDownloadURL(ref(storage, `/images/${fileName}`)).then((url)=>{
+     updateUser(username, email, bio, url)
+   })
+}  
   
 
   const handleShowModal = (e)=>{ 
@@ -36,6 +52,7 @@ const handleImgChange = (e)=>{
 
   setProfileImg(e.target.files[0])
   setPreviewImg(URL.createObjectURL(e.target.files[0]))
+
 } 
 
   const notify = ()=>{
@@ -43,23 +60,26 @@ const handleImgChange = (e)=>{
     autoClose: 1000
    })
  }
- const updateNotify = ()=>{
+ const updateDone = ()=>{
   toast.info('profile updated',{
    autoClose: 1000
+  })
+}
+const updateErr = ()=>{
+  toast.error(updateError,{
+    autoClose: 1000
   })
 }
   
 
   const handleUserUpdate = async () =>{
-   const data = new FormData()
-   data.append('name', name)
-   data.append('email', email)
-   data.append('bio', bio)
-   data.append('image', profileImg)
 
-  await updateUser(data)
   setShowModal(!showModal)
-  updateNotify()
+  await handlePhotoUpload()
+  console.log(updateError)
+  if(updateError) return updateErr() 
+  updateDone()
+
   } 
 
 
@@ -79,15 +99,15 @@ return (
               className='hidden' 
               type="file" 
               accept="image/*" 
-              name="image"
+              name="profileImg"
               onChange={handleImgChange} 
               />
               <input 
               className='w-full lowercase bg-slate-100  outline-none focus:bg-cyan-600/10 focus:border-none focus:ring-0 rounded-l-xl md:rounded-xl border-none'
               type="text"
-              value={name}
+              value={username}
               name="name"
-              onChange={(e)=>{setName(e.target.value)}}
+              onChange={(e)=>{setusername(e.target.value)}}
               />
              <input 
              className='w-full lowercase bg-slate-100  outline-none focus:bg-cyan-600/10 focus:border-none focus:ring-0 rounded-l-xl md:rounded-xl border-none'

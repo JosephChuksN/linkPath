@@ -23,7 +23,7 @@ export const AuthProvider = ({children}) =>{
 
 
   const authFetch = axios.create({
-    baseURL: 'https://linkpath-api.onrender.com/api/v1',
+    baseURL: 'http://localhost:5000/api/v1',
   })
 
   // request
@@ -70,7 +70,7 @@ const registerUser = async (name, email, password)=>{
   try {
     setRegError('')
     setLoading(true)
-  const {data} =  await axios.post('https://linkpath-api.onrender.com/api/v1/auth/register', {name, email, password})
+  const {data} =  await axios.post('http://localhost:5000/api/v1/auth/register', {name, email, password})
     const {user, token, bio} = data
     console.log(data)
     addToLocalStorage({user, token, bio})
@@ -91,7 +91,7 @@ const login = async (email, password) =>{
   try {
     setLoginError('')
     setLoading(true)
-  const {data} =  await axios.post('https://linkpath-api.onrender.com/api/v1/auth/login', { email, password})
+  const {data} =  await axios.post('http://localhost:5000/api/v1/auth/login', { email, password})
     
     const {user, token, bio} = data
     addToLocalStorage({user, token, bio})
@@ -108,16 +108,18 @@ const login = async (email, password) =>{
 }
 
 //update user
-const updateUser = async(myData) =>{
+const updateUser = async(name, email, desc, profileImg) =>{
 
   try {
-    setLoading(true)
-    const {data} = await authFetch.patch('/auth/updateuser', myData)
+    
+    const {data} = await authFetch.patch('/auth/updateuser', {name, email, bio:desc, profileImg})
     
     const {user, token, bio} = data
+    console.log(bio)
    addToLocalStorage({user, token, bio})
    setLoading(false)
   } catch (error) {
+    setLoading(false)
     setUpdateError(error.response.data.msg)
   }
   
