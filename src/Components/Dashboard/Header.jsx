@@ -10,7 +10,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Header = ({avater}) => {
   const {user, logout} = useAuth()
-  const [show, setShow] = useState(false)
   const [logoutShow, setLogoutShow] = useState(false)
   const logoutSecRef = useRef()
   const navigate = useNavigate()

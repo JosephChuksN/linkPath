@@ -20,7 +20,7 @@ useEffect(()=>{
    <div className='h-full min-h-screen  mx-auto bg-cyan-600/20 flex flex-col justify-between items-center relative'>
 
       <div className='flex flex-col w-full md:w-2/3 lg:w-1/2 px-10 h-full  items-center overflow-y-auto'>
-         <div className={`${user.profileImg ? "bg-white" : null} flex flex-col h-64 items-center justify-center gap-1 w-full bg-no-repeat bg-cover  `} style={{backgroundImage: `url(${user.profileImg})`}}>
+         <div className={`${user.profileImg ? "bg-white" : null} flex flex-col h-64 items-center justify-center gap-1 w-full bg-no-repeat bg-cover bg-center  `} style={{backgroundImage: `url(${user.profileImg})`}}>
             <span className={`${!user.profileImg  ? "bg-white" : "bg-black/40"} w-full h-full flex items-center justify-center  py-1 `}><span className='w-[85%] h-full bg-no-repeat bg-cover border border-transparent flex items-center justify-center capitalize font-bold text-6xl ' style={{backgroundImage: `url(${user.profileImg})`}}>{!user.profileImg ? user.name.charAt(0): null}</span></span>
          </div>
            <span className='flex flex-col   py-3 w-full text-center bg-cyan-600'> 
@@ -32,7 +32,7 @@ useEffect(()=>{
            <div className='flex  items-center py-4 bg-white justify-between px-1 border-b' key={data._id}>
             <div className='flex gap-3 items-center'>
               <span className='w-10 h-10 rounded bg-no-repeat bg-cover' style={{backgroundImage: `url(https://${new URL(data.siteLink).hostname}/favicon.ico)`}}></span>
-              <span className='font-medium capitalize'><a href={data.siteLink} target="blank">{data.siteName.replace(".com", " ")}</a></span>
+              <span className='font-medium capitalize'><a href={data.siteLink} target="blank">{data.siteName}</a></span>
             </div>
               <span className='py-1 px-2 bg-gray-300/40 rounded'><a href={data.siteLink} target="blank">Visit</a></span>
            </div>

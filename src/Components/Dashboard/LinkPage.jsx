@@ -21,7 +21,8 @@ const LinkPage = ({siteData, setSiteData}) => {
     e.preventDefault()
    
    //extracts Url hostname
-  var siteName = new URL(input).hostname.replace("www.", "")
+  var hostName = new URL(input).hostname.replace("www.", "")
+  let siteName = hostName.substring(0, hostName.indexOf("."))
   let siteLink = input
   CreateSitelink(siteLink, siteName)
   setInput('')

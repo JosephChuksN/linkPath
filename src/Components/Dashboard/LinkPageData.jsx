@@ -45,7 +45,7 @@ useEffect( ()=>{
               <span className='w-14 h-14 bg-slate-400/60 rounded flex items-center justify-center bg-no-repeat bg-cover' style={{backgroundImage: `url(${siteImg})`}}><span onClick={()=>{imgInputRef.current.click()}} className='text-gray-100'></span></span>
        <form className='flex flex-col gap-3'>
         <div>
-              <input ref={siteNameInputRef} className='text-[1rem] font-medium  focus:border-none focus:ring-0  outline-none'
+              <input ref={siteNameInputRef} className='text-[1rem] font-medium  focus:border-none focus:ring-0  outline-none capitalize'
                 value={siteName}
                 name="siteName"
                 id={id}
