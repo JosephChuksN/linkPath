@@ -28,7 +28,7 @@ const App = () => {
       <Route exact path='preview' element={<Preview  />} />
       <Route exact path='dashboard' element={ <Dashboard   />}>
        
-        <Route  path='/dashboard/link' index element={<LinkPage />} />
+        <Route  index element={<LinkPage />} />
         <Route  path='/dashboard/appearance' element={<Appearance />} />
         <Route  path='/dashboard/settings' element={<Settings />}/>
          
