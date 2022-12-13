@@ -11,6 +11,7 @@ const { user, links, getLinks, description } = useAuth()
 const prflName = user.name
 
 
+
 useEffect(()=>{
  
   getLinks()
@@ -32,7 +33,7 @@ useEffect(()=>{
        
        <div className='flex flex-col w-full px-6 h-full bg-cyan-600/20 items-center overflow-y-auto justify-between'>
           <div className='flex flex-col w-full'>
-          <div className={`${user.profileImg ? "bg-white" : null} flex flex-col h-44 items-center justify-center gap-1 w-full bg-no-repeat bg-cover`} style={{backgroundImage: `url(${user.profileImg})`}}>
+          <div className={`${user.profileImg ? "bg-white" : null} flex flex-col h-44 items-center justify-center gap-1 w-full bg-no-repeat bg-contain`} style={{backgroundImage: `url(${user.profileImg})`}}>
           <span className={`${!user.profileImg  ? "bg-white" : "bg-black/40"} w-full h-full flex items-center justify-center  py-1 `}><span className='w-[85%] h-full bg-no-repeat bg-cover border border-transparent flex items-center justify-center capitalize font-bold text-5xl ' style={{backgroundImage: `url(${user.profileImg})`}}>{!user.profileImg ? user.name.charAt(0): null}</span></span>
        </div>
           <span className='flex flex-col   py-3 w-full text-center bg-cyan-600'> 
@@ -43,7 +44,7 @@ useEffect(()=>{
           links.map(data =>(
            <div className='flex  items-center py-4 bg-white justify-between px-1 border-b' key={data._id}>
              <div className='flex gap-3 items-center'>
-              <span className='w-8 h-8 rounded bg-no-repeat bg-cover' style={{backgroundImage: `url(${data.siteLink}/favicon.ico)`}}></span>
+              <span className='w-8 h-8 rounded bg-no-repeat bg-cover' style={{backgroundImage: `url(https://${new URL(data.siteLink).hostname}/favicon.ico)`}}></span>
               <span className='font-medium capitalize'><a href={data.siteLink} target="blank">{data.siteName.replace(".com", " ")}</a></span>
              </div>
             <span className='px-1 bg-gray-300/40 rounded'><a href={data.siteLink} target="blank">Visit</a></span>
