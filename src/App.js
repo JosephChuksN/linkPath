@@ -7,6 +7,7 @@ import Login from './Pages/Login';
 import Profile from './Pages/Profile';
 import Dashboard from './Pages/Dashboard';
 import LinkPage from './Components/Dashboard/LinkPage';
+import Socials from './Components/Dashboard/Socials';
 import Links from './Pages/Links';
 import Appearance from './Components/Dashboard/Appearance';
 import Settings from './Components/Dashboard/Settings';
@@ -31,6 +32,7 @@ const App = () => {
        
         <Route  path='links' element={<Links />} >
         <Route  index element={<LinkPage />} />
+        <Route path='socials' element={<Socials />} />
         </Route>
         <Route  path='/dashboard/appearance' element={<Appearance />} />
         <Route  path='/dashboard/settings' element={<Settings />}/>
