@@ -49,12 +49,12 @@ useEffect(()=>{
 
   return (
    <>
-    <div className='flex flex-col gap-10 md:flex-row md:justify-between md:items-center py-5 px-2 border-b '>
+    <div className='flex flex-col gap-10 md:flex-row md:justify-between md:items-center py-5 px-2  '>
         
             <span className='text-2xl font-semibold text-cyan-700'>Linkpath</span>
          <div className='flex gap-5 items-center justify-center  w-full md:w-[70%] lg:w-[60]'>
           <div className='w-full md:w-[65%]'>
-          <span  className='flex justify-between cursor-pointer  text-cyan-600 bg-slate-300/30  rounded-lg  md:px-4 md:py-1 p-2 w-full  '>
+          <span  className='flex justify-between cursor-pointer  text-cyan-600 bg-slate-300/30  rounded-md  md:px-4 md:py-2 p-2 w-full  '>
                 {`linkpath-josephn.vercel.app/${user.name.toLowerCase()}`}
                 <span onClick={()=>{navigator.clipboard.writeText(`https://linkpath-josephn.vercel.app/${user.name}`);notify()}} className=''><FontAwesomeIcon icon={faCopy} /></span>
                
@@ -76,7 +76,7 @@ useEffect(()=>{
         </span>
         <div className='flex flex-col p-1 gap-2'>
        <Link onClick={handleShow} to="/dashboard/settings"><span className=' rounded hover:bg-slate-300/40 cursor-pointer'><span className='pr-3 text-slate-400'><FontAwesomeIcon icon={faGear} /></span>settings</span></Link>
-        <span onClick={handleLogout} className='text-cyan-600  rounded hover:bg-slate-300/40 cursor-pointer'><span className='pr-3'><FontAwesomeIcon icon={faArrowRightFromBracket} /></span>Logout</span>
+        <span onClick={handleLogout} className='text-gray-400  rounded hover:bg-slate-300/40 cursor-pointer'><span className='pr-3'><FontAwesomeIcon icon={faArrowRightFromBracket} /></span>Logout</span>
         </div>
       
        

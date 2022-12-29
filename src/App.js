@@ -7,6 +7,7 @@ import Login from './Pages/Login';
 import Profile from './Pages/Profile';
 import Dashboard from './Pages/Dashboard';
 import LinkPage from './Components/Dashboard/LinkPage';
+import Links from './Pages/Links';
 import Appearance from './Components/Dashboard/Appearance';
 import Settings from './Components/Dashboard/Settings';
 import Preview from './Pages/Preview';
@@ -28,10 +29,12 @@ const App = () => {
       <Route exact path='preview' element={<Preview  />} />
       <Route exact path='dashboard' element={ <Dashboard   />}>
        
+        <Route  path='links' element={<Links />} >
         <Route  index element={<LinkPage />} />
+        </Route>
         <Route  path='/dashboard/appearance' element={<Appearance />} />
         <Route  path='/dashboard/settings' element={<Settings />}/>
-         
+  
         </Route>
 
 

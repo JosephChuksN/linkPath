@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react'
+import React, {useState, useRef, useEffect} from 'react'
 import { useNavigate } from 'react-router'
 import { useAuth } from '../../Context/AppContext'
 import LinkPageData from './LinkPageData'
@@ -14,7 +14,21 @@ const LinkPage = ({siteData, setSiteData}) => {
   const formRef = useRef()
   const [input, setInput] = useState("")
   const navigate = useNavigate()
+  const [activeBtn, setActiveBtn] = useState(false)
  
+
+  // useEffect(()=>{
+  //  const handleBtn = () =>{
+  //   if(input){
+  //     setActiveBtn(true)
+  //   }else{
+  //     setActiveBtn(false)
+  //   }
+  //  }
+  //  handleBtn()
+  // disabled={activeBtn}
+  // },[input])
+
 
 //adds new link
   const handleAddLink = async (e) => {
@@ -34,25 +48,26 @@ const LinkPage = ({siteData, setSiteData}) => {
   return (
 <div className='flex flex-col gap-10 px-2 md:px-0 items-center mt-3 lg:mt-0'>
  <form ref={formRef} action="" onSubmit={handleAddLink} className='md:w-3/4 w-full'>
-    <div className='flex  justify-center   '>
-      <div className='flex w-full items-center justify-center lg:w-3/4 md:gap-5 '>
-        <span className='flex bg-cyan-600/20 md:w-[70%] w-full   items-center gap-2 pl-5 text-slate-400 rounded-l-xl md:rounded-full'>
-            <FontAwesomeIcon icon={faLink} />
-            <span className='border border-slate-300 h-7 my-auto '></span>
-            <input className='bg-transparent p-3 text-black  outline-none focus:bg-cyan-600/10 focus:border-none focus:ring-0 rounded-l-xl md:rounded-full border-none w-full' 
-             type="url" 
-             name="siteLink" 
-             value={input}
-             onChange={(e)=>{setInput(e.target.value)}}
-             placeholder="http://example.com"
-             required
-            />
-            </span>
-            <button type='submit'  className='bg-cyan-600 text-white p-3 rounded-r-xl md:rounded-full flex'>
-            Add <span className='hidden md:block ml-1'>
-            New Link
-               </span>
-            </button>
+    <div className='flex  justify-center'>
+    <div className='flex w-full items-center justify-center lg:w-3/4 md:gap-5 '>
+    <span className='flex bg-slate-300/30 md:w-[70%] w-full border items-center gap-2 pl-5 text-slate-400 rounded-l-xl md:rounded-md'>
+    <FontAwesomeIcon className='text-gray-400' icon={faLink} />
+    <span className='border-l-2  border-slate-300 h-7 my-auto '></span>
+    <input className='bg-transparent p-3 text-black  outline-none  focus:border-none focus:ring-0 rounded-l-xl md:rounded-md border-none w-full' 
+     type="url" 
+     name="siteLink" 
+     value={input}
+     onChange={(e)=>{setInput(e.target.value)}}
+     placeholder="http://example.com"
+     required
+     />
+      </span>
+      <button  type='submit'  className={` bg-cyan-600 text-white p-3 rounded-r-xl md:rounded-md flex`}>
+       Add 
+       <span className='hidden md:block ml-1'>
+        New Link
+       </span>
+      </button>
       </div>
     </div>
  </form>
@@ -74,17 +89,16 @@ const LinkPage = ({siteData, setSiteData}) => {
       setSiteData={setSiteData}  />
      ))}
  </div>
- <div className='flex w-full justify-center items-center'>
+  <div className='flex w-full justify-center items-center'>
         
- <span onClick={handleNavigate} className=' xl:hidden absolute rounded-full  bg-cyan-600 text-white p-2 flex gap-2 items-center text-xl '>
+  <span onClick={handleNavigate} className=' xl:hidden absolute rounded-full  bg-cyan-600 text-white p-2 flex gap-2 items-center text-xl '>
     <span className='text-sm'>
      <FontAwesomeIcon icon={faEye} />
     </span>  
      Preview
- </span>
- </div>
-  
-</div>
+  </span>
+  </div>
+  </div>
   )
 }
 
