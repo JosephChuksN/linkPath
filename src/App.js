@@ -28,16 +28,14 @@ const App = () => {
       <Route exact path='/:name' element={<Profile />} />
       <Route element={<PrivateRoutes />}>
       <Route exact path='preview' element={<Preview  />} />
-      <Route exact path='dashboard' element={ <Dashboard   />}>
+      {/* <Route exact path='dashboard' element={ <Dashboard   />}> */}
        
-        <Route  path='links' element={<Links />} >
-        <Route  index element={<LinkPage />} />
-        <Route path='socials' element={<Socials />} />
-        </Route>
-        <Route  path='/dashboard/appearance' element={<Appearance />} />
-        <Route  path='/dashboard/settings' element={<Settings />}/>
+          <Route  path='dashboard' element={<Links />} />
+          <Route path='dashboard/socials' element={<Socials />} />
+          <Route  path='/dashboard/appearance' element={<Appearance />} />
+          <Route  path='/dashboard/settings' element={<Settings />}/>
   
-        </Route>
+        {/* </Route> */}
 
 
       </Route>
