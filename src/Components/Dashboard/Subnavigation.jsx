@@ -24,7 +24,7 @@ const navData = [
   return (
    <>
     <div className= ' mb-3 flex justify-center items-center bg-white z-20  py-5 '>
-        <ul className='flex px-10 gap-10 text-gray-400  text-[1rem] font-normal justify-left w-full lg:w-3/5 '>{
+        <ul className='flex px-10 gap-10 text-gray-400  text-[1rem] font-normal justify-center w-full lg:w-3/5 '>{
         navData.map((data)=>(
            <NavLink  className={({isActive})=> isActive? isActiveLink  : null}  key={data.id} to={data.link} end>
             <span className='text-xl w-24 h-24 flex flex-col gap-3 justify-center items-center '>

@@ -1,6 +1,6 @@
 import React, { useEffect} from 'react'
 import { useAuth } from '../Context/AppContext'
-import {  Outlet } from 'react-router'
+import {  Outlet, useNavigate } from 'react-router'
 import Header from '../Components/Dashboard/Header'
 import DashboardNav from '../Components/Dashboard/Navbar'
 
@@ -12,8 +12,9 @@ const prflName = user.name
 
 
 
+const navigate = useNavigate()
 useEffect(()=>{
- 
+navigate('links')
   getLinks()
 }, [])
 
