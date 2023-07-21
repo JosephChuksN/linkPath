@@ -28,16 +28,19 @@ const handleLogin =  (e)=>{
 
   return (
     <>
-  <div className='px-5 md:px-12 py-36 h-screen lg:w-3/5 mx-auto '>
- <form action='' onSubmit={handleLogin} className='p-3 shadow-md bg-white rounded-md border-t-4 border-cyan-600  lg:w-1/2 mx-auto py-5'>
- <span className={`${loginError === ""? "hidden": "block"} border border-red-600 bg-red-200 text-red-600 p-3 rounded`}>{loginError}</span>
+  <div className='px-5 md:px-12 pt-10 h-screen lg:w-3/5 mx-auto '>
+    <div  className='lg:w-[45%] mx-auto py-5 flex justify-center items-center'>
+      <span className='text-cyan-600 text-2xl font-semibold'>Linkpath</span>
+    </div>
+ <form action='' onSubmit={handleLogin} className='p-3   border-gray-300 border-[0.5px] rounded-md  lg:w-[45%] mx-auto py-5'>
+ <span className={`${loginError === ""? "hidden": "block"} border border-red-600 bg-red-200 text-red-600 p-1 rounded-md`}>{loginError}</span>
    
     <div className=' flex flex-col gap-5'>
-    <span className='text-2xl font-semibold flex items-center justify-center'>Login</span>
+    <span className='text-2xl font-semibold flex items-center justify-start text-cyan-600'>Login to your account</span>
     <div className='flex flex-col'>
 
-        <label className='p-1 mb-2 font-medium' htmlFor="">Your Email</label>
-        <input className='rounded lowercase focus:bg-cyan-600/10'
+        <label className='p-1 mb-1 font-medium' htmlFor="">Email Address</label>
+        <input className='rounded-md lowercase focus:outline-none focus:ring-1 focus:ring-cyan-600 focus:border-cyan-600 p-1 border-[0.5px] border-gray-400'
          onChange={(e)=>{setEmail(e.target.value)}}
          type="email" 
          value={email}
@@ -48,17 +51,18 @@ const handleLogin =  (e)=>{
     </div>
     
     <div className='flex flex-col'>
-        <label className='p-1 mb-2 font-medium' htmlFor="">Password</label>
-        <input className='rounded focus:bg-cyan-600/10' 
+        <label className='p-1 mb-1 font-medium' htmlFor="">Password</label>
+        <input className='rounded-md focus:outline-none focus:ring-1 focus:ring-cyan-600 focus:border-cyan-600 p-1 border-[0.5px] border-gray-400' 
          onChange={(e)=>{setPassword(e.target.value)}}
          type="password"
          value={password}
          required
+         placeholder="******"
          />
     </div>
     
     <div className='flex items-center'>
-        <button className='bg-cyan-600 w-full p-2 rounded text-white my-2' disabled={loading} 
+        <button className='bg-cyan-600 w-full p-1 rounded-md text-white my-2' disabled={loading} 
         type="submit" 
         > 
         
@@ -67,18 +71,32 @@ const handleLogin =  (e)=>{
         </button>
     </div>
     
-    <div className='p-1 flex items-center justify-center gap-3'>   
-    <span>Don't have an account? </span> 
-     <Link to="/signup">
-     <span className='text-cyan-600'>Sign up</span>
-     </Link>
-     </div>
-
+    <div className='w-full flex items-center justify-end'>
+      <span className='text-blue-600  text-sm'>Forgot Password?</span>
     </div>
+    </div>
+
+    
   
  </form>
+ 
+ <div className='lg:w-[45%] mx-auto py-5'>
+ <div className=' flex flex-col gap-1 items-center justify-center '>   
+    <span className="text-xs w-full flex  items-center justify-center">
+      <hr className='w-[45%] border-t-[0.01px] border-gray-300' />
+      <span className='w-2/5 text-center'>New to Linkpath</span> 
+      <hr className="w-2/5 border-t-[0.01px] border-gray-300" />
+    </span> 
+     <Link className='w-full  flex my-2 ' to="/signup">
+     <span className='border-[0.5px] border-gray-400 w-full p-1 rounded-md text-black text-base text-center transition-all duration-150 ease-in-out hover:bg-cyan-50'>
+      Sign up
+      </span>
+     </Link>
+     </div>
   
     </div>
+ </div>
+
     <div className={`flex w-full h-screen top-0 z-20 bg-black/30 flex-wrap items-center gap-2 justify-center absolute ${loading? "block" : "hidden"}`}>
   <Spinner
     aria-label="Extra large spinner example"
