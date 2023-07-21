@@ -73,6 +73,7 @@ return (
         value={password} 
         name="pass" 
         required 
+        placeholder="******"
         />
 
     </div>
@@ -85,6 +86,7 @@ return (
         value={confirmPass} 
         name="confirmPass" 
         required 
+        placeholder="******"
         />
 
     </div>

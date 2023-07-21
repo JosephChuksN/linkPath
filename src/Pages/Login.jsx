@@ -57,6 +57,7 @@ const handleLogin =  (e)=>{
          type="password"
          value={password}
          required
+         placeholder="******"
          />
     </div>
     
