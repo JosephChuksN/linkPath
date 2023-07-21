@@ -28,18 +28,18 @@ const handleLogin =  (e)=>{
 
   return (
     <>
-  <div className='px-5 md:px-12 pt-14 h-screen lg:w-3/5 mx-auto '>
-    <div  className='lg:w-1/2 mx-auto py-5 flex justify-center items-center'>
-      <span className='text-cyan-600 text-3xl font-semibold'>Linkpath</span>
+  <div className='px-5 md:px-12 pt-10 h-screen lg:w-3/5 mx-auto '>
+    <div  className='lg:w-[45%] mx-auto py-5 flex justify-center items-center'>
+      <span className='text-cyan-600 text-2xl font-semibold'>Linkpath</span>
     </div>
- <form action='' onSubmit={handleLogin} className='p-3   border-gray-300 border-[0.5px] rounded-md  lg:w-1/2 mx-auto py-5'>
- <span className={`${loginError === ""? "hidden": "block"} border border-red-600 bg-red-200 text-red-600 p-3 rounded`}>{loginError}</span>
+ <form action='' onSubmit={handleLogin} className='p-3   border-gray-300 border-[0.5px] rounded-md  lg:w-[45%] mx-auto py-5'>
+ <span className={`${loginError === ""? "hidden": "block"} border border-red-600 bg-red-200 text-red-600 p-1 rounded-md`}>{loginError}</span>
    
     <div className=' flex flex-col gap-5'>
     <span className='text-2xl font-semibold flex items-center justify-start text-cyan-600'>Login to your account</span>
     <div className='flex flex-col'>
 
-        <label className='p-1 mb-2 font-medium' htmlFor="">Email Address</label>
+        <label className='p-1 mb-1 font-medium' htmlFor="">Email Address</label>
         <input className='rounded-md lowercase focus:outline-none focus:ring-1 focus:ring-cyan-600 focus:border-cyan-600 p-1 border-[0.5px] border-gray-400'
          onChange={(e)=>{setEmail(e.target.value)}}
          type="email" 
@@ -51,7 +51,7 @@ const handleLogin =  (e)=>{
     </div>
     
     <div className='flex flex-col'>
-        <label className='p-1 mb-2 font-medium' htmlFor="">Password</label>
+        <label className='p-1 mb-1 font-medium' htmlFor="">Password</label>
         <input className='rounded-md focus:outline-none focus:ring-1 focus:ring-cyan-600 focus:border-cyan-600 p-1 border-[0.5px] border-gray-400' 
          onChange={(e)=>{setPassword(e.target.value)}}
          type="password"
@@ -79,10 +79,10 @@ const handleLogin =  (e)=>{
   
  </form>
  
- <div className='lg:w-1/2 mx-auto py-5'>
+ <div className='lg:w-[45%] mx-auto py-5'>
  <div className=' flex flex-col gap-1 items-center justify-center '>   
     <span className="text-xs w-full flex  items-center justify-center">
-      <hr className='w-2/5 border-t-[0.01px] border-gray-300' />
+      <hr className='w-[45%] border-t-[0.01px] border-gray-300' />
       <span className='w-2/5 text-center'>New to Linkpath</span> 
       <hr className="w-2/5 border-t-[0.01px] border-gray-300" />
     </span> 
