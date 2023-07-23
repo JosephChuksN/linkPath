@@ -19,7 +19,7 @@ export const AuthProvider = ({children}) =>{
   const [loginError, setLoginError] = useState('')
   const [updateError, setUpdateError] = useState('')
   const [emailVerified, setEmailVerified] = useState('')
-  const [emailVerifiedLogin, setEmailVerifiedLogin] = ('')
+  const [emailVerifiedLogin, setEmailVerifiedLogin] = useState('')
   const navigate = useNavigate()
   
 
@@ -196,6 +196,7 @@ const value ={
   loading,
   links,
   emailVerified,
+  emailVerifiedLogin,
   updateError,
   registerUser,
   login,

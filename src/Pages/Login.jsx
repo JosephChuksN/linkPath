@@ -33,7 +33,7 @@ const handleLogin =  (e)=>{
       <span className='text-cyan-600 text-2xl font-semibold'>Linkpath</span>
     </div>
  <form action='' onSubmit={handleLogin} className='p-3   border-gray-300 border-[0.5px] rounded-md  lg:w-[45%] mx-auto py-5'>
- <span className={`${loginError === ""? "invisible": "visible"} text-white bg-red-600 px-1 py-3 text-center rounded-md`}>{loginError}</span>
+ <span className={`${loginError === ""? "hidden": "block"} text-white bg-red-600 px-1 py-3 text-center rounded-md`}>{loginError}</span>
  <span className={`${emailVerifiedLogin === ""? "hidden": "block"}  bg-green-500 text-sm text-white px-1 text-center py-3 rounded-md`}>{emailVerifiedLogin}</span>
     <div className=' flex flex-col gap-5'>
     <span className='text-2xl font-semibold flex items-center justify-start text-cyan-600'>Login to your account</span>
