@@ -4,6 +4,7 @@ import './App.css';
 import HomePage from './Pages/HomePage';
 import Signup from './Pages/Signup';
 import Login from './Pages/Login';
+import ForgotPassword from './Pages/ForgotPassword';
 import Profile from './Pages/Profile';
 import Dashboard from './Pages/Dashboard';
 import LinkPage from './Components/Dashboard/LinkPage';
@@ -25,6 +26,7 @@ const App = () => {
       <Route exact path='/' element={<HomePage />} />
       <Route exact path='signup' element={<Signup />} />
       <Route exact path='login' element={<Login />} />
+      <Route exat path='forgotpassword' element={<ForgotPassword />} />
       <Route exact path='/:name' element={<Profile />} />
       <Route element={<PrivateRoutes />}>
       <Route exact path='preview' element={<Preview  />} />

@@ -93,7 +93,7 @@ return (
 
     <div className='flex items-center'>
         <button disabled={loading}
-         className='bg-cyan-600 w-full p-1 rounded-md text-white my-2' 
+         className='transition-all delay-75 duration-300 ease-in-out hover:bg-cyan-700 bg-cyan-600 w-full p-1 rounded-md text-white my-2' 
          type='submit'>
 
           Continue

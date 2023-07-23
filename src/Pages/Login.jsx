@@ -62,7 +62,7 @@ const handleLogin =  (e)=>{
     </div>
     
     <div className='flex items-center'>
-        <button className='bg-cyan-600 w-full p-1 rounded-md text-white my-2' disabled={loading} 
+        <button className='transition-all delay-75 duration-300 ease-in-out hover:bg-cyan-700 bg-cyan-600 w-full p-1 rounded-md text-white my-2' disabled={loading} 
         type="submit" 
         > 
         
@@ -72,7 +72,7 @@ const handleLogin =  (e)=>{
     </div>
     
     <div className='w-full flex items-center justify-end'>
-      <span className='text-blue-600  text-sm'>Forgot Password?</span>
+      <Link to='/forgotpassword'><span className='text-blue-600  text-sm hover:text-purple-600'>Forgot Password?</span></Link>
     </div>
     </div>
 
