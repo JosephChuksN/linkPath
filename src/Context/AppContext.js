@@ -18,6 +18,7 @@ export const AuthProvider = ({children}) =>{
   const [regError, setRegError] = useState('')
   const [loginError, setLoginError] = useState('')
   const [updateError, setUpdateError] = useState('')
+  const [emailVerified, setEmailVerified] = useState('')
   const navigate = useNavigate()
   
 
@@ -71,9 +72,11 @@ const registerUser = async (name, email, password)=>{
     setRegError('')
     setLoading(true)
   const {data} =  await axios.post('https://linkpath-api.onrender.com/api/v1/auth/register', {name, email, password})
-    const {user, token, bio} = data
+    const {user} = data
     console.log(data)
-    addToLocalStorage({user, token, bio})
+    const {msg} = data
+    localStorage.setItem('user', JSON.stringify(user))
+    setEmailVerified(msg)
 
    setLoading(false)
   } catch (error) {
@@ -84,6 +87,9 @@ const registerUser = async (name, email, password)=>{
  
 
 }
+
+//verify email 
+
 
 
 //login fn
@@ -180,11 +186,13 @@ const deleteLink = async (id)=>{
 
 const value ={
   user,
+  token,
   description,
   regError,
   loginError,
   loading,
   links,
+  emailVerified,
   updateError,
   registerUser,
   login,

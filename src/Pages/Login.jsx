@@ -84,7 +84,7 @@ const handleLogin =  (e)=>{
  <div className=' flex flex-col gap-1 items-center justify-center '>   
     <span className="text-xs w-full flex  items-center justify-center">
       <hr className='w-[45%] border-t-[0.01px] border-gray-300' />
-      <span className='w-2/5 text-center'>New to Linkpath</span> 
+      <span className='w-2/5 text-center'>New to Linkpath?</span> 
       <hr className="w-2/5 border-t-[0.01px] border-gray-300" />
     </span> 
      <Link className='w-full  flex my-2 ' to="/signup">

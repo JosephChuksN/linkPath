@@ -10,21 +10,25 @@ const Signup = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [confirmPass, setConFirmPass] = useState("")
-  const navigate = useNavigate()
-  const {user, registerUser, regError, setRegError, loading } = useAuth()
+  const { registerUser, regError, setRegError, loading, emailVerified } = useAuth()
  
   //creates a user account
   const handleSubmit =  (e) =>{
     e.preventDefault()
-    if(password !== confirmPass){return  setRegError('Password must match')}
+    try {
+      if(password !== confirmPass){return  setRegError('Password must match')}
 
-    registerUser(name, email, password)
+       registerUser(name, email, password)
+       setname("")
+       setEmail("")
+       setConFirmPass("")
+       setPassword("")
+    } catch (error) {
+      
+    }
     
   }
 
-  useEffect(()=>{
-  if(user){navigate('/dashboard')}
-   }, [user, navigate])
 
 return (
 <>
@@ -35,7 +39,8 @@ return (
     </div>
      
  <form action="" onSubmit={handleSubmit} className='p-3   border-gray-300 border-[0.5px] rounded-md  lg:w-[45%] mx-auto py-5'>
- <span className={`${regError === ""? "hidden": "block"} border border-red-600 bg-red-200 text-red-600 p-1 rounded-md`}>{regError}</span>
+ <span className={`${regError === ""? "hidden": "block"} text-center bg-red-600 text-white p-1 rounded-md`}>{regError}</span>
+ <span className={`${emailVerified === ""? "hidden": "block"}  bg-green-500 text-sm text-white px-1 text-center py-3 rounded-md`}>{emailVerified}</span>
     <div className=' flex flex-col gap-5 mt-3'>
     <span className='text-2xl font-semibold flex items-center justify-start text-cyan-600'>Create account</span>
    
