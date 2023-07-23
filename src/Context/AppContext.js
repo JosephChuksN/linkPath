@@ -19,6 +19,7 @@ export const AuthProvider = ({children}) =>{
   const [loginError, setLoginError] = useState('')
   const [updateError, setUpdateError] = useState('')
   const [emailVerified, setEmailVerified] = useState('')
+  const [emailVerifiedLogin, setEmailVerifiedLogin] = ('')
   const navigate = useNavigate()
   
 
@@ -100,6 +101,8 @@ const login = async (email, password) =>{
   const {data} =  await axios.post('https://linkpath-api.onrender.com/api/v1/auth/login', { email, password})
     
     const {user, token, bio} = data
+    const {msg} = data
+    setEmailVerifiedLogin(msg)
     addToLocalStorage({user, token, bio})
     navigate('/dashboard')
    setLoading(false)
