@@ -5,6 +5,8 @@ import HomePage from './Pages/HomePage';
 import Signup from './Pages/Signup';
 import Login from './Pages/Login';
 import ForgotPassword from './Pages/ForgotPassword';
+import PasswordReset from './Pages/PasswordReset';
+import VerificationSuccess from './Pages/VerificationSuccess';
 import Profile from './Pages/Profile';
 import Dashboard from './Pages/Dashboard';
 import LinkPage from './Components/Dashboard/LinkPage';
@@ -27,7 +29,9 @@ const App = () => {
       <Route exact path='signup' element={<Signup />} />
       <Route exact path='login' element={<Login />} />
       <Route exat path='forgotpassword' element={<ForgotPassword />} />
-      <Route exact path='/:name' element={<Profile />} />
+      <Route exact path='resetpassword' element={<PasswordReset />} />
+      <Route exact path='/verify/:id/user/:token' element={<VerificationSuccess />} />
+      <Route exact path='profile/:username' element={<Profile />} />
       <Route element={<PrivateRoutes />}>
       <Route exact path='preview' element={<Preview  />} />
       <Route exact path='dashboard' element={ <Dashboard   />}>
