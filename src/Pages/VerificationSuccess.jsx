@@ -7,7 +7,7 @@ import axios from 'axios'
 
 
 const VerificationSuccess = () => {
-      const [validLink, setValidLink] = useState(false)
+      const [validLink, setValidLink] = useState(null)
       const params = useParams()
 
 
@@ -20,16 +20,16 @@ const VerificationSuccess = () => {
            const {token} = data
            localStorage.setItem('token', token)
            setValidLink(true)
-           console.log(params.id)
         } catch (error) {
-            setValidLink(false)
+          if(error.response.data.msg === "invalid link")
+           return setValidLink(false)
           
         }
       }
       verify()
-      console.log(validLink)
+     
       
- }, [])
+ }, [params])
 
   return (
     <div className='flex flex-col gap-20  px-5 md:px-12 pt-14 h-screen lg:w-3/5 mx-auto '>
