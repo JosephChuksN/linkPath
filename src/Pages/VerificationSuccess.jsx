@@ -36,16 +36,7 @@ const VerificationSuccess = () => {
         <div  className='lg:w-[45%]  flex  items-center mx-auto justify-center w-full'>
           <span className='text-cyan-600 text-2xl lg:text-4xl  font-semibold'>Linkpath</span>
         </div>
-      {validLink?  (<div className='flex flex-col gap-5 lg:w-[45%] mx-auto'>
-            <span className='flex items-center gap-2 mx-auto'>
-               <span className='text-3xl lg:text-6xl text-cyan-600'> Welcome </span>
-                <span className='text-cyan-600 text-3xl lg:text-6xl'><FontAwesomeIcon icon={faCircleCheck} /></span>
-            </span>
-            <span className='text-black font-medium text-center text-lg'>Your account has been verified</span>
-            <Link to='/login'>
-            <button className='transition-all delay-75 duration-300 ease-in-out hover:bg-cyan-700 mx-auto w-44 lg:w-52 bg-cyan-600  py-3 px-1 rounded-lg text-white'>login</button>
-            </Link>
-        </div>) : (<div className='flex flex-col gap-5 lg:w-[45%] mx-auto'>
+      {!validLink && !null? (<div className='flex flex-col gap-5 lg:w-[45%] mx-auto'>
             <span className='flex flex-col  items-center gap-2 mx-auto'>
                <span className='text-3xl lg:text-5xl text-center text-cyan-600'>Sorry Verification failed </span>
                 <span className='text-red-600 text-3xl lg:text-6xl'><FontAwesomeIcon icon={faCircleInfo} /></span>
@@ -56,7 +47,16 @@ const VerificationSuccess = () => {
                 Back to login
             </button>
             </Link>
-        </div>)} 
+        </div>) : (<div className='flex flex-col gap-5 lg:w-[45%] mx-auto'>
+            <span className='flex items-center gap-2 mx-auto'>
+               <span className='text-3xl lg:text-6xl text-cyan-600'> Welcome </span>
+                <span className='text-cyan-600 text-3xl lg:text-6xl'><FontAwesomeIcon icon={faCircleCheck} /></span>
+            </span>
+            <span className='text-black font-medium text-center text-lg'>Your account has been verified</span>
+            <Link to='/login'>
+            <button className='transition-all delay-75 duration-300 ease-in-out hover:bg-cyan-700 mx-auto w-44 lg:w-52 bg-cyan-600  py-3 px-1 rounded-lg text-white'>login</button>
+            </Link>
+        </div>) } 
 
     </div>
   )
