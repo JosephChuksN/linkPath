@@ -109,6 +109,9 @@ const login = async (email, password) =>{
   } catch (error) {
     
     setLoading(false)
+    if(error.response.data.msg === `A verification link was sent to ${email}`){
+      return setEmailVerifiedLogin(error.response.data.msg)
+    }    
     setLoginError(error.response.data.msg)
   }
  
