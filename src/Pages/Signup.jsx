@@ -2,6 +2,7 @@ import React, {  useState} from 'react'
 import {  Link } from 'react-router-dom'
 import { useAuth } from '../Context/AppContext'
 import { Spinner } from 'flowbite-react'
+import Home1 from '../assets/Home1.svg'
 
 const Signup = () => {
   
@@ -38,7 +39,7 @@ return (
       <span className='text-cyan-600 text-2xl font-semibold'>Linkpath</span>
     </div>
      
- <form action="" onSubmit={handleSubmit} className='p-3   border-gray-300 border-[0.5px] rounded-md  lg:w-[45%] mx-auto py-5'>
+ <form action="" onSubmit={handleSubmit} className='p-3 bg-white  border-gray-300 border-[0.5px] rounded-md  lg:w-[45%] mx-auto py-5'>
  <span className={`${regError === ""? "hidden": "block"} text-center bg-red-600 text-white p-1 rounded-md`}>{regError}</span>
  <span className={`${emailVerified === ""? "hidden": "block"}  bg-green-500 text-sm text-white px-1 text-center py-3 rounded-md`}>{emailVerified}</span>
     <div className=' flex flex-col gap-5 mt-3'>
@@ -117,7 +118,7 @@ return (
     </div>
   
  </form>
- 
+ <span className='absolute -top-40 lg:bottom-0 -left-80  z-[-1]  '><img src={Home1} alt="deco" /></span>
   
     </div>
     <div className={`flex w-full h-screen top-0 z-20 bg-black/30 flex-wrap items-center  gap-2 justify-center absolute ${loading? "block" : "hidden"}`}>

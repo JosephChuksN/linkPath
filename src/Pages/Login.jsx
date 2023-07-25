@@ -2,6 +2,8 @@ import React, {useState,} from 'react'
 import { useAuth } from '../Context/AppContext';
 import {  Link } from 'react-router-dom';
 import {  Spinner } from 'flowbite-react/lib/esm/components';
+import Home2 from '../assets/Home2.svg'
+
 
 
 const Login = () => {
@@ -28,11 +30,11 @@ const handleLogin =  (e)=>{
 
   return (
     <>
-  <div className='px-5 md:px-12 pt-10 h-screen lg:w-3/5 mx-auto '>
+  <div className='px-5 md:px-12 pt-10 h-screen lg:w-3/5 mx-auto relative'>
     <div  className='lg:w-[45%] mx-auto py-5 flex justify-center items-center'>
       <span className='text-cyan-600 text-2xl font-semibold'>Linkpath</span>
     </div>
- <form action='' onSubmit={handleLogin} className='p-3   border-gray-300 border-[0.5px] rounded-md  lg:w-[45%] mx-auto py-5'>
+ <form action='' onSubmit={handleLogin} className='p-3 bg-white  border-gray-300 border-[0.5px] rounded-md  lg:w-[45%] mx-auto py-5'>
  <span className={`${loginError === ""? "hidden": "block"} text-white bg-red-600 px-1 py-3 text-center rounded-md`}>{loginError}</span>
  <span className={`${emailVerifiedLogin === ""? "hidden": "block"}  bg-green-500 text-sm text-white px-1 text-center py-3 rounded-md`}>{emailVerifiedLogin}</span>
     <div className=' flex flex-col gap-5'>
@@ -95,6 +97,8 @@ const handleLogin =  (e)=>{
      </div>
   
     </div>
+    <span className='absolute top-0 z-[-1] lg:-top-5 right-0 lg:-right-[19rem]'><img  src={Home2} alt="deco" /></span>
+    
  </div>
 
     <div className={`flex w-full h-screen top-0 z-20 bg-black/30 flex-wrap items-center gap-2 justify-center absolute ${loading? "block" : "hidden"}`}>
@@ -103,6 +107,7 @@ const handleLogin =  (e)=>{
     size="xl"
     color="success"
   />
+ 
 </div>
     </>
   )
