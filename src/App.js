@@ -21,7 +21,7 @@ import PrivateRoutes from './Routes/PrivateRoutes';
 const App = () => {
   
   return (
-  <div className='bg-gray-50 h-full'>
+  <div className=''>
       <AuthProvider>
     <Routes>
     
