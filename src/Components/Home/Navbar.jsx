@@ -41,7 +41,7 @@ const NavBar = () => {
 
   return (
     <>
- <div className= 'fixed top-0 z-40 bg-[#ffffff06] backdrop-blur-md  lg:static w-full bg-white flex lg:flex-row flex-col justify-between px-3 py-4 lg:px-28 lg:py-4 shadow-sm '>
+ <div className= 'fixed top-0 z-50 bg-[#ffffff06] backdrop-blur-md  lg:static w-full bg-white flex lg:flex-row flex-col justify-between px-3 py-4 lg:px-28 lg:py-4 shadow-sm '>
    <div className='lg:w-auto w-full flex justify-between'>
       <a href="/"><span className=' text-2xl flex items-center text-cyan-600 font-medium'>LINKPATH</span></a>
       <span onClick={handleShowNav} className="lg:hidden text-2xl"><FontAwesomeIcon icon={faBars} /></span>
@@ -52,7 +52,7 @@ const NavBar = () => {
      <a onClick={handleShowNav} href="#guide"><span  className='flex  items-center font-medium lg:px-2 py-1 text-lg cursor-pointer transition-all delay-75 duration-300 ease-in-out hover:text-cyan-600 hover:underline underline-offset-4 '>How It Works</span></a>
      <a onClick={handleShowNav} href="#contact"><span  className='flex  items-center font-medium lg:px-2 py-1  text-lg cursor-pointer transition-all delay-75 duration-300 ease-in-out hover:text-cyan-600 hover:underline underline-offset-4   '>Contact</span></a>
    </div>
-   <div className='flex lg:flex-row flex-col justify-start gap-5 w-32 lg:w-auto '>
+   <div className='flex lg:flex-row flex-col justify-start gap-5  z-20 w-32 lg:w-auto '>
    <Link to={user? "dashboard" : "login"}  onClick={handleShowNav} >
     <span className='flex bg-cyan-600 justify-center w-2/3 lg:w-auto items-center text-white rounded-lg px-2 py-1 text-sm shadow-md shadow-cyan-600 hover:bg-cyan-700 hover:scale-105  transition-all delay-75 duration-500 ease-in-out  ' >
       LOG IN
