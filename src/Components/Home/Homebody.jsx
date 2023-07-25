@@ -33,7 +33,7 @@ return (
   </div>
 </div>
 <div className='lg:w-1/2 w-full h-3/5 flex max-h-[80%] mx-auto '>
-  <img className='w-full h-full lg:w-[80%] flex justify-center mx-auto'
+  <img className='w-full h-full z-10 lg:w-[80%] flex justify-center mx-auto'
   src={linkpath} 
   alt="happy user"
   
