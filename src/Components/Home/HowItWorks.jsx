@@ -58,9 +58,9 @@ const HowItWorks = () => {
         </div>
         </div>
         <span className='absolute top-3 right-5'><img src={snapchat} alt="snapchat"/></span>
-        <span className='absolute  lg:left-28 left-4  top-32 lg:top-20'><img src={skype} alt="skype" /></span>
-        <span className='absolute left-16 bottom-16 lg:bottom-32'><img src={soundCloud} alt="soundcloud" /></span>
-        <span className='absolute top-5 lg:top-0 right-0'><img src={Home3} alt="deco" /></span>
+        <span className='absolute z-0 lg:left-28 left-4  top-32 lg:top-20'><img src={skype} alt="skype" /></span>
+        <span className='absolute z-0 left-16 bottom-16 lg:bottom-32'><img src={soundCloud} alt="soundcloud" /></span>
+        <span className='absolute z-0 top-5 lg:top-0 right-0'><img src={Home3} alt="deco" /></span>
     </div>
   )
 }

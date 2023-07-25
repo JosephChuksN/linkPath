@@ -16,8 +16,8 @@ const HomePage = () => {
    <HowItWorks />
    <AppFooter />
 
-   <span className='absolute -top-40 lg:top-0 right-0 '><img src={Home2} alt="deco" /></span>
-   <span className='absolute top-64 lg:top-44 left-0'><img src={Home1} alt="deco" /></span>
+   <span className='absolute -top-40 lg:top-0 right-0 z-0 '><img src={Home2} alt="deco" /></span>
+   <span className='absolute top-64 z-0 lg:top-44 left-0'><img src={Home1} alt="deco" /></span>
    
    </div>
    
