@@ -20,12 +20,12 @@ const HowItWorks = () => {
         </div>
 
         <div className='grid gird-rows-4 grid-flow-row lg:grid-cols-2 lg:justify-items-center lg:grid-flow-row lg:p-20 p-5 gap-24  w-full lg:w-3/5'>
-        <div className='flex flex-col p-2  lg:p-1 gap-3'>
+        <div className='flex flex-col p-2  lg:p-1 gap-3 '>
             <span className='flex gap-3 items-center'>
                 <span className='w-10 h-10 bg-cyan-600 rounded-full flex items-center justify-center'>
                     <img src={user} alt="user icon" />
                 </span>
-                <span className='text-2xl font-semibold'>Create Profile</span>
+                <span className='text-2xl font-semibold '>Create Profile</span>
             </span>
             <span className='text-lg leading-loose'>Sign up to linkpath with just few steps</span>
         </div>
