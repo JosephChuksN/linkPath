@@ -34,7 +34,7 @@ const handleLogin =  (e)=>{
     <div  className='lg:w-[45%] mx-auto py-5 flex justify-center items-center'>
       <span className='text-cyan-600 text-2xl font-semibold'>Linkpath</span>
     </div>
- <form action='' onSubmit={handleLogin} className='p-3 bg-white  border-gray-300 border-[0.5px] rounded-md  lg:w-[45%] mx-auto py-5'>
+ <form action='' onSubmit={handleLogin} className='p-3  bg-white  border-gray-300 border-[0.5px] rounded-md  lg:w-[45%] mx-auto py-5'>
  <span className={`${loginError === ""? "hidden": "block"} text-white bg-red-600 px-1 py-3 text-center rounded-md`}>{loginError}</span>
  <span className={`${emailVerifiedLogin === ""? "hidden": "block"}  bg-green-500 text-sm text-white px-1 text-center py-3 rounded-md`}>{emailVerifiedLogin}</span>
     <div className=' flex flex-col gap-5'>
