@@ -73,7 +73,7 @@ return (
     <div className='flex flex-col'>
 
         <label className='p-1 mb-1 font-medium' htmlFor="">Password</label>
-        <input className='rounded-md lowercase focus:outline-none focus:ring-1 focus:ring-cyan-600 focus:border-cyan-600 p-1 border-[0.5px] border-gray-400' 
+        <input className='rounded-md focus:outline-none focus:ring-1 focus:ring-cyan-600 focus:border-cyan-600 p-1 border-[0.5px] border-gray-400' 
         onChange={(e)=>{setPassword(e.target.value)}}
         type="password" 
         value={password} 
@@ -86,7 +86,7 @@ return (
     <div className='flex flex-col'>
 
         <label className='p-1 mb-1 font-medium' htmlFor="">Re-enter password</label>
-        <input className='rounded-md lowercase focus:outline-none focus:ring-1 focus:ring-cyan-600 focus:border-cyan-600 p-1 border-[0.5px] border-gray-400' 
+        <input className='rounded-md focus:outline-none focus:ring-1 focus:ring-cyan-600 focus:border-cyan-600 p-1 border-[0.5px] border-gray-400' 
         onChange={(e)=>{setConFirmPass(e.target.value)}}
         type="password" 
         value={confirmPass} 

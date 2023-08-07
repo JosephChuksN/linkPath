@@ -105,6 +105,7 @@ const login = async (email, password) =>{
     setEmailVerifiedLogin(msg)
     addToLocalStorage({user, token, bio})
     navigate('/dashboard')
+    setEmailVerifiedLogin("")
    setLoading(false)
   } catch (error) {
     
