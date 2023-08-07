@@ -16,7 +16,7 @@ const VerificationSuccess = () => {
     const verify = async () =>{
       
         try {
-           const {data} = await axios.get(`https://linkpath-api.onrender.com/api/v1/auth/verify/${params.id}/${params.token}`)
+           const {data} = await axios.get(`http://localhost:5000/api/v1/auth/verify/${params.id}/${params.token}`)
            const {token} = data
            localStorage.setItem('token', token)
         } catch (error) {

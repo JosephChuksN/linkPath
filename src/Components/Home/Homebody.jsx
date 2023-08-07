@@ -13,7 +13,7 @@ import Home1 from '../../assets/Home1.svg'
 
 const Homebody = () => {
 
-  const { user } = useAuth()
+  const { token } = useAuth()
 
 return (
 <div className='flex flex-col pb-16  lg:flex-row pt-10   px-3  lg:pt-0 lg:px-20  w-full mt-10'>
@@ -27,7 +27,7 @@ return (
     </span>
 
   <div className='py-3  space-y-2 w-40'>
-         <Link to={user? "dashboard" : "signup"} >
+         <Link to={token? "dashboard" : "signup"} >
          <button className='flex  gap-2 items-center  font-poppins bg-cyan-600 px-3 py-2 rounded-lg shadow-md shadow-cyan-600 text-white lg:text-lg hover:bg-cyan-700 transition-all delay-75  duration-500 ease-in-out hover:scale-105 '>
          Get Started 
          <img src={arrowRight} alt="arrow right" />
