@@ -3,12 +3,12 @@ import { getStorage } from "firebase/storage"
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCpAE-GOmoLyRh68WPuxpQ03pF4uYU1c8s",
-  authDomain: "linkpath-auth.firebaseapp.com",
-  projectId: "linkpath-auth",
-  storageBucket: "linkpath-auth.appspot.com",
-  messagingSenderId: "391443086152",
-  appId: "1:391443086152:web:aaeb7ae345e9efb8bd517d"
+  apiKey: process.env.REACT_APP_APIKEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID
 };
 
 

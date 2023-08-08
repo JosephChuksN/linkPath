@@ -22,7 +22,7 @@ const ForgotPassword = () => {
     const handleSendLink = async () => {
      setLoading(true)
      try {
-            const {data} = await axios.post(`https://linkpath-api.onrender.com/api/v1/auth/resetlink`, {email})
+            const {data} = await axios.post(`${process.env.REACT_APP_API_URL}api/v1/auth/resetlink`, {email})
 
             setLoading(false)
             setSuccess(data.msg)
@@ -45,7 +45,7 @@ const ForgotPassword = () => {
           Linkpath
         </span>
       </div>
-      <form action='' className='p-3   border-gray-300 border-[0.5px] rounded-md  lg:w-[45%] mx-auto py-5'>
+      <form onSubmit={()=>handleSendLink()} className='p-3   border-gray-300 border-[0.5px] rounded-md  lg:w-[45%] mx-auto py-5'>
          <span className={`${success === ""? "hidden": "block"} border bg-green-400 text-center text-white p-1 rounded-md`}>
           {success}
          </span>
@@ -77,7 +77,7 @@ const ForgotPassword = () => {
          <button className='transition-all delay-75 duration-300 ease-in-out hover:bg-cyan-700 bg-cyan-600 w-full p-1 rounded-md text-white my-2' 
           disabled={loading} 
           type="submit" 
-          onClick={()=>handleSendLink()}
+         
           > 
           Continue
           </button>

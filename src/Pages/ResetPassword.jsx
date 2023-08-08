@@ -23,7 +23,7 @@ const ResetPassword = () => {
       try {
         if(password !== confirmPassword) return setResetError("Password must match")
         setLoading(true)
-    const {data} =  await axios.post(`https://linkpath-api.onrender.com/api/v1/auth/reset/${params.id}/${params.token}`, {password})
+    const {data} =  await axios.post(`${process.env.REACT_APP_API_URL}api/v1/auth/reset/${params.id}/${params.token}`, {password})
       setLoading(false)
       setSuccess(data.msg)
       setPassword("")
@@ -46,7 +46,7 @@ const ResetPassword = () => {
         Linkpath
       </span>
  </div>
- <form action='' className='p-3   border-gray-300 border-[0.5px] rounded-md  lg:w-[45%] mx-auto py-5'>
+ <form onSubmit={()=>handleReset()} className='p-3   border-gray-300 border-[0.5px] rounded-md  lg:w-[45%] mx-auto py-5'>
       <span className={`${success === ""? "hidden": "block"} border bg-green-400 text-center text-white p-1 rounded-md`}>
           {success}
       </span>
@@ -83,7 +83,6 @@ const ResetPassword = () => {
       <div className='flex items-center'>
         <button className='transition-all delay-75 duration-300 ease-in-out hover:bg-cyan-700 bg-cyan-600 w-full p-1 rounded-md text-white my-2' disabled={loading} 
           type="submit"
-          onClick={()=>handleReset()} 
         > 
           Reset
         </button>
