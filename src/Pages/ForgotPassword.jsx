@@ -22,7 +22,7 @@ const ForgotPassword = () => {
     const handleSendLink = async () => {
      setLoading(true)
      try {
-            const {data} = await axios.post(`http://localhost:5000/api/v1/auth/resetlink`, {email})
+            const {data} = await axios.post(`https://linkpath-api.onrender.com/api/v1/auth/resetlink`, {email})
 
             setLoading(false)
             setSuccess(data.msg)

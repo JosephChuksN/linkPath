@@ -23,7 +23,7 @@ const ResetPassword = () => {
       try {
         if(password !== confirmPassword) return setResetError("Password must match")
         setLoading(true)
-    const {data} =  await axios.post(`http://localhost:5000/api/v1/auth/reset/${params.id}/${params.token}`, {password})
+    const {data} =  await axios.post(`https://linkpath-api.onrender.com/api/v1/auth/reset/${params.id}/${params.token}`, {password})
       setLoading(false)
       setSuccess(data.msg)
       setPassword("")

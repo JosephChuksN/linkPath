@@ -5,7 +5,6 @@ import HomePage from './Pages/HomePage';
 import Signup from './Pages/Signup';
 import Login from './Pages/Login';
 import ForgotPassword from './Pages/ForgotPassword';
-import PasswordReset from './Pages/PasswordReset';
 import ResetPassword from './Pages/ResetPassword';
 import VerificationSuccess from './Pages/VerificationSuccess';
 import FailedVerification from './Pages/FailedVerification';
