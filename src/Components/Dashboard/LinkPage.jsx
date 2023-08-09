@@ -45,6 +45,7 @@ const LinkPage = ({siteData, setSiteData}) => {
   const handleNavigate = () =>{ return navigate("/preview")}
 
 
+
   return (
 <div className='flex flex-col gap-10 px-2 md:px-0 items-center mt-3 lg:mt-0'>
  <form ref={formRef} action="" onSubmit={handleAddLink} className='md:w-3/4 w-full'>
@@ -72,26 +73,34 @@ const LinkPage = ({siteData, setSiteData}) => {
     </div>
  </form>
 
- <div className='flex flex-col items-center justify-center w-[100%]'>{
-  loading? 
-  <div className='flex w-full top-0 z-20  flex-wrap items-center gap-2 justify-center h-full '>
-    <span className='text-4xl text-cyan-600'><Spinner
-      aria-label="Extra large spinner example"
-      size="lg"
-      color="success"
-    /></span>
+ { links.length ===0? 
+  <div className='flex flex-col items-center justify-center w-[100%] h-52 animate-bounce'> 
+      <p className='text-xl text-cyan-600/40 font-semibold'>
+        Paste Your First Link
+      </p>
   </div>:
-    links.map((data)=>(
-     <LinkPageData 
-      key={data._id} 
-      siteInfo={data}
-      siteData={siteData}
-      setSiteData={setSiteData}  />
-     ))}
- </div>
+  <div className='flex flex-col items-center justify-center w-[100%]'>{
+    loading? 
+    <div className='flex w-full top-0 z-20  flex-wrap items-center gap-2 justify-center h-full '>
+      <span className='text-4xl text-cyan-600'><Spinner
+        aria-label="Extra large spinner example"
+        size="lg"
+        color="success"
+      />
+      </span>
+    </div>:
+      links.map((data)=>(
+       <LinkPageData 
+        key={data._id} 
+        siteInfo={data}
+        siteData={siteData}
+        setSiteData={setSiteData}  />
+       ))}
+   </div>
+ }
   <div className='flex w-full justify-center items-center'>
         
-  <span onClick={handleNavigate} className=' xl:hidden absolute rounded-full  bg-cyan-600 text-white p-2 flex gap-2 items-center text-xl '>
+  <span onClick={handleNavigate} className={`${links.length === 0 ? "hidden": ""} xl:hidden absolute rounded-full  bg-cyan-600 text-white p-2 flex gap-2 items-center text-xl`}>
     <span className='text-sm'>
      <FontAwesomeIcon icon={faEye} />
     </span>  

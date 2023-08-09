@@ -22,7 +22,7 @@ const navData = [
     <div className= 'sticky bg-white z-20 top-0'>
         <ul className='flex  px-3 gap-10 text-[1rem] font-normal text-gray-400 border-b'>{
         navData.map((data)=>(
-           <NavLink className={({isActive})=> isActive? isActiveLink : null} key={data.id} to={data.link} end><li className='py-3'>{data.name}</li></NavLink>
+           <NavLink className={({isActive})=> isActive? isActiveLink : null} key={data.id} to={data.link} end><li className='py-3 font-semibold'>{data.name}</li></NavLink>
         ))    
             }</ul>
     </div>
