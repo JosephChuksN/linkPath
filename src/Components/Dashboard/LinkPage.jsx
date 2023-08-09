@@ -63,7 +63,7 @@ const LinkPage = ({siteData, setSiteData}) => {
      required
      />
       </span>
-      <button  type='submit'  className={` bg-cyan-600 text-white p-3 rounded-r-xl md:rounded-md flex`}>
+      <button  type='submit'  className={`hover:bg-cyan-700 transition-all duration-150 delay-75 ease-in-out bg-cyan-600 text-white p-3 rounded-r-xl md:rounded-md flex`}>
        Add 
        <span className='hidden md:block ml-1'>
         New Link

@@ -71,7 +71,7 @@ useEffect(()=>{
     <div ref={logoutSecRef} className={`absolute h-56  right-5 top-16 z-30 lg:top-20 lg:right-10 p-3 ${logoutShow? "block" : "hidden"} bg-white shadow-md border transition-all ease-in-out delay-300 duration-500 rounded-md`}>
        <div className='flex  flex-col p-1 gap-5 h-full justify-evenly'>
         <span className='flex items-center flex-col gap-3 border-b p-1 pb-4'>
-        <span className='font-medium '>{`${user.name}`}</span>
+        <span className='font-medium text-lg '>{`${user.name}`}</span>
         <span className='text-slate-400 md:text-[0.8rem] text-[1rem] px-1'>{`${user.email}`}</span>
         </span>
         <div className='flex flex-col p-1 gap-2'>
