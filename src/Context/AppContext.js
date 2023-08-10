@@ -98,7 +98,7 @@ const login = async (email, password) =>{
   try {
     setLoginError('')
     setLoading(true)
-  const {data} =  await axios.post(`${process.env.REACT_APP_API_URL}/api/v1/auth/login`, { email, password})
+  const {data} =  await axios.post(`${process.env.REACT_APP_API_URL}api/v1/auth/login`, { email, password})
     
     const {user, token, bio} = data
     const {msg} = data
