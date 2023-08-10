@@ -48,7 +48,7 @@ const LinkInput = (
     <div key={id} className='flex items-center shadow-lg shadow-cyan-600/10 border w-full rounded-2xl md:w-[80%] p-3 md:p-5 gap-3 justify-between relative'>         
     <div className='flex md:gap-10 gap-2'>
          <span onClick={()=>{setShowAddImg(true)}} className='w-16 h-16 rounded bg-gray-200 flex items-center justify-center bg-no-repeat bg-cover' 
-         style={{backgroundImage: `url(${linkImg || previewImg})`}}
+         style={{backgroundImage: `url(${previewImg || linkImg })`}}
          >
          <span className='text-white/80 relative flex items-center'>
           <FontAwesomeIcon icon={faCamera} />
