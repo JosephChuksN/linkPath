@@ -1,8 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react'
 import AddLinkImg from './AddLinkImg'
 import { useAuth } from '../../Context/AppContext'
+import { storage } from '../../firebaseConfig'
+import {ref, uploadBytes, getDownloadURL} from 'firebase/storage'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPen, faTrash, faCamera, faL } from '@fortawesome/free-solid-svg-icons'
+import { faPen, faTrash, faCamera } from '@fortawesome/free-solid-svg-icons'
+import { v4 } from 'uuid'
+import loadingGif from '../../assets/loading.gif'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -10,7 +16,7 @@ import { faPen, faTrash, faCamera, faL } from '@fortawesome/free-solid-svg-icons
 const LinkPageData = ({siteInfo, siteData, setSiteData}) => {
 
 const id = siteInfo._id
-const {editLinks, deleteLink}= useAuth()
+const {editLinks, deleteLink, editThumbmail}= useAuth()
 const siteNameInputRef = useRef()
 const siteLinkInputRef = useRef()
 const imgInputRef = useRef()
@@ -20,17 +26,43 @@ const [siteLink, setSiteLink] = useState(siteInfo.siteLink)
 const [siteNameFocus,setSiteNameFocus] = useState(false)
 const [siteLinkFocus,setSiteLinkFocus] = useState(false)
 const siteImg   = `https://${new URL(siteLink).hostname}/favicon.ico`
+const [showAddImg, setShowAddImg] = useState(false)
+const [loading, setLoading] = useState(false)
 const [profileImg, setProfileImg] = useState(null)
 const [previewImg, setPreviewImg] = useState()
-const [showAddImg, setShowAddImg] = useState(false)
 
 
 
+
+const updateDone = ()=>{
+  toast.info("photo uploaded successfully",{
+   autoClose: 1000
+  })
+}
+
+//handles link thumbmail upload
+const handlePhotoUpload =  async() =>{
+  setLoading(true)
+  if(profileImg == null) return setLoading(false)
+
+  const fileName =  profileImg.name + v4()
+  const storageRef = ref(storage, `/images/${fileName}`)
+  await uploadBytes(storageRef, profileImg);
+  await getDownloadURL(ref(storage, `/images/${fileName}`)).then((url)=>{
+     editThumbmail(id, url)
+   })
+   setLoading(false)
+   updateDone()
+}  
+
+//handles image adding or edit
 const handleImgChange = (e)=>{
-
-  setProfileImg(e.target.files[0])
+  const image = e.target.files[0]
+  setProfileImg((imageFile)=> image)
   setPreviewImg(URL.createObjectURL(e.target.files[0]))
   setShowAddImg(!showAddImg)
+  handlePhotoUpload()
+  
 } 
 
 const handleDelete = ()=>(
@@ -46,6 +78,9 @@ const handleInputFileClick = () => {
   imgInputRef.current.click()
 
 }
+
+
+
 useEffect( ()=>{
    const editData =  ()=>{
     editLinks(id, siteLink, siteName)
@@ -58,16 +93,19 @@ useEffect( ()=>{
   return (
   <>
   <div className='flex items-center justify-center px-1 py-2 w-full  lg:w-3/4 relative'>
-  <div className='flex items-center shadow-lg shadow-cyan-600/10 border w-full rounded-2xl md:w-[80%] p-3 md:p-5 gap-3 justify-between relative'>         
+  <div key={id} className='flex items-center shadow-lg shadow-cyan-600/10 border w-full rounded-2xl md:w-[80%] p-3 md:p-5 gap-3 justify-between relative'>         
   <div className='flex md:gap-10 gap-2'>
        <span onClick={()=>{setShowAddImg(true)}} className='w-16 h-16 rounded bg-gray-200 flex items-center justify-center bg-no-repeat bg-cover' 
-       style={{backgroundImage: `url(${previewImg || profileImg})`}}
+       style={{backgroundImage: `url(${previewImg || siteInfo.linkImg})`}}
        >
-       <span className='text-white/80'>
+       <span className='text-white/80 relative flex items-center'>
         <FontAwesomeIcon icon={faCamera} />
+        <span className={`${!loading? "hidden" : ""} absolute w-full flex items-center `}>
+          <img className='w-4 h-4' src={loadingGif} alt="loading" />
+        </span>
        </span>
        </span>
-  <form className='flex flex-col gap-3'>
+  <form encType="multipart/form-data" className='flex flex-col gap-3'>
   <div className='flex gap-5 items-center relative'>
         <input 
               ref={imgInputRef} 
@@ -134,6 +172,7 @@ useEffect( ()=>{
   </div>
            
   </div>
+  <ToastContainer limit={2} />
 {
 showDelete ? 
   <div  

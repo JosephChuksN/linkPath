@@ -25,7 +25,7 @@ export const AuthProvider = ({children}) =>{
 
 
   const authFetch = axios.create({
-    baseURL: 'https://linkpath-api.onrender.com/api/v1',
+    baseURL: 'http://localhost:5000/api/v1',
   })
 
   // request
@@ -178,6 +178,15 @@ const editLinks = async (id, siteLink, siteName)=>{
 
 }
 
+//stores image url on database
+const editThumbmail = async (id, linkImg) => {
+
+  try {
+     await authFetch.patch(`/links/${id}`, {linkImg})
+  } catch (error) {
+    alert(error.response.data.msg)
+  }
+}
 
 const deleteLink = async (id)=>{
     setLoading(true)
@@ -209,6 +218,7 @@ const value ={
   CreateSitelink,
   getLinks,
   editLinks,
+  editThumbmail,
   deleteLink,
   setRegError,
   setLoginError,
