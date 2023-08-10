@@ -19,7 +19,8 @@ const ForgotPassword = () => {
        autoClose: 1000
       })
     }
-    const handleSendLink = async () => {
+    const handleSendLink = async (e) => {
+      e.preventDefault()
      setLoading(true)
      try {
             const {data} = await axios.post(`${process.env.REACT_APP_API_URL}api/v1/auth/resetlink`, {email})
@@ -45,7 +46,7 @@ const ForgotPassword = () => {
           Linkpath
         </span>
       </div>
-      <form onSubmit={()=>handleSendLink()} className='p-3   border-gray-300 border-[0.5px] rounded-md  lg:w-[45%] mx-auto py-5'>
+      <form onSubmit={handleSendLink} className='p-3   border-gray-300 border-[0.5px] rounded-md  lg:w-[45%] mx-auto py-5'>
          <span className={`${success === ""? "hidden": "block"} border bg-green-400 text-center text-white p-1 rounded-md`}>
           {success}
          </span>
@@ -74,10 +75,8 @@ const ForgotPassword = () => {
           />
       </div>
       <div className='flex items-center'>
-         <button className='transition-all delay-75 duration-300 ease-in-out hover:bg-cyan-700 bg-cyan-600 w-full p-1 rounded-md text-white my-2' 
-          disabled={loading} 
+         <button className='transition-all delay-75 duration-300 ease-in-out hover:bg-cyan-700 bg-cyan-600 w-full p-1 rounded-md text-white my-2' disabled={loading} 
           type="submit" 
-         
           > 
           Continue
           </button>

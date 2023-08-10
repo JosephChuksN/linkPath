@@ -19,7 +19,8 @@ const ResetPassword = () => {
      autoClose: 1000
     })
   }
-  const handleReset = async () => {
+  const handleReset = async (e) => {
+    e.preventDefault()
       try {
         if(password !== confirmPassword) return setResetError("Password must match")
         setLoading(true)
@@ -46,7 +47,7 @@ const ResetPassword = () => {
         Linkpath
       </span>
  </div>
- <form onSubmit={()=>handleReset()} className='p-3   border-gray-300 border-[0.5px] rounded-md  lg:w-[45%] mx-auto py-5'>
+ <form onSubmit={handleReset} className='p-3   border-gray-300 border-[0.5px] rounded-md  lg:w-[45%] mx-auto py-5'>
       <span className={`${success === ""? "hidden": "block"} border bg-green-400 text-center text-white p-1 rounded-md`}>
           {success}
       </span>
