@@ -18,8 +18,8 @@ const Homebody = () => {
 return (
 <div className='flex flex-col pb-16  lg:flex-row pt-10   px-3  lg:pt-0 lg:px-20  w-full mt-10'>
 
-<div className='lg:pt-52 md:py-16 lg:w-1/2 flex flex-col gap-5 '>
-    <span className='font-semibold font-poppins text-2xl md:text-6xl text-cyan-700 '>
+<div className='lg:pt-36 md:py-16 lg:w-1/2 flex flex-col gap-5 '>
+    <span className='font-semibold font-poppins text-2xl md:text-5xl text-cyan-700 '>
       ONE PAGE THAT LINKS TO EVERYTHING
     </span>
     <span className='text-xl text-black lg:w-4/5 font-medium font-poppins'>

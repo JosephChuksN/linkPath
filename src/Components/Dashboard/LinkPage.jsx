@@ -1,46 +1,36 @@
-import React, {useState, useRef, useEffect} from 'react'
+import React, {useState, useRef } from 'react'
 import { useNavigate } from 'react-router'
 import { useAuth } from '../../Context/AppContext'
 import LinkPageData from './LinkPageData'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLink, faEye } from '@fortawesome/free-solid-svg-icons'
 import { Spinner } from 'flowbite-react'
+import loadingGif from '../../assets/loading.gif'
 
 
 
-const LinkPage = ({siteData, setSiteData}) => {
+const LinkPage = () => {
 
   const { CreateSitelink, links, loading } = useAuth()
   const formRef = useRef()
   const [input, setInput] = useState("")
+  const [addLoading, setAddLoading] = useState(false)
   const navigate = useNavigate()
-  const [activeBtn, setActiveBtn] = useState(false)
+  
  
-
-  // useEffect(()=>{
-  //  const handleBtn = () =>{
-  //   if(input){
-  //     setActiveBtn(true)
-  //   }else{
-  //     setActiveBtn(false)
-  //   }
-  //  }
-  //  handleBtn()
-  // disabled={activeBtn}
-  // },[input])
 
 
 //adds new link
   const handleAddLink = async (e) => {
     e.preventDefault()
-   
+   setAddLoading(true)
    //extracts Url hostname
   var hostName = new URL(input).hostname.replace("www.", "")
   let siteName = hostName.substring(0, hostName.indexOf("."))
   let siteLink = input
-  CreateSitelink(siteLink, siteName)
+  await CreateSitelink(siteLink, siteName)
   setInput('')
-  
+  setAddLoading(false)
  }
   const handleNavigate = () =>{ return navigate("/preview")}
 
@@ -63,11 +53,14 @@ const LinkPage = ({siteData, setSiteData}) => {
      required
      />
       </span>
-      <button  type='submit'  className={`hover:bg-cyan-700 transition-all duration-150 delay-75 ease-in-out bg-cyan-600 text-white p-3 rounded-r-xl md:rounded-md flex`}>
+      <button  type='submit'  className={`hover:bg-cyan-700 relative transition-all duration-150 delay-75 ease-in-out bg-cyan-600 text-white p-3 rounded-r-xl md:rounded-md flex`}>
        Add 
        <span className='hidden md:block ml-1'>
         New Link
        </span>
+       <span className={`${!addLoading? "hidden" : ""} absolute w-1/2 justify-center flex items-center `}>
+        <img className='w-4 h-4' src={loadingGif} alt="loading" />
+      </span>
       </button>
       </div>
     </div>
@@ -93,8 +86,7 @@ const LinkPage = ({siteData, setSiteData}) => {
        <LinkPageData 
         key={data._id} 
         siteInfo={data}
-        siteData={siteData}
-        setSiteData={setSiteData}  />
+        />
        ))}
    </div>
  }
