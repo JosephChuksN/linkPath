@@ -1,11 +1,11 @@
 import React, {useState, useRef } from 'react'
 import { useNavigate } from 'react-router'
-import { useAuth } from '../../Context/AppContext'
+import { useAuth } from '../../../Context/AppContext'
 import LinkPageData from './LinkPageData'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLink, faEye } from '@fortawesome/free-solid-svg-icons'
 import { Spinner } from 'flowbite-react'
-import loadingGif from '../../assets/loading.gif'
+import loadingGif from '../../../assets/loading.gif'
 
 
 

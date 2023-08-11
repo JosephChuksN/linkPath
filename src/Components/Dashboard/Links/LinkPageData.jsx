@@ -1,9 +1,9 @@
 import React, { useState,  useRef } from 'react'
-import { useAuth } from '../../Context/AppContext'
+import { useAuth } from '../../../Context/AppContext'
 import LinkInput from './LinkInput'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
-import { storage } from '../../firebaseConfig'
+import { storage } from '../../../firebaseConfig'
 import {ref, uploadBytes, getDownloadURL} from 'firebase/storage'
 import { v4 } from 'uuid'
 import { ToastContainer, toast } from 'react-toastify';
