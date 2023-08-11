@@ -5,7 +5,7 @@ import Header from '../Components/Dashboard/Header'
 import DashboardNav from '../Components/Dashboard/Navbar'
 
 
-const Dashboard = ({avater, siteData}) => {
+const Dashboard = () => {
      
 const { user, links, getLinks, description } = useAuth()
 const prflName = user.name
@@ -22,8 +22,8 @@ navigate('links')
 
   return (
     <div className='lg:flex lg:mx-6  bg-white'>
-    <div className='flex flex-col  h-full min-h-screen w-full border-r xl:w-3/4 relative'>
-      <Header avater={avater} />
+    <div className='flex flex-col  h-full min-h-screen w-full border-x xl:w-3/4 relative'>
+      <Header  />
       <DashboardNav />
       <Outlet />
     </div>

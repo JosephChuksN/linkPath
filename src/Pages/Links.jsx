@@ -1,6 +1,6 @@
 import React from 'react'
 import { Outlet } from 'react-router'
-import Subnavigation from '../Components/Dashboard/Subnavigation'
+import Subnavigation from '../Components/Dashboard/Links/Subnavigation'
 
 const Links = () => {
   return (

@@ -1,9 +1,9 @@
 import React, {useState, useRef, useEffect} from 'react'
 import AddLinkImg from './AddLinkImg'
-import { useAuth } from '../../Context/AppContext'
+import { useAuth } from '../../../Context/AppContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPen, faTrash, faCamera } from '@fortawesome/free-solid-svg-icons'
-import loadingGif from '../../assets/loading.gif'
+import loadingGif from '../../../assets/loading.gif'
 
 
 const LinkInput = (
@@ -31,7 +31,7 @@ const LinkInput = (
     const {editLinks}= useAuth()
 
 
-
+     //triggers image file input
     const handleInputFileClick = () => {
         imgInputRef.current.click()
       
@@ -50,7 +50,7 @@ const LinkInput = (
          <span onClick={()=>{setShowAddImg(true)}} className='w-16 h-16 rounded bg-gray-200 flex items-center justify-center bg-no-repeat bg-cover' 
          style={{backgroundImage: `url(${previewImg || linkImg })`}}
          >
-         <span className='text-white/80 relative flex items-center'>
+         <span className='text-black/60 relative flex items-center'>
           <FontAwesomeIcon icon={faCamera} />
           <span className={`${!loading? "hidden" : ""} absolute w-full flex items-center `}>
             <img className='w-4 h-4' src={loadingGif} alt="loading" />
