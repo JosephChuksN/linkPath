@@ -45,8 +45,13 @@ navigate('links')
           links.map(data =>(
            <div className='flex  items-center py-4 bg-white justify-between px-1 border-b' key={data._id}>
              <div className='flex gap-3 items-center'>
-              <span className='w-8 h-8 rounded bg-no-repeat bg-cover' style={{backgroundImage: `url(https://${new URL(data.siteLink).hostname}/favicon.ico)`}}></span>
-              <span className='font-medium capitalize'><a href={data.siteLink} target="blank">{data.siteName.replace(".com", " ")}</a></span>
+             <span className='w-10 h-10 rounded bg-no-repeat bg-cover' style={{backgroundImage: `url(${data.linkImg})`}}></span>
+             <span className='font-medium capitalize flex items-center gap-1'>
+             <span className='w-3 h-3 rounded-full bg-no-repeat bg-cover' 
+              style={{backgroundImage: `url(https://${new URL(data.siteLink).hostname}/favicon.ico)`}}>
+             </span>
+             <a href={data.siteLink} target="blank">{data.siteName}</a>
+             </span>
              </div>
             <span className='px-1 bg-gray-300/40 rounded'><a href={data.siteLink} target="blank">Visit</a></span>
            </div>
