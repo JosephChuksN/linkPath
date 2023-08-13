@@ -1,5 +1,7 @@
 import  { useRef } from 'react'
 import loadingGif from '../../../assets/loading.gif'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLock } from '@fortawesome/free-solid-svg-icons'
 
 const EditProfile = ({
     profileImg, 
@@ -7,7 +9,7 @@ const EditProfile = ({
     firsChar, 
     handleImgChange,
     username,
-    setusername,
+    setUsername,
     bio,
     setBio,
     handleShowModal,
@@ -55,24 +57,28 @@ const EditProfile = ({
               name="profileImg"
               onChange={handleImgChange} 
               />
-          <div className='flex flex-col'>
+          <div className='flex flex-col relative'>
               <label className='mb-1 font-medium' htmlFor="">Username</label>
               <input 
-              className='w-full lowercase   outline-none  focus:ring-0 rounded-l-md md:rounded-md '
+              className='w-full lowercase   outline-none  focus:ring-0 rounded-md bg-slate-100'
               type="text"
               value={username}
               name="name"
-              onChange={(e)=>{setusername(e.target.value)}}
+              onChange={(e)=>{setUsername(e.target.value)}}
+              readOnly={true}
               />
+              <span className='absolute top-10 right-3 text-sm'>
+                <FontAwesomeIcon icon={faLock} />
+              </span>
           </div> 
           <div className='flex flex-col'>
               <label className='mb-1 font-medium' htmlFor="">Display Name</label>
               <input 
-              className='w-full lowercase   outline-none  focus:ring-0 rounded-l-md md:rounded-md '
+              className='w-full lowercase   outline-none  focus:ring-0  rounded-md '
               type="text"
               value={username}
               name="name"
-              onChange={(e)=>{setusername(e.target.value)}}
+              onChange={(e)=>{setUsername(e.target.value)}}
               />
               <p className='text-xs text-slate-500'>This could be your first name, or a nickname — however you’d like people to refer to you on LinkPath and if available will be displayed in place of your username.</p>
           </div> 
@@ -89,7 +95,7 @@ const EditProfile = ({
           <div className='flex flex-col'>
               <label className='mb-1 font-medium' htmlFor="">Bio</label>
              <input 
-             className='w-full   outline-none  focus:ring-0 rounded-l-xl md:rounded-md'
+             className='w-full   outline-none  focus:ring-0 rounded-md'
              placeholder='Description'
              type='text'
              value={bio}
@@ -102,8 +108,7 @@ const EditProfile = ({
            
 
         <div className='flex items-center gap-3 justify-end px-3  w-full'>
-          <button 
-           onClick={handleShowModal} 
+          <button  
            className='py-1 px-2 rounded bg-slate-300 font-medium text-white'>
             Cancel
            </button>
