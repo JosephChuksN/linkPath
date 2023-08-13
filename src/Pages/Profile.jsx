@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useAuth } from '../Context/AppContext';
 import axios from 'axios'
 import {  Spinner } from 'flowbite-react/lib/esm/components';
@@ -12,6 +12,7 @@ const Profile = ({avater}) => {
     const [links, setLinks] = useState([])
     const [error, setError] = useState('')
     const { loading, setLoading } = useAuth()
+    const navigate = useNavigate()
     
 
    
@@ -29,9 +30,10 @@ const Profile = ({avater}) => {
         setLinks(link)
         setLoading(false)
         } catch (error) {
+          
           setLoading(false)
           setError(error.response.data.msg)
-      
+         navigate("*")
         }
       }
       getLinks()
@@ -46,7 +48,7 @@ const Profile = ({avater}) => {
            <span className={`${!user.profileImg &&  !error ? "bg-white" : "bg-black/40"} w-full h-full flex items-center justify-center  py-1 `}><span className='w-[85%] h-full bg-no-repeat bg-cover border border-transparent flex items-center justify-center capitalize font-bold text-6xl ' style={{backgroundImage: `url(${user.profileImg})`}}>{!user.profileImg &&  !error ? user?.name?.charAt(0) : null}</span></span>
     </div>
        <span className='flex flex-col   py-3 w-full text-center bg-cyan-600'> 
-        <span className='text-xl font-medium  text-white capitalize'>{user.name || error}</span>
+        <span className='text-xl font-medium  text-white capitalize'>{user.name}</span>
         <span className='text-[15px] text-gray-100 whitespace-pre-wrap '>{user.bio}</span>
        </span>
 

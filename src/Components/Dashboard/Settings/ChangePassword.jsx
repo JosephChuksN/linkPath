@@ -25,7 +25,7 @@ const ChangePassword = ({
             <div className='flex flex-col'>
             <label  className='mb-1 font-medium' htmlFor="">Current Password</label>
              <input 
-             className='w-full outline-none focus:ring-0 rounded-l-xl md:rounded-md'
+             className='w-full outline-none focus:ring-0 rounded-md'
              type="text" 
              value={currentPassword}
              onChange={(e)=>{setCurrentPassword(e.target.value)}}
@@ -34,7 +34,7 @@ const ChangePassword = ({
              <div className='flex flex-col'>
             <label  className='mb-1 font-medium' htmlFor="">New Password</label>
              <input 
-             className='w-full outline-none focus:ring-0 rounded-l-xl md:rounded-md'
+             className='w-full outline-none focus:ring-0 rounded-md'
              type="text" 
              value={newPassoword}
              onChange={(e)=>{setNewPassword(e.target.value)}}
@@ -43,7 +43,7 @@ const ChangePassword = ({
              <div className='flex flex-col'>
             <label  className='mb-1 font-medium' htmlFor="">Re-enter New Password</label>
              <input 
-             className='w-full outline-none focus:ring-0 rounded-l-xl md:rounded-md'
+             className='w-full outline-none focus:ring-0 rounded-md'
              type="text" 
              value={confirmNewPassword}
              onChange={(e)=>{setConfirmNewPassword(e.target.value)}}

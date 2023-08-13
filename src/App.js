@@ -33,6 +33,7 @@ const App = () => {
       <Route exact path='resetpassword/:id/:token' element={<ResetPassword />} />
       <Route exact path='verify/:id/user/:token' element={<VerificationSuccess />} />
       <Route exact path='verify/invalid/:id/user/:token' element={<FailedVerification />} />
+      <Route exact path='*' element={<FailedVerification />} />
       <Route exact path='/:username' element={<Profile />} />
       <Route element={<PrivateRoutes />}>
       <Route exact path='preview' element={<Preview  />} />
