@@ -10,7 +10,7 @@ const ChangePassword = () => {
   const [currentPassword, setCurrentPassword] = useState("")
   const [newPassword, setNewPassword] = useState("")
   const [confirmNewPassword, setConfirmNewPassword] = useState("")
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
   const { changePass } = useAuth()
 
 
@@ -94,9 +94,9 @@ useEffect(()=>{
               Reset
             </button>
         </div>
-        {loading? <div className={` flex w-full h-full  top-0 z-20 flex-wrap items-center gap-2 justify-center absolute`}>
+        {loading? <div className={` flex w-full h-full bg-cyan-600/10  top-0 z-20 flex-wrap items-center gap-2 justify-center absolute`}>
         <span className='w-3/5 md:w-2/5 lg:w-3/5 flex flex-col justify-center items-center md:p-5 p-8'>
-            <img className='lg:w-10 lg:h-10 w-6 h-6' src={loadingGif} alt="loading" />
+            <img className=' w-6 h-6' src={loadingGif} alt="loading" />
         </span>
      </div>: null} 
         
