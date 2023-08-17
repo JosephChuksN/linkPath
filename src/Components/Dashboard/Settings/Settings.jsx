@@ -1,14 +1,13 @@
-import React, {useRef, useState,} from 'react'
+import React, {useState,} from 'react'
 import ChangePassword from './ChangePassword';
 import EditProfile from './EditProfile';
 import { useAuth } from '../../../Context/AppContext';
 import { storage } from '../../../firebaseConfig'
 import {ref, uploadBytes, getDownloadURL} from 'firebase/storage'
-import {  Spinner } from 'flowbite-react/lib/esm/components';
 import { ToastContainer, toast } from 'react-toastify';
 import { v4 } from 'uuid'
 import 'react-toastify/dist/ReactToastify.css';
-import { faL } from '@fortawesome/free-solid-svg-icons';
+
 
 
 
@@ -20,16 +19,13 @@ import { faL } from '@fortawesome/free-solid-svg-icons';
 
 const Settings = () => {
 
-  const { user, description, updateUser, updateError } = useAuth()
+  const { user, description, updateUser, updateError} = useAuth()
   const [username, setUsername] = useState(user.name)
   const email = useState(user.email)
   const [bio, setBio] = useState(description)
   const [showModal, setShowModal] = useState(false)
   const [profileImg, setProfileImg] = useState(null)
   const [previewImg, setPreviewImg] = useState()
-  const [currentPassword, setCurrentPassword] = useState("")
-  const [newPassword, setNewPassword] = useState("")
-  const [confirmNewPassword, setConfirmNewPassword] = useState("")
   const [loading, setLoading] = useState(false)
   
   
@@ -37,7 +33,7 @@ const Settings = () => {
 //Fn handles photo upload and user update
 const handlePhotoUpload =  async() =>{
   setLoading(true)
-  if(profileImg == null) return updateUser(username, email, bio, profileImg) //this handles update if no photo to upload
+  if(profileImg == null) return  //this returns if no photo to upload
   
   const fileName =  profileImg.name + v4()
   const storageRef = ref(storage, `/images/${fileName}`)
@@ -52,6 +48,7 @@ const handlePhotoUpload =  async() =>{
    e.preventDefault()
    setShowModal(!showModal)
 }
+
 
 const handleImgChange = (e)=>{
 
@@ -103,15 +100,7 @@ return (
 
     />
     <ToastContainer limit={2} />
-    <ChangePassword 
-    currentPassword={currentPassword}
-    setCurrentPassword={setCurrentPassword}
-    newPassword={newPassword}
-    setNewPassword={setNewPassword}
-    confirmNewPassword={confirmNewPassword}
-    setConfirmNewPassword={setConfirmNewPassword}
-    
-    />
+    <ChangePassword />
     </div>
   )
 }
