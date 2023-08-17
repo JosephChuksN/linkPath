@@ -58,7 +58,7 @@ useEffect(()=>{
             <label  className='mb-1 font-medium' htmlFor="">Current Password</label>
              <input 
              className='w-full outline-none focus:ring-0 rounded-md'
-             type="text" 
+             type="password" 
              value={currentPassword}
              onChange={(e)=>{setCurrentPassword(e.target.value)}}
              />
@@ -67,7 +67,7 @@ useEffect(()=>{
             <label  className='mb-1 font-medium' htmlFor="">New Password</label>
              <input 
              className='w-full outline-none focus:ring-0 rounded-md'
-             type="text" 
+             type="password" 
              value={newPassword}
              onChange={(e)=>{setNewPassword(e.target.value)}}
              />
@@ -76,7 +76,7 @@ useEffect(()=>{
             <label  className='mb-1 font-medium' htmlFor="">Re-enter New Password</label>
              <input 
              className='w-full outline-none focus:ring-0 rounded-md'
-             type="text" 
+             type="password" 
              value={confirmNewPassword}
              onChange={(e)=>{setConfirmNewPassword(e.target.value)}}
              />
