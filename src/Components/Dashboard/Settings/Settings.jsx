@@ -2,10 +2,7 @@ import React, {useState,} from 'react'
 import ChangePassword from './ChangePassword';
 import EditProfile from './EditProfile';
 import { useAuth } from '../../../Context/AppContext';
-import { storage } from '../../../firebaseConfig'
-import {ref, uploadBytes, getDownloadURL} from 'firebase/storage'
 import { ToastContainer, toast } from 'react-toastify';
-import { v4 } from 'uuid'
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -19,29 +16,13 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Settings = () => {
 
-  const { user, description, updateUser, updateError} = useAuth()
-  const [username, setUsername] = useState(user.name)
-  const email = useState(user.email)
-  const [bio, setBio] = useState(description)
+  const {  updateError} = useAuth()
   const [showModal, setShowModal] = useState(false)
-  const [profileImg, setProfileImg] = useState(null)
-  const [previewImg, setPreviewImg] = useState()
   const [loading, setLoading] = useState(false)
   
   
   
-//Fn handles photo upload and user update
-const handlePhotoUpload =  async() =>{
-  setLoading(true)
-  if(profileImg == null) return  //this returns if no photo to upload
-  
-  const fileName =  profileImg.name + v4()
-  const storageRef = ref(storage, `/images/${fileName}`)
-  await uploadBytes(storageRef, profileImg);
-  await getDownloadURL(ref(storage, `/images/${fileName}`)).then((url)=>{
-     updateUser(username, email, bio, url)
-   })
-}  
+ 
   
 
   const handleShowModal = (e)=>{ 
@@ -50,12 +31,7 @@ const handlePhotoUpload =  async() =>{
 }
 
 
-const handleImgChange = (e)=>{
 
-  setProfileImg(e.target.files[0])
-  setPreviewImg(URL.createObjectURL(e.target.files[0]))
-
-} 
 
 
  const updateDone = ()=>{
@@ -71,12 +47,12 @@ const updateErr = ()=>{
   
 
   const handleUserUpdate = async () =>{
-
+ setLoading(true)
   setShowModal(!showModal)
-  await handlePhotoUpload()
   console.log(updateError)
   if(updateError) return updateErr() 
   updateDone()
+setLoading(false)
 
   } 
 
@@ -85,15 +61,7 @@ return (
 <div className='flex lg:flex-row flex-col  w-full px-3 md:px-0 py-5 md:pt-10 md:w-3/4 lg:w-full  gap-3 lg:px-5 '>
 
     <EditProfile 
-     profileImg={user.profileImg}
-     previewImg={previewImg}
-     firsChar={user.name.charAt(0)}
-     handleImgChange={handleImgChange}
-     bio={bio}
      handleShowModal={handleShowModal}
-     username={username}
-     setUsername={setUsername}
-     setBio={setBio}
      showModal={showModal}
      handleUserUpdate={handleUserUpdate}
      loading={loading}

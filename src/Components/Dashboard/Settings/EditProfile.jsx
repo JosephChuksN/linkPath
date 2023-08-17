@@ -1,17 +1,15 @@
-import  { useRef } from 'react'
+import  {  useRef, useState } from 'react'
+import { useAuth } from '../../../Context/AppContext'
+import { storage } from '../../../firebaseConfig'
+import {ref, uploadBytes, getDownloadURL} from 'firebase/storage'
+import {  toast } from 'react-toastify';
+import { v4 } from 'uuid'
+import 'react-toastify/dist/ReactToastify.css';
 import loadingGif from '../../../assets/loading.gif'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLock } from '@fortawesome/free-solid-svg-icons'
 
 const EditProfile = ({
-    profileImg, 
-    previewImg,  
-    firsChar, 
-    handleImgChange,
-    username,
-    setUsername,
-    bio,
-    setBio,
     handleShowModal,
     showModal,
     handleUserUpdate,
@@ -19,34 +17,91 @@ const EditProfile = ({
 }) => {
 
     const fileInputRef = useRef()
+    const { user, updateUserPhoto } = useAuth()
+    const [username, setUsername] = useState(user.name)
+    // const email = useState(user.email)
+    const [bio, setBio] = useState(user.bio)
+    const [profileImg, setProfileImg] = useState(null)
+    const [previewImg, setPreviewImg] = useState()
+    const [laodingPhoto, setLoadingPhoto] = useState(false)
+    
+    //Fn handles photo upload and user update
+const handlePhotoUpload =  async() =>{
+  if(profileImg == null) return  //this returns if no photo to upload
+  
+  const fileName =  profileImg.name + v4()
+  const storageRef = ref(storage, `/images/${fileName}`)
+  await uploadBytes(storageRef, profileImg);
+  await getDownloadURL(ref(storage, `/images/${fileName}`)).then((url)=>{
+     updateUserPhoto(url)
+   })
+} 
+
+const handleImgChange = (e)=>{
+
+  setProfileImg(e.target.files[0])
+  setPreviewImg(URL.createObjectURL(e.target.files[0]))
+
+  console.log(profileImg)
+
+} 
+
+const uploadDone = ()=>{
+  toast.success('Photo upload success',{
+   autoClose: 1000
+  })
+}
+const uploadPhoto = async () =>{
+   if(profileImg === null){
+    fileInputRef.current.click()
+   } else{
+    setLoadingPhoto(true)
+   await  handlePhotoUpload()
+   setLoadingPhoto(false)
+   uploadDone()
+   setProfileImg(null)
+   }
+}
+
+const handleImgCancel = ()=>{
+
+  setProfileImg(null)
+  setPreviewImg()
+
+} 
+
 
 
   return (
     <div  className='flex flex-col pb-5 w-full  lg:w-[55%]  items-center gap-3 border rounded-lg relative'>
       <span className='w-full text-cyan-600 font-semibold text-xl px-3 pt-3 '>Edit Your Profile</span>
       <div  className='flex lg:flex-row flex-col items-start   gap-4 p-3 w-full'>
-         <div className='flex flex-col items-center  w-full lg:w-2/5'>
+         <div className='flex flex-col items-center  w-full lg:w-2/5 relative'>
               <span className='w-full items-center text-center font-medium mb-1'>Profile Photo</span>
-              <span  className={`${!profileImg || !previewImg ? "bg-cyan-600/20" : null} w-28  h-28 lg:w-full lg:h-44  rounded-md flex items-center bg-no-repeat text-white cursor-pointer  bg-cover capitalize justify-center font-bold text-5xl`}
-              style={{backgroundImage: `url(${previewImg || profileImg})`}}>
-                {!profileImg && !previewImg ? firsChar : null}
+              <span  className={`${!user.profileImg || !previewImg ? "bg-cyan-600/20" : null} w-28  h-28 lg:w-full lg:h-44  rounded-md flex items-center bg-no-repeat text-white cursor-pointer  bg-cover capitalize justify-center font-bold text-5xl`}
+              style={{backgroundImage: `url(${previewImg || user.profileImg})`}}>
+                {!user.profileImg && !previewImg ? user.name.charAt(0) : null}
               </span>
              <div className='flex flex-col mt-3 gap-1 w-2/5 lg:w-full '>
              <button 
               className='transition-all duration-100 delay-75 ease-in-out hover:bg-slate-100 cursor-pointer py-1 border rounded-md font-semibold '
-              onClick={()=>{fileInputRef.current.click()}} 
+              onClick={uploadPhoto} 
               type='button'
               >
-                Upload Photo
+                {profileImg === null? (<span>Upload Photo</span>):( <span>Save Photo</span>)}
               </button>
               <button 
               className='transition-all duration-100 delay-75 ease-in-out hover:underline text-cyan-600 cursor-pointer py-1 ' 
               type='button'
               >
-                Remove Photo
+                {!profileImg? (<span>Remove Photo</span>):( <span onClick={handleImgCancel}>Cancel</span>)}
               </button>
              </div>
-              
+             {laodingPhoto? <div className='flex w-full h-full top-0 z-20 flex-wrap items-center gap-2 justify-center absolute'>
+        <span className='w-3/5 md:w-2/5 lg:w-3/5 flex flex-col justify-center items-center md:p-5 p-8'>
+            <img className='lg:w-10 lg:h-10 w-6 h-6' src={loadingGif} alt="loading" />
+        </span>
+     </div>: null}
          </div>
           <div className='lg:w-3/5 flex flex-col gap-3'>
           <input 
