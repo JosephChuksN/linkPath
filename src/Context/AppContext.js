@@ -121,11 +121,11 @@ const login = async (email, password) =>{
 }
 
 //update user
-const updateUser = async(name, email, desc, profileImg) =>{
+const updateUser = async(displayName, desc) =>{
 
   try {
     
-    const {data} = await authFetch.patch('/auth/updateuser', {name, email, bio:desc, profileImg})
+    const {data} = await authFetch.patch('/auth/updateuser', {displayName, bio:desc})
     
     const {user, token, bio} = data
     console.log(bio)
@@ -136,6 +136,31 @@ const updateUser = async(name, email, desc, profileImg) =>{
     setUpdateError(error.response.data.msg)
   }
   
+}
+const updateUserPhoto = async(profileImg) =>{
+
+  try {
+    
+    const {data} = await authFetch.patch('/auth/addphoto', {profileImg})
+    
+    const {user, token} = data
+
+   addToLocalStorage({user, token})
+   setLoading(false)
+  } catch (error) {
+    setLoading(false)
+    setUpdateError(error.response.data.msg)
+  }
+  
+}
+
+const changePass = async (currentPassword, newPassword) =>{
+
+  try {
+    await authFetch.patch('/auth/changepassword', {currentPassword, newPassword})
+   } catch (error) {
+    console.log(error.response.data.msg)
+   }
 }
 
 //logging out
@@ -169,7 +194,6 @@ const editLinks = async (id, siteLink, siteName)=>{
    
   try {
    await authFetch.patch(`/links/${id}`, {siteLink, siteName})
-   console.log('patch')
    await  getLinks()
   } catch (error) {
     console.log(error)
@@ -214,6 +238,8 @@ const value ={
   registerUser,
   login,
   updateUser,
+  updateUserPhoto,
+  changePass,
   logout,
   CreateSitelink,
   getLinks,
