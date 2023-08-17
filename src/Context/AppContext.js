@@ -143,9 +143,9 @@ const updateUserPhoto = async(profileImg) =>{
     
     const {data} = await authFetch.patch('/auth/addphoto', {profileImg})
     
-    const {user, token} = data
+    const {user, token, bio} = data
 
-   addToLocalStorage({user, token})
+   addToLocalStorage({user, token, bio})
    setLoading(false)
   } catch (error) {
     setLoading(false)

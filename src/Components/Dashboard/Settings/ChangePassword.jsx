@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useAuth } from '../../../Context/AppContext';
 import loadingGif from '../../../assets/loading.gif'
@@ -99,7 +99,7 @@ useEffect(()=>{
             <img className='lg:w-10 lg:h-10 w-6 h-6' src={loadingGif} alt="loading" />
         </span>
      </div>: null} 
-        <ToastContainer limit={2} />
+        
    </div>
    
   )
