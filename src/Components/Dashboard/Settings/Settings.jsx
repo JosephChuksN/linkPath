@@ -16,7 +16,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Settings = () => {
 
-  const {  updateError} = useAuth()
+  const { updateError } = useAuth();
   const [showModal, setShowModal] = useState(false)
   const [loading, setLoading] = useState(false)
   
@@ -25,8 +25,7 @@ const Settings = () => {
  
   
 
-  const handleShowModal = (e)=>{ 
-   e.preventDefault()
+  const handleShowModal = ()=>{ 
    setShowModal(!showModal)
 }
 
@@ -46,15 +45,6 @@ const updateErr = ()=>{
 }
   
 
-  const handleUserUpdate = async () =>{
- setLoading(true)
-  setShowModal(!showModal)
-  console.log(updateError)
-  if(updateError) return updateErr() 
-  updateDone()
-setLoading(false)
-
-  } 
 
 
 return (
@@ -63,8 +53,10 @@ return (
     <EditProfile 
      handleShowModal={handleShowModal}
      showModal={showModal}
-     handleUserUpdate={handleUserUpdate}
      loading={loading}
+     updateDone={updateDone}
+     updateErr={updateErr}
+     setLoading={setLoading}
 
     />
     <ToastContainer limit={2} />
