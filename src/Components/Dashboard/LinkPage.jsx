@@ -14,20 +14,8 @@ const LinkPage = ({siteData, setSiteData}) => {
   const formRef = useRef()
   const [input, setInput] = useState("")
   const navigate = useNavigate()
-  const [activeBtn, setActiveBtn] = useState(false)
+  
  
-
-  // useEffect(()=>{
-  //  const handleBtn = () =>{
-  //   if(input){
-  //     setActiveBtn(true)
-  //   }else{
-  //     setActiveBtn(false)
-  //   }
-  //  }
-  //  handleBtn()
-  // disabled={activeBtn}
-  // },[input])
 
 
 //adds new link
