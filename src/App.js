@@ -10,11 +10,11 @@ import VerificationSuccess from './Pages/VerificationSuccess';
 import FailedVerification from './Pages/FailedVerification';
 import Profile from './Pages/Profile';
 import Dashboard from './Pages/Dashboard';
-import LinkPage from './Components/Dashboard/LinkPage';
-import Socials from './Components/Dashboard/Socials';
+import LinkPage from './Components/Dashboard/Links/LinkPage';
+import Socials from './Components/Dashboard/Links/Socials';
 import Links from './Pages/Links';
-import Appearance from './Components/Dashboard/Appearance';
-import Settings from './Components/Dashboard/Settings';
+import Appearance from './Components/Dashboard/Appearance/Appearance';
+import Settings from './Components/Dashboard/Settings/Settings';
 import Preview from './Pages/Preview';
 import PrivateRoutes from './Routes/PrivateRoutes';
 
@@ -35,7 +35,8 @@ const App = () => {
       <Route exact path='resetpassword/:id/:token' element={<ResetPassword />} />
       <Route exact path='verify/:id/user/:token' element={<VerificationSuccess />} />
       <Route exact path='verify/invalid/:id/user/:token' element={<FailedVerification />} />
-      <Route exact path='profile/:username' element={<Profile />} />
+      <Route exact path='*' element={<FailedVerification />} />
+      <Route exact path='/:username' element={<Profile />} />
       <Route element={<PrivateRoutes />}>
       <Route exact path='preview' element={<Preview  />} />
       <Route exact path='dashboard' element={ <Dashboard   />}>

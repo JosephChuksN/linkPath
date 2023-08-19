@@ -1,18 +1,20 @@
-import React, {useState, useRef, useEffect} from 'react'
+import React, {useState, useRef } from 'react'
 import { useNavigate } from 'react-router'
-import { useAuth } from '../../Context/AppContext'
+import { useAuth } from '../../../Context/AppContext'
 import LinkPageData from './LinkPageData'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLink, faEye } from '@fortawesome/free-solid-svg-icons'
 import { Spinner } from 'flowbite-react'
+import loadingGif from '../../../assets/loading.gif'
 
 
 
-const LinkPage = ({siteData, setSiteData}) => {
+const LinkPage = () => {
 
   const { CreateSitelink, links, loading } = useAuth()
   const formRef = useRef()
   const [input, setInput] = useState("")
+  const [addLoading, setAddLoading] = useState(false)
   const navigate = useNavigate()
   
  
@@ -21,16 +23,17 @@ const LinkPage = ({siteData, setSiteData}) => {
 //adds new link
   const handleAddLink = async (e) => {
     e.preventDefault()
-   
+   setAddLoading(true)
    //extracts Url hostname
   var hostName = new URL(input).hostname.replace("www.", "")
   let siteName = hostName.substring(0, hostName.indexOf("."))
   let siteLink = input
-  CreateSitelink(siteLink, siteName)
+  await CreateSitelink(siteLink, siteName)
   setInput('')
-  
+  setAddLoading(false)
  }
   const handleNavigate = () =>{ return navigate("/preview")}
+
 
 
   return (
@@ -50,36 +53,46 @@ const LinkPage = ({siteData, setSiteData}) => {
      required
      />
       </span>
-      <button  type='submit'  className={` bg-cyan-600 text-white p-3 rounded-r-xl md:rounded-md flex`}>
+      <button  type='submit'  className={`hover:bg-cyan-700 relative transition-all duration-150 delay-75 ease-in-out bg-cyan-600 text-white p-3 rounded-r-xl md:rounded-md flex`}>
        Add 
        <span className='hidden md:block ml-1'>
         New Link
        </span>
+       <span className={`${!addLoading? "hidden" : ""} absolute w-1/2 justify-center flex items-center `}>
+        <img className='w-4 h-4' src={loadingGif} alt="loading" />
+      </span>
       </button>
       </div>
     </div>
  </form>
 
- <div className='flex flex-col items-center justify-center w-[100%]'>{
-  loading? 
-  <div className='flex w-full top-0 z-20  flex-wrap items-center gap-2 justify-center h-full '>
-    <span className='text-4xl text-cyan-600'><Spinner
-      aria-label="Extra large spinner example"
-      size="lg"
-      color="success"
-    /></span>
+ { links.length ===0? 
+  <div className='flex flex-col items-center justify-center w-[100%] h-52 animate-bounce'> 
+      <p className='text-xl text-cyan-600/40 font-semibold'>
+        Paste Your First Link
+      </p>
   </div>:
-    links.map((data)=>(
-     <LinkPageData 
-      key={data._id} 
-      siteInfo={data}
-      siteData={siteData}
-      setSiteData={setSiteData}  />
-     ))}
- </div>
+  <div className='flex flex-col items-center justify-center w-[100%]'>{
+    loading? 
+    <div className='flex w-full top-0 z-20  flex-wrap items-center gap-2 justify-center h-full '>
+      <span className='text-4xl text-cyan-600'><Spinner
+        aria-label="Extra large spinner example"
+        size="lg"
+        color="success"
+      />
+      </span>
+    </div>:
+      links.map((data)=>(
+       <LinkPageData 
+        key={data._id} 
+        siteInfo={data}
+        />
+       ))}
+   </div>
+ }
   <div className='flex w-full justify-center items-center'>
         
-  <span onClick={handleNavigate} className=' xl:hidden absolute rounded-full  bg-cyan-600 text-white p-2 flex gap-2 items-center text-xl '>
+  <span onClick={handleNavigate} className={`${links.length === 0 ? "hidden": ""} xl:hidden absolute rounded-full  bg-cyan-600 text-white p-2 flex gap-2 items-center text-xl`}>
     <span className='text-sm'>
      <FontAwesomeIcon icon={faEye} />
     </span>  
