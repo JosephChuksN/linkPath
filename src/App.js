@@ -11,8 +11,6 @@ import FailedVerification from './Pages/FailedVerification';
 import Profile from './Pages/Profile';
 import Dashboard from './Pages/Dashboard';
 import LinkPage from './Components/Dashboard/Links/LinkPage';
-import Socials from './Components/Dashboard/Links/Socials';
-import Links from './Pages/Links';
 import Appearance from './Components/Dashboard/Appearance/Appearance';
 import Settings from './Components/Dashboard/Settings/Settings';
 import Preview from './Pages/Preview';
@@ -27,7 +25,6 @@ const App = () => {
   <div className=''>
       <AuthProvider>
     <Routes>
-    
       <Route exact path='/' element={<HomePage />} />
       <Route exact path='signup' element={<Signup />} />
       <Route exact path='login' element={<Login />} />
@@ -40,20 +37,11 @@ const App = () => {
       <Route element={<PrivateRoutes />}>
       <Route exact path='preview' element={<Preview  />} />
       <Route exact path='dashboard' element={ <Dashboard   />}>
-       
-        <Route  path='links' element={<Links />} >
         <Route  index element={<LinkPage />} />
-        <Route path='socials' element={<Socials />} />
-        </Route>
         <Route  path='/dashboard/appearance' element={<Appearance />} />
         <Route  path='/dashboard/settings' element={<Settings />}/>
-  
-        </Route>
-
-
       </Route>
-    
-    
+      </Route>
     </Routes>
     </AuthProvider>
   </div>
