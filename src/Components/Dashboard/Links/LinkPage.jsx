@@ -37,7 +37,7 @@ const LinkPage = () => {
 
 
   return (
-<div className='flex flex-col gap-10 px-2 md:px-0 items-center mt-3 lg:mt-0'>
+<div className='flex flex-col gap-10 px-2 md:px-0 items-center md:pt-10 mt-3 lg:mt-0'>
  <form ref={formRef} action="" onSubmit={handleAddLink} className='md:w-3/4 w-full'>
     <div className='flex  justify-center'>
     <div className='flex w-full items-center justify-center lg:w-3/4 md:gap-5 '>

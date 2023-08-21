@@ -10,7 +10,7 @@ const DashboardNav = () => {
 
     const isActiveLink =" border-b-[3.5px] text-cyan-700 border-cyan-600 transitional-all  ease-linear"
 const navData = [
-    {id:1, name:'Links', link:'links'},
+    {id:1, name:'Links', link:'.'},
     {id:2, name:'Appearance', link:'appearance'},
     {id:4, name:'Settings', link:'settings'}
 ]
