@@ -1,5 +1,4 @@
 import  { FC } from 'react'
-import { useAuth } from '@Context/AppContext'
 import LoginForm from '@components/LoginForm/LoginForm';
 import Home2 from "@assets/Home2.svg";
 import Link from 'next/link';
