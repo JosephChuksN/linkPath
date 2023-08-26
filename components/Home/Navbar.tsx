@@ -80,7 +80,7 @@ const NavBar:FC = () => {
             </a>
           </div>
           <div className="flex lg:flex-row flex-col justify-start gap-5  z-20 w-32 lg:w-auto ">
-            <Link href={token ? "dashboard" : "login"}>
+            <Link href={token ? "/dashboard" : "/login"}>
               <span
                 onClick={handleShowNav}
                 className="flex bg-cyan-600 justify-center w-2/3 lg:w-auto items-center text-white rounded-lg px-2 py-1 text-sm shadow-md shadow-cyan-600 hover:bg-cyan-700 hover:scale-105  transition-all delay-75 duration-500 ease-in-out  "
@@ -88,7 +88,7 @@ const NavBar:FC = () => {
                 LOG IN
               </span>
             </Link>
-            <Link href={token ? "dashboard" : "signup"}>
+            <Link href={token ? "/dashboard" : "/signup"}>
               <span
                 onClick={handleShowNav}
                 className="flex justify-center items-center text-cyan-600  w-2/3 lg:w-auto px-2 py-1 shadow-md shadow-gray-300 border border-cyan-600 rounded-lg text-sm hover:border-cyan-300 hover:shadow-cyan-300 hover:bg-cyan-300 hover:text-white hover:scale-105  transition-all delay-75 duration-300 ease-in-out  "

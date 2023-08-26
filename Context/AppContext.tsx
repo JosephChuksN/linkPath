@@ -115,9 +115,9 @@ const registerUser = async (name:string, email:string, password:string)=>{
 
    setLoading(false)
   } catch (error) {
-    
-    setLoading(false)
     setRegError(error.response.data.msg)
+  } finally {
+     setLoading(false);
   }
  
 
@@ -142,51 +142,49 @@ const login = async (email:string, password:string) =>{
     setEmailVerifiedLogin("")
    setLoading(false)
   } catch (error) {
-    
-    setLoading(false)
     if(error.response.data.msg === `A verification link was sent to ${email}`){
       return setEmailVerifiedLogin(error.response.data.msg)
     }    
     setLoginError(error.response.data.msg)
+  } finally{
+    setLoading(false);
+    setEmailVerifiedLogin("");
   }
- 
-   
-    
 }
 
 //update user
-const updateUser = async(displayName:string, desc:string) =>{
-
+const updateUser = async (displayName: string, desc: string) => {
   try {
-    
-    const {data} = await authFetch.patch('/auth/updateuser', {displayName, bio:desc})
-    
-    const {user, token, bio} = data
-    console.log(bio)
-   addToLocalStorage({user, token, bio})
-   setLoading(false)
-  } catch (error) {
-    setLoading(false)
-    setUpdateError(error.response.data.msg)
-  }
-  
-}
-const updateUserPhoto = async(profileImg:string) =>{
+    const { data } = await authFetch.patch("/auth/updateuser", {
+      displayName,
+      bio: desc,
+    });
 
+    const { user, token, bio } = data;
+    console.log(bio);
+    addToLocalStorage({ user, token, bio });
+    setLoading(false);
+  } catch (error) {
+    setUpdateError(error.response.data.msg);
+  } finally {
+     setLoading(false);
+  }
+};
+
+const updateUserPhoto = async (profileImg: string) => {
   try {
-    
-    const {data} = await authFetch.patch('/auth/addphoto', {profileImg})
-    
-    const {user, token, bio} = data
+    const { data } = await authFetch.patch("/auth/addphoto", { profileImg });
 
-   addToLocalStorage({user, token, bio})
-   setLoading(false)
+    const { user, token, bio } = data;
+
+    addToLocalStorage({ user, token, bio });
+    setLoading(false);
   } catch (error) {
-    setLoading(false)
-    setUpdateError(error.response.data.msg)
+    setUpdateError(error.response.data.msg);
+  } finally {
+     setLoading(false);
   }
-  
-}
+};
 
 const changePass = async (currentPassword:string, newPassword:string) =>{
 
@@ -202,22 +200,17 @@ const logout = () =>{
    removeUserFromLocalStorage()
 } 
 
-
-const getLinks = async ()=>{
-   
-    const {data }= await authFetch.get('/links')
-    const {links} = data
-    setLinks(links)
-    
-  }
+const getLinks = async () => {
+  const { data } = await authFetch.get("/links");
+  const { links } = data;
+  setLinks(links);
+};
 
 const createSitelink = async (siteLink:string, siteName:string) =>{
 
   try {
-    
      await  authFetch.post('/links', {siteLink, siteName})
-     getLinks()
-    
+     .then(()=>getLinks())
   } catch (error) {
     console.log(error)
   }
@@ -237,28 +230,22 @@ const editLinks = async (id:string, siteLink:string, siteName:string)=>{
 }
 
 //stores image url on database
-const editThumbmail = async (id:string, linkImg:string) => {
-
+const editThumbmail = async (id: string, linkImg: string) => {
   try {
-     await authFetch.patch(`/links/${id}`, {linkImg})
+    await authFetch.patch(`/links/${id}`, { linkImg });
   } catch (error) {
-    alert(error.response.data.msg)
+    alert(error.response.data.msg);
   }
-}
+};
 
-const deleteLink = async (id:string)=>{
-    setLoading(true)
-    await authFetch.delete(`/links/${id}`)
-    await  getLinks()
-    setLoading(false)
-  
-}
+const deleteLink = async (id: string) => {
+  setLoading(true);
+  await authFetch.delete(`/links/${id}`);
+  await getLinks();
+  setLoading(false);
+};
 
-
-
-
-
-const value:appContextType = {
+const value: appContextType = {
   user,
   token,
   description,
