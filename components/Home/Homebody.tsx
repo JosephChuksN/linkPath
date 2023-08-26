@@ -2,7 +2,7 @@
 
 import { FC } from 'react'
 import Image from 'next/image'
-import { useAuth } from '../../Context/AppContext';
+import { useAuth } from '@Context/AppContext';
 import Link from 'next/link';
 import linkpath from '../../assets/linkpath.png'
 import arrowRight from '../../assets/arrow-right.svg'
@@ -16,7 +16,7 @@ import Home1 from '../../assets/Home1.svg'
 
 const Homebody:FC = () => {
 
-  // const { token } = useAuth()
+  const { token } = useAuth()
 
 return (
   <div className="flex flex-col pb-16  lg:flex-row pt-10   px-3  lg:pt-0 lg:px-20  w-full mt-10">
@@ -30,14 +30,10 @@ return (
       </span>
 
       <div className="py-3  space-y-2 w-40">
-        <Link href={"signup"}>
+        <Link href={token ? "dashboard" : "signup"}>
           <button className="flex  gap-2 items-center  font-poppins bg-cyan-600 px-3 py-2 rounded-lg shadow-md shadow-cyan-600 text-white lg:text-lg hover:bg-cyan-700 transition-all delay-75  duration-500 ease-in-out hover:scale-105 ">
             Get Started
-            <Image 
-            src={arrowRight} 
-            width={20}
-            height={20}
-            alt="arrow right" />
+            <Image src={arrowRight} width={20} height={20} alt="arrow right" />
           </button>
         </Link>
       </div>
@@ -52,18 +48,10 @@ return (
         alt="happy user"
       />
       <span className="absolute -top-40 lg:top-0 right-0 z-[-1]  ">
-        <Image 
-         src={Home2}
-         width={600} 
-         height={600}
-         alt="deco" />
+        <Image src={Home2} width={600} height={600} alt="deco" />
       </span>
       <span className="absolute top-64 z-[-1] lg:top-44 left-0">
-        <Image 
-        src={Home1} 
-        width={600} 
-        height={600}
-        alt="deco" />
+        <Image src={Home1} width={600} height={600} alt="deco" />
       </span>
     </div>
   </div>

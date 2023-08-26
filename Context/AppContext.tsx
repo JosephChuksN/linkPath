@@ -1,26 +1,60 @@
-import { createContext, useContext, useState } from 'react';
-import {  useNavigate  } from 'react-router-dom';
+"use client"
+
+import {ReactNode, createContext, useContext, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { appContextType } from '@types';
 import axios from 'axios';
+import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context';
+
+type Props = {
+  children: ReactNode;
+};
+
+const appContextDefaultValues: appContextType = {
+  links: [],
+  user: null,
+  token: null,
+  description: null,
+  loading: false,
+  regError: "",
+  loginError: "",
+  updateError: "",
+  emailVerified: "",
+  emailVerifiedLogin: "",
+  registerUser: async () => {},
+  login: async () => {},
+  updateUser: async () => {},
+  updateUserPhoto: async () => {},
+  changePass: async () => {},
+  logout: () => {},
+  getLinks: async () => {},
+  createSitelink: async () => {},
+  editLinks: async () => {},
+  editThumbmail: async () => {},
+  deleteLink: async () => {},
+  setRegError: ()=>{},
+  setLoginError: ()=>{},
+  setLoading: ()=>{}
+};
 
 
+ const AuthContext= createContext<appContextType>(appContextDefaultValues)
 
- const AuthContext = createContext()
-
-export const AuthProvider = ({children}) =>{
+export const AuthProvider = ({children}:Props) =>{
 
   
-  const [links, setLinks] = useState([])
-  const currentUser = localStorage.getItem('user')
-  const user = currentUser ? JSON.parse(currentUser) : null
-  const token = localStorage.getItem('token')
-  const description = localStorage.getItem('bio')
-  const [loading, setLoading] = useState(false)
-  const [regError, setRegError] = useState('')
-  const [loginError, setLoginError] = useState('')
-  const [updateError, setUpdateError] = useState('')
-  const [emailVerified, setEmailVerified] = useState('')
-  const [emailVerifiedLogin, setEmailVerifiedLogin] = useState('')
-  const navigate = useNavigate()
+  const [links, setLinks] = useState<[]>([])
+  const currentUser:null | string = localStorage.getItem('user')
+  const user: null | string = currentUser ? JSON.parse(currentUser) : null;
+  const token: null | string = localStorage.getItem("token");
+  const description: null | string = localStorage.getItem("bio");
+  const [loading, setLoading] = useState<boolean>(false)
+  const [regError, setRegError] = useState<string>('')
+  const [loginError, setLoginError] = useState<string>('')
+  const [updateError, setUpdateError] = useState<string>('')
+  const [emailVerified, setEmailVerified] = useState<string>("");
+  const [emailVerifiedLogin, setEmailVerifiedLogin] = useState<string>("");
+  const router: AppRouterInstance = useRouter();
   
 
 
@@ -31,7 +65,7 @@ export const AuthProvider = ({children}) =>{
   // request
   authFetch.interceptors.request.use(
    (config) => {
-     if(token){config.headers['Authorization'] = `Bearer ${token}`}
+     if(token){config.headers!['Authorization'] = `Bearer ${token}`}
       return config
     },
     (error) => {
@@ -67,7 +101,7 @@ const removeUserFromLocalStorage = ()=>{
 }
 
 //creating a user account 
-const registerUser = async (name, email, password)=>{
+const registerUser = async (name:string, email:string, password:string)=>{
 
   try {
     setRegError('')
@@ -94,7 +128,7 @@ const registerUser = async (name, email, password)=>{
 
 
 //login fn
-const login = async (email, password) =>{
+const login = async (email:string, password:string) =>{
   try {
     setLoginError('')
     setLoading(true)
@@ -104,7 +138,7 @@ const login = async (email, password) =>{
     const {msg} = data
     setEmailVerifiedLogin(msg)
     addToLocalStorage({user, token, bio})
-    navigate('/dashboard')
+    router.push('/dashboard')
     setEmailVerifiedLogin("")
    setLoading(false)
   } catch (error) {
@@ -121,7 +155,7 @@ const login = async (email, password) =>{
 }
 
 //update user
-const updateUser = async(displayName, desc) =>{
+const updateUser = async(displayName:string, desc:string) =>{
 
   try {
     
@@ -137,7 +171,7 @@ const updateUser = async(displayName, desc) =>{
   }
   
 }
-const updateUserPhoto = async(profileImg) =>{
+const updateUserPhoto = async(profileImg:string) =>{
 
   try {
     
@@ -154,7 +188,7 @@ const updateUserPhoto = async(profileImg) =>{
   
 }
 
-const changePass = async (currentPassword, newPassword) =>{
+const changePass = async (currentPassword:string, newPassword:string) =>{
 
   try {
     await authFetch.patch('/auth/changepassword', {currentPassword, newPassword})
@@ -177,7 +211,7 @@ const getLinks = async ()=>{
     
   }
 
-const CreateSitelink = async (siteLink, siteName) =>{
+const createSitelink = async (siteLink:string, siteName:string) =>{
 
   try {
     
@@ -190,7 +224,7 @@ const CreateSitelink = async (siteLink, siteName) =>{
 
 }
 
-const editLinks = async (id, siteLink, siteName)=>{
+const editLinks = async (id:string, siteLink:string, siteName:string)=>{
    
   try {
    await authFetch.patch(`/links/${id}`, {siteLink, siteName})
@@ -203,7 +237,7 @@ const editLinks = async (id, siteLink, siteName)=>{
 }
 
 //stores image url on database
-const editThumbmail = async (id, linkImg) => {
+const editThumbmail = async (id:string, linkImg:string) => {
 
   try {
      await authFetch.patch(`/links/${id}`, {linkImg})
@@ -212,7 +246,7 @@ const editThumbmail = async (id, linkImg) => {
   }
 }
 
-const deleteLink = async (id)=>{
+const deleteLink = async (id:string)=>{
     setLoading(true)
     await authFetch.delete(`/links/${id}`)
     await  getLinks()
@@ -224,7 +258,7 @@ const deleteLink = async (id)=>{
 
 
 
-const value ={
+const value:appContextType = {
   user,
   token,
   description,
@@ -241,17 +275,15 @@ const value ={
   updateUserPhoto,
   changePass,
   logout,
-  CreateSitelink,
+  createSitelink,
   getLinks,
   editLinks,
   editThumbmail,
   deleteLink,
   setRegError,
   setLoginError,
-  setLoading
- 
-  
-}
+  setLoading,
+};
 
   return(
     <AuthContext.Provider value={value}>
