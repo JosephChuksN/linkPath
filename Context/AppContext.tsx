@@ -2,7 +2,7 @@
 
 import {ReactNode, createContext, useContext, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { appContextType } from '@types';
+import { appContextType, User, Links } from '@types';
 import axios from 'axios';
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context';
 
@@ -43,9 +43,9 @@ const appContextDefaultValues: appContextType = {
 export const AuthProvider = ({children}:Props) =>{
 
   
-  const [links, setLinks] = useState<[]>([])
+  const [links, setLinks] = useState<Links[] | null>(null)
   const currentUser:null | string = localStorage.getItem('user')
-  const user: null | string = currentUser ? JSON.parse(currentUser) : null;
+  const user: User | null = currentUser ? JSON.parse(currentUser) : null;
   const token: null | string = localStorage.getItem("token");
   const description: null | string = localStorage.getItem("bio");
   const [loading, setLoading] = useState<boolean>(false)

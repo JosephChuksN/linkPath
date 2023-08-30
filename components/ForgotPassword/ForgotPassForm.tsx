@@ -10,10 +10,10 @@ import "react-toastify/dist/ReactToastify.css";
 
 
 const ForgotPassForm:FC = () => {
-     const [email, setEmail] = useState("");
-     const [loading, setLoading] = useState(false);
-     const [success, setSuccess] = useState("");
-     const [faild, setFaild] = useState("");
+     const [email, setEmail] = useState<string>("");
+     const [loading, setLoading] = useState<boolean>(false);
+     const [success, setSuccess] = useState<string>("");
+     const [faild, setFaild] = useState<string>("");
 
 
      const updateDone = () => {

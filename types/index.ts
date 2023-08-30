@@ -1,9 +1,27 @@
 import {Dispatch, SetStateAction } from "react";
 
 
+export interface User {
+  name: string;
+  email: string;
+  profileImg: string
+  bio: string
+}
+
+export interface Links {
+  _id: string
+  siteLink: string
+  siteName: string
+  linkImg: string
+}
+export interface IFile {
+  url: string;
+  name: string;
+}
+
 export type appContextType = {
-  links: [];
-  user: null | string;
+  links: Links[] | null;
+  user: User | null;
   token: null | string;
   description: null | string;
   loading: boolean;
