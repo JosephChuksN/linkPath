@@ -56,7 +56,7 @@ useEffect(()=>{
          <div className='flex gap-5 items-center justify-center  w-full md:w-[70%] lg:w-[60]'>
           <div className='w-full md:w-[65%]'>
           <span  className='flex justify-between cursor-pointer  text-cyan-600 bg-slate-300/30  rounded-md  md:px-4 md:py-2 p-2 w-full  '>
-                {`linkpath.vercel.app/${user?.name.toLowerCase()}`}
+                {`linkpath.vercel.app/${user?.name?.toLowerCase()}`}
                 <span onClick={()=>{navigator.clipboard.writeText(`https://linkpath.vercel.app/${user?.name}`);notify()}} className=''><FontAwesomeIcon icon={faCopy} /></span>
                
             </span>
@@ -64,7 +64,7 @@ useEffect(()=>{
           </div>
            
           <span className='text-[1.3rem] text-slate-400/60 md:static absolute top-[1.4rem] right-20 '><FontAwesomeIcon icon={faBell} /></span>
-            <span onClick={handleShow} className={`${!user?.profileImg ? "bg-cyan-600" : null } z-20 justify-center font-bold text-2xl md:w-16 w-14 h-14 text-white md:h-16 rounded-full absolute top-2 cursor-pointer right-3 md:static flex items-center bg-no-repeat bg-cover border-2 border-white capitalize`} style={{backgroundImage: `url(${user?.profileImg})`}}>{!user?.profileImg ? user?.name.charAt(0) : null}</span>
+            <span onClick={handleShow} className={`${!user?.profileImg ? "bg-cyan-600" : null } z-20 justify-center font-bold text-2xl md:w-16 w-14 h-14 text-white md:h-16 rounded-full absolute top-2 cursor-pointer right-3 md:static flex items-center bg-no-repeat bg-cover border-2 border-white capitalize`} style={{backgroundImage: `url(${user?.profileImg})`}}>{!user?.profileImg ? user?.name?.charAt(0) : null}</span>
             <span className='w-1.5 h-1.5 bg-green-600 rounded-full absolute top-[1.8rem] right-[5rem] xl:right-[10.4rem] lg:right-[9.3rem] lg:top-10 md:right-[8.2rem] md:top-11 text-white text-sm text-[0.7rem] flex items-center justify-center'></span>
          </div>
         

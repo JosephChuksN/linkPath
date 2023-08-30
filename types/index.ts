@@ -2,10 +2,11 @@ import {Dispatch, SetStateAction } from "react";
 
 
 export interface User {
-  name: string;
-  email: string;
-  profileImg: string
-  bio: string
+  name?: string;
+  email?: string;
+  profileImg?: string;
+  bio?: string;
+  displayName?: string
 }
 
 export interface Links {

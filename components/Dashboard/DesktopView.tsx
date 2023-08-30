@@ -34,7 +34,7 @@ const DesktopView:FC = () => {
                   className="w-[85%] h-full bg-no-repeat bg-cover border border-transparent flex items-center justify-center capitalize font-bold text-5xl "
                   style={{ backgroundImage: `url(${user?.profileImg})` }}
                 >
-                  {!user?.profileImg ? user?.name.charAt(0) : null}
+                  {!user?.profileImg ? user?.name?.charAt(0) : null}
                 </span>
               </span>
             </div>

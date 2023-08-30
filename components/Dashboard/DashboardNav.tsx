@@ -16,8 +16,8 @@ const DashboardNav:FC = () => {
     const isActiveLink: string ="border-b-[3.5px] text-cyan-700 border-cyan-600 transitional-all  ease-linear";
     const navData: NavData[] = [
       { id: 1, name: "Links", link: "/dashboard" },
-      { id: 2, name: "Appearance", link: "/appearance" },
-      { id: 4, name: "Settings", link: "/settings" },
+      { id: 2, name: "Appearance", link: "/dashboard/appearance" },
+      { id: 4, name: "Settings", link: "/dashboard/settings" },
     ];
 
 
