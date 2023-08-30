@@ -9,7 +9,7 @@ import axios from "axios";
 import LoadingGif from "@assets/loading.gif";
 import path from "path";
 
-const Profile = ({ avater }) => {
+const Profile = () => {
   const [user, setUser] = useState<User | null>(null);
   const [links, setLinks] = useState<Links[] | null>(null);
   const [error, setError] = useState<string>("");
