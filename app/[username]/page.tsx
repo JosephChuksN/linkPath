@@ -1,27 +1,28 @@
-'use client'
+"use client";
 
 import React, { useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import { useRouter, usePathname } from "next/navigation";
 import { useAuth } from "@/Context/AppContext";
 import Image from "next/image";
 import { User, Links } from "@types";
 import axios from "axios";
-import LoadingGif from "@assets/loading.gif"
+import LoadingGif from "@assets/loading.gif";
+import path from "path";
 
 const Profile = ({ avater }) => {
-
   const [user, setUser] = useState<User | null>(null);
   const [links, setLinks] = useState<Links[] | null>(null);
   const [error, setError] = useState<string>("");
   const { loading, setLoading } = useAuth();
-  const {push, query} = useRouter();
+  const { push } = useRouter();
+   const pathname = usePathname();
 
   useEffect(() => {
     const getLinks = async (): Promise<void> => {
       try {
         setLoading(true);
         const { data } = await axios.get(
-          `https://linkpath-api.onrender.com/api/v1/link/${query.username}`
+          `${process.env.NEXT_PUBLIC_API_URL}api/v1/link/${pathname}`
         );
         console.log(data);
         const { user, link } = data;
@@ -36,7 +37,7 @@ const Profile = ({ avater }) => {
       }
     };
     getLinks();
-  }, [query]);
+  }, [pathname]);
 
   return (
     <>
@@ -112,12 +113,7 @@ const Profile = ({ avater }) => {
             loading ? "block" : "hidden"
           }`}
         >
-          <Image 
-          src={LoadingGif}
-          width={70}
-          height={70}
-          alt="loading"
-          />
+          <Image src={LoadingGif} width={70} height={70} alt="loading" />
         </div>
       </div>
     </>

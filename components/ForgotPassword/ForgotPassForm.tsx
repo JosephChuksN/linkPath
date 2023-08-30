@@ -26,7 +26,7 @@ const ForgotPassForm:FC = () => {
        setLoading(true);
        try {
          const { data } = await axios.post(
-           `${process.env.REACT_APP_API_URL}api/v1/auth/resetlink`,
+           `${process.env.NEXT_PUBLIC_API_URL}api/v1/auth/resetlink`,
            { email }
          );
 

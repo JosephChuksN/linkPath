@@ -54,13 +54,13 @@ export const AuthProvider = ({children}:Props) =>{
   const [updateError, setUpdateError] = useState<string>('')
   const [emailVerified, setEmailVerified] = useState<string>("");
   const [emailVerifiedLogin, setEmailVerifiedLogin] = useState<string>("");
-  const router: AppRouterInstance = useRouter();
+  const { push }= useRouter();
   
 
 
   const authFetch = axios.create({
-    baseURL: `${process.env.REACT_APP_API_URL}api/v1`,
-  })
+    baseURL: `${process.env.NEXT_PUBLIC_API_URL}api/v1`,
+  });
 
   // request
   authFetch.interceptors.request.use(
@@ -106,7 +106,10 @@ const registerUser = async (name:string, email:string, password:string)=>{
   try {
     setRegError('')
     setLoading(true)
-  const {data} =  await axios.post(`${process.env.REACT_APP_API_URL}api/v1/auth/register`, {name, email, password})
+  const { data } = await axios.post(
+    `${process.env.NEXT_PUBLIC_API_URL}api/v1/auth/register`,
+    { name, email, password }
+  );
     const {user} = data
     console.log(data)
     const {msg} = data
@@ -132,13 +135,16 @@ const login = async (email:string, password:string) =>{
   try {
     setLoginError('')
     setLoading(true)
-  const {data} =  await axios.post(`${process.env.REACT_APP_API_URL}api/v1/auth/login`, { email, password})
+  const { data } = await axios.post(
+    `${process.env.NEXT_PUBLIC_API_URL}api/v1/auth/login`,
+    { email, password }
+  );
     
     const {user, token, bio} = data
     const {msg} = data
     setEmailVerifiedLogin(msg)
     addToLocalStorage({user, token, bio})
-    router.push('/dashboard')
+    push('/dashboard')
     setEmailVerifiedLogin("")
    setLoading(false)
   } catch (error) {
@@ -146,6 +152,7 @@ const login = async (email:string, password:string) =>{
       return setEmailVerifiedLogin(error.response.data.msg)
     }    
     setLoginError(error.response.data.msg)
+    console.log(loginError)
   } finally{
     setLoading(false);
     setEmailVerifiedLogin("");

@@ -93,8 +93,8 @@ const LoginForm:FC = () => {
             type="submit"
           >
             {loading ? (
-              <span className="flex gap-3">
-                <Image src={LoadingGif} width={20} height={20} alt="loading" />{" "}
+              <span className="flex gap-3 items-center justify-center">
+                <Image src={LoadingGif} width={10} height={10} alt="loading" />{" "}
                 <p>Signing in...</p>
               </span>
             ) : (
