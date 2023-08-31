@@ -113,7 +113,7 @@ const Profile = () => {
             loading ? "block" : "hidden"
           }`}
         >
-          <Image src={LoadingGif} width={70} height={70} alt="loading" />
+          <Image src={LoadingGif} width={40} height={40} alt="loading" />
         </div>
       </div>
     </>

@@ -44,9 +44,9 @@ export const AuthProvider = ({children}:Props) =>{
 
   
   const [links, setLinks] = useState<Links[] | null>(null)
-  const currentUser: null | string = window?.localStorage.getItem("user");
+  const currentUser: null | string = localStorage.getItem("user");
   const user: User | null = currentUser ? JSON.parse(currentUser) : null;
-  const token: null | string = window?.localStorage.getItem("token");
+  const token: null | string = localStorage.getItem("token");
   const description: null | string = localStorage.getItem("bio");
   const [loading, setLoading] = useState<boolean>(false)
   const [regError, setRegError] = useState<string>('')
@@ -88,16 +88,16 @@ export const AuthProvider = ({children}:Props) =>{
 
 const addToLocalStorage = ({user, token, bio})=>{
    
-  window?.localStorage.setItem("user", JSON.stringify(user));
-  window?.localStorage.setItem("token", token);
-  window?.localStorage.setItem("bio", bio);
+  localStorage.setItem("user", JSON.stringify(user));
+  localStorage.setItem("token", token);
+  localStorage.setItem("bio", bio);
 
 }
 
 const removeUserFromLocalStorage = ()=>{
-  window?.localStorage.removeItem('user')
-  window?.localStorage.removeItem("token");
-  window?.localStorage.removeItem("bio");
+  localStorage.removeItem('user')
+  localStorage.removeItem("token");
+  localStorage.removeItem("bio");
 }
 
 //creating a user account 
