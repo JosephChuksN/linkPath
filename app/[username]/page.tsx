@@ -22,7 +22,7 @@ const Profile = () => {
       try {
         setLoading(true);
         const { data } = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}api/v1/link/${pathname}`
+          `${process.env.NEXT_PUBLIC_API_URL}link/${pathname}`
         );
         console.log(data);
         const { user, link } = data;
