@@ -40,7 +40,7 @@ const DesktopView:FC = () => {
             </div>
             <span className="flex flex-col   py-3 w-full text-center bg-cyan-600">
               <span className="text-md font-medium  text-white capitalize">
-                {user?.name}
+                {user?.displayName || user?.name}
               </span>
               <span className="text-[10px] text-gray-100 whitespace-pre-wrap ">
                 {description}

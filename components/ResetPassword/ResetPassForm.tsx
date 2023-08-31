@@ -28,7 +28,7 @@ const ResetPassForm:FC = () => {
         return setResetError("Password must match");
       setLoading(true);
       const { data } = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}api/v1/auth/reset/${query.id}/${query.token}`,
+        `${process.env.NEXT_PUBLIC_API_URL}auth/reset/${query.id}/${query.token}`,
         { password }
       );
       setLoading(false);

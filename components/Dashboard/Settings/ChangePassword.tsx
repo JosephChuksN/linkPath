@@ -115,8 +115,8 @@ const ChangePassword = () => {
           <span className="w-3/5 md:w-2/5 lg:w-3/5 flex flex-col justify-center items-center md:p-5 p-8">
             <Image 
             src={loadingGif} 
-            width={50}
-            height={50}
+            width={30}
+            height={30}
             alt="loading" />
           </span>
         </div>

@@ -3,7 +3,7 @@ import { useAuth } from "../../../Context/AppContext";
 import Image from "next/image";
 import { storage } from "../../../firebaseConfig";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import { v4 } from "uuid";
 import "react-toastify/dist/ReactToastify.css";
 import loadingGif from "../../../assets/loading.gif";
@@ -60,6 +60,11 @@ const EditProfile:FC<Props> = ({ handleShowModal, showModal, loading, setLoading
       autoClose: 1000,
     });
   };
+  const editDone = () => {
+    toast.success("Update success", {
+      autoClose: 1000,
+    });
+  };
 
   //handles photo upload save
   const uploadPhoto = async () => {
@@ -83,6 +88,7 @@ const EditProfile:FC<Props> = ({ handleShowModal, showModal, loading, setLoading
     setUsername(user?.displayName!);
     setBio(user?.bio!);
     handleShowModal();
+    
   };
 
   //handles user bio and dsiplay name update
@@ -91,6 +97,7 @@ const EditProfile:FC<Props> = ({ handleShowModal, showModal, loading, setLoading
     setLoading(true);
     await updateUser(displayName, bio);
     setLoading(false);
+    editDone();
   };
 
   return (
@@ -139,8 +146,8 @@ const EditProfile:FC<Props> = ({ handleShowModal, showModal, loading, setLoading
               <span className="w-3/5 md:w-2/5 lg:w-3/5 flex flex-col justify-center items-center md:p-5 p-8">
                 <Image
                   src={loadingGif}
-                  width={40}
-                  height={40}
+                  width={30}
+                  height={30}
                   alt="loading"
                 />
               </span>

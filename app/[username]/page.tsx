@@ -64,7 +64,7 @@ const Profile = () => {
           </div>
           <span className="flex flex-col   py-3 w-full text-center bg-cyan-600">
             <span className="text-xl font-medium  text-white capitalize">
-              {user?.name}
+              {user?.displayName || user?.name}
             </span>
             <span className="text-[15px] text-gray-100 whitespace-pre-wrap ">
               {user?.bio}

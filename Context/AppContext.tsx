@@ -44,9 +44,9 @@ export const AuthProvider = ({children}:Props) =>{
 
   
   const [links, setLinks] = useState<Links[] | null>(null)
-  const currentUser:null | string = localStorage.getItem('user')
+  const currentUser: null | string = window?.localStorage.getItem("user");
   const user: User | null = currentUser ? JSON.parse(currentUser) : null;
-  const token: null | string = localStorage.getItem("token");
+  const token: null | string = window?.localStorage.getItem("token");
   const description: null | string = localStorage.getItem("bio");
   const [loading, setLoading] = useState<boolean>(false)
   const [regError, setRegError] = useState<string>('')
@@ -59,7 +59,7 @@ export const AuthProvider = ({children}:Props) =>{
 
 
   const authFetch = axios.create({
-    baseURL: `${process.env.NEXT_PUBLIC_API_URL}api/v1`,
+    baseURL: `${process.env.NEXT_PUBLIC_API_URL}`,
   });
 
   // request
@@ -88,16 +88,16 @@ export const AuthProvider = ({children}:Props) =>{
 
 const addToLocalStorage = ({user, token, bio})=>{
    
-  localStorage.setItem('user', JSON.stringify(user))
-  localStorage.setItem('token', token)
-  localStorage.setItem('bio', bio)
+  window?.localStorage.setItem("user", JSON.stringify(user));
+  window?.localStorage.setItem("token", token);
+  window?.localStorage.setItem("bio", bio);
 
 }
 
 const removeUserFromLocalStorage = ()=>{
-  localStorage.removeItem('user')
-  localStorage.removeItem('token')
-  localStorage.removeItem('bio')
+  window?.localStorage.removeItem('user')
+  window?.localStorage.removeItem("token");
+  window?.localStorage.removeItem("bio");
 }
 
 //creating a user account 
@@ -107,7 +107,7 @@ const registerUser = async (name:string, email:string, password:string)=>{
     setRegError('')
     setLoading(true)
   const { data } = await axios.post(
-    `${process.env.NEXT_PUBLIC_API_URL}api/v1/auth/register`,
+    `${process.env.NEXT_PUBLIC_API_URL}auth/register`,
     { name, email, password }
   );
     const {user} = data
@@ -136,7 +136,7 @@ const login = async (email:string, password:string) =>{
     setLoginError('')
     setLoading(true)
   const { data } = await axios.post(
-    `${process.env.NEXT_PUBLIC_API_URL}api/v1/auth/login`,
+    `${process.env.NEXT_PUBLIC_API_URL}auth/login`,
     { email, password }
   );
     
@@ -162,7 +162,7 @@ const login = async (email:string, password:string) =>{
 //update user
 const updateUser = async (displayName: string, desc: string) => {
   try {
-    const { data } = await authFetch.patch("/auth/updateuser", {
+    const { data } = await authFetch.patch("auth/updateuser", {
       displayName,
       bio: desc,
     });
@@ -180,7 +180,7 @@ const updateUser = async (displayName: string, desc: string) => {
 
 const updateUserPhoto = async (profileImg: string) => {
   try {
-    const { data } = await authFetch.patch("/auth/addphoto", { profileImg });
+    const { data } = await authFetch.patch('auth/addphoto', { profileImg });
 
     const { user, token, bio } = data;
 
@@ -196,7 +196,7 @@ const updateUserPhoto = async (profileImg: string) => {
 const changePass = async (currentPassword:string, newPassword:string) =>{
 
   try {
-    await authFetch.patch('/auth/changepassword', {currentPassword, newPassword})
+    await authFetch.patch('auth/changepassword', {currentPassword, newPassword})
    } catch (error) {
     console.log(error.response.data.msg)
    }
@@ -208,7 +208,7 @@ const logout = () =>{
 } 
 
 const getLinks = async () => {
-  const { data } = await authFetch.get("/links");
+  const { data } = await authFetch.get('links');
   const { links } = data;
   setLinks(links);
 };
@@ -216,7 +216,7 @@ const getLinks = async () => {
 const createSitelink = async (siteLink:string, siteName:string) =>{
 
   try {
-     await  authFetch.post('/links', {siteLink, siteName})
+     await  authFetch.post('links', {siteLink, siteName})
      .then(()=>getLinks())
   } catch (error) {
     console.log(error)
@@ -227,7 +227,7 @@ const createSitelink = async (siteLink:string, siteName:string) =>{
 const editLinks = async (id:string, siteLink:string, siteName:string)=>{
    
   try {
-   await authFetch.patch(`/links/${id}`, {siteLink, siteName})
+   await authFetch.patch(`links/${id}`, {siteLink, siteName})
    await  getLinks()
   } catch (error) {
     console.log(error)
@@ -239,7 +239,7 @@ const editLinks = async (id:string, siteLink:string, siteName:string)=>{
 //stores image url on database
 const editThumbmail = async (id: string, linkImg: string) => {
   try {
-    await authFetch.patch(`/links/${id}`, { linkImg });
+    await authFetch.patch(`links/${id}`, { linkImg });
   } catch (error) {
     alert(error.response.data.msg);
   }
@@ -247,7 +247,7 @@ const editThumbmail = async (id: string, linkImg: string) => {
 
 const deleteLink = async (id: string) => {
   setLoading(true);
-  await authFetch.delete(`/links/${id}`);
+  await authFetch.delete(`links/${id}`);
   await getLinks();
   setLoading(false);
 };
