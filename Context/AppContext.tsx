@@ -44,10 +44,10 @@ export const AuthProvider = ({children}:Props) =>{
 
   
   const [links, setLinks] = useState<Links[] | null>(null)
-  const currentUser: null | string = localStorage.getItem("user");
+  const currentUser: null | string = localStorage?.getItem("user");
   const user: User | null = currentUser ? JSON.parse(currentUser) : null;
-  const token: null | string = localStorage.getItem("token");
-  const description: null | string = localStorage.getItem("bio");
+  const token: null | string = localStorage?.getItem("token");
+  const description: null | string = localStorage?.getItem("bio");
   const [loading, setLoading] = useState<boolean>(false)
   const [regError, setRegError] = useState<string>('')
   const [loginError, setLoginError] = useState<string>('')
