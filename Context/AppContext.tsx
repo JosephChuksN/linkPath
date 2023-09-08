@@ -47,7 +47,7 @@ export const AuthProvider = ({children}:Props) =>{
   const currentUser: null | string = window?.localStorage?.getItem("user");
   const user: User | null = currentUser ? JSON.parse(currentUser) : null;
   const token: null | string = window?.localStorage?.getItem("token");
-  const descriptionnull: null | string = window?.localStorage?.getItem("bio");
+  const description: null | string = window?.localStorage?.getItem("bio");
   const [loading, setLoading] = useState<boolean>(false)
   const [regError, setRegError] = useState<string>('')
   const [loginError, setLoginError] = useState<string>('')
