@@ -62,7 +62,7 @@ useEffect(()=>{
      setToken(localStorage?.getItem("token"));
      setDescription(localStorage?.getItem("bio"));
   }
-},[])
+},[currentUser, token])
 
   const authFetch = axios.create({
     baseURL: `${process.env.NEXT_PUBLIC_API_URL}`,
