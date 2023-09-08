@@ -1,6 +1,6 @@
-'use client'
+"use client"
 
-import {ReactNode, createContext, useContext, useEffect, useState } from 'react';
+import {ReactNode, createContext, useContext, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { appContextType, User, Links } from '@types';
 import axios from 'axios';
@@ -44,7 +44,7 @@ export const AuthProvider = ({children}:Props) =>{
 
   
   const [links, setLinks] = useState<Links[] | null>(null)
-  const currentUser: string | null = localStorage.getItem("user") || null;
+  const currentUser: null | string = localStorage?.getItem("user");
   const user: User | null = currentUser ? JSON.parse(currentUser) : null;
   const token: null | string = localStorage?.getItem("token");
   const description: null | string = localStorage?.getItem("bio");
@@ -57,12 +57,6 @@ export const AuthProvider = ({children}:Props) =>{
   const { push }= useRouter();
   
 
-  // useEffect(()=>{
-  //   if(typeof window !== undefined){
-  //   currentUser = 
-  //   setUser(currentUser)
-  //   }
-  // },[])
 
   const authFetch = axios.create({
     baseURL: `${process.env.NEXT_PUBLIC_API_URL}`,
@@ -70,36 +64,35 @@ export const AuthProvider = ({children}:Props) =>{
 
   // request
   authFetch.interceptors.request.use(
-    (config) => {
-      if (token) {
-        config.headers!["Authorization"] = `Bearer ${token}`;
-      }
-      return config;
+   (config) => {
+     if(token){config.headers!['Authorization'] = `Bearer ${token}`}
+      return config
     },
     (error) => {
-      return Promise.reject(error);
+      return Promise.reject(error)
     }
-  );
+  )
 
   // response
   authFetch.interceptors.response.use(
-    (response) => {
-      return response;
-    },
-
+    (response) => { return response },
+     
     (error) => {
+    
       if (error.code === 401) {
-        logout();
+        logout()
       }
-      return Promise.reject(error);
+      return Promise.reject(error)
     }
-  );
+  )
 
 const addToLocalStorage = ({user, token, bio})=>{
-   
+ if(typeof window !== undefined){
+    
   localStorage.setItem("user", JSON.stringify(user));
   localStorage.setItem("token", token);
   localStorage.setItem("bio", bio);
+ }
 
 }
 
