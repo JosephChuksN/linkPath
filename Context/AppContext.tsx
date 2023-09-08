@@ -47,8 +47,10 @@ export const AuthProvider = ({children}:Props) =>{
   // let currentUser: null | string
   const [currentUser, setCurrentUser] = useState<null | string>("");
   const user: User | null = currentUser ? JSON.parse(currentUser) : null;
-  const token: null | string = localStorage?.getItem("token");
-  const description: null | string = localStorage?.getItem("bio");
+  const [token, setToken] = useState<null | string>("")
+  // const token: null | string = localStorage?.getItem("token");
+  // const description: null | string = localStorage?.getItem("bio");
+  const [description, setDescription] = useState<null | string>("");
   const [loading, setLoading] = useState<boolean>(false)
   const [regError, setRegError] = useState<string>('')
   const [loginError, setLoginError] = useState<string>('')
@@ -59,7 +61,9 @@ export const AuthProvider = ({children}:Props) =>{
   
 useEffect(()=>{
   if(typeof window !== undefined){
-     setCurrentUser(localStorage?.getItem("user"))
+     setCurrentUser(localStorage?.getItem("user"));
+     setToken(localStorage?.getItem("token"));
+     setDescription(localStorage?.getItem("bio"));
   }
 },[])
 
