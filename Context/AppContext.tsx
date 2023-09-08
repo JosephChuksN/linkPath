@@ -1,6 +1,6 @@
 "use client"
 
-import {ReactNode, createContext, useContext, useState } from 'react';
+import {ReactNode, createContext, useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { appContextType, User, Links } from '@types';
 import axios from 'axios';
@@ -44,7 +44,8 @@ export const AuthProvider = ({children}:Props) =>{
 
   
   const [links, setLinks] = useState<Links[] | null>(null)
-  const currentUser: null | string = window!.localStorage?.getItem("user");
+  // let currentUser: null | string
+  const [currentUser, setCurrentUser] = useState<null | string>("");
   const user: User | null = currentUser ? JSON.parse(currentUser) : null;
   const token: null | string = localStorage?.getItem("token");
   const description: null | string = localStorage?.getItem("bio");
@@ -56,7 +57,11 @@ export const AuthProvider = ({children}:Props) =>{
   const [emailVerifiedLogin, setEmailVerifiedLogin] = useState<string>("");
   const { push }= useRouter();
   
-
+useEffect(()=>{
+  if(typeof window !== undefined){
+     setCurrentUser(localStorage?.getItem("user"))
+  }
+},[])
 
   const authFetch = axios.create({
     baseURL: `${process.env.NEXT_PUBLIC_API_URL}`,
