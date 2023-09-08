@@ -80,7 +80,7 @@ const LoginForm:FC = () => {
           />
           <span
             onClick={handleViewPassword}
-            className="absolute top-10 right-3"
+            className="absolute top-10 right-3 text-cyan-600"
           >
             <FontAwesomeIcon icon={show ? faEye : faEyeSlash} />
           </span>

@@ -44,12 +44,9 @@ export const AuthProvider = ({children}:Props) =>{
 
   
   const [links, setLinks] = useState<Links[] | null>(null)
-  // let currentUser: null | string
   const [currentUser, setCurrentUser] = useState<null | string>("");
   const user: User | null = currentUser ? JSON.parse(currentUser) : null;
   const [token, setToken] = useState<null | string>("")
-  // const token: null | string = localStorage?.getItem("token");
-  // const description: null | string = localStorage?.getItem("bio");
   const [description, setDescription] = useState<null | string>("");
   const [loading, setLoading] = useState<boolean>(false)
   const [regError, setRegError] = useState<string>('')
