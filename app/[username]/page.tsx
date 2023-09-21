@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import React, { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
@@ -7,7 +7,7 @@ import Image from "next/image";
 import { User, Links } from "@types";
 import axios from "axios";
 import LoadingGif from "@assets/loading.gif";
-import path from "path";
+
 
 const Profile = () => {
   const [user, setUser] = useState<User | null>(null);
