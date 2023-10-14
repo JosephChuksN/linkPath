@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLink, faEye } from "@fortawesome/free-solid-svg-icons";
 import LoadingGif from "@assets/loading.gif";
 import Image from "next/image";
-import { ProtectedRoute } from "@route/ProtectedRoute";
+
 
 const Links: FC = () => {
   const { createSitelink, links, loading } = useAuth();
@@ -63,14 +63,14 @@ const Links: FC = () => {
               className={`hover:bg-cyan-700 relative transition-all duration-150 delay-75 ease-in-out bg-cyan-600 text-white p-3 rounded-r-xl md:rounded-md flex`}
             >
               Add
-              <span className="hidden md:block ml-1">New Link</span>
-              <span
+              <p className="hidden md:block ml-1">New Link</p>
+              <p
                 className={`${
                   !addLoading ? "hidden" : ""
                 } absolute w-1/2 justify-center flex items-center `}
               >
                 <Image src={LoadingGif} width={20} height={20} alt="loading" />
-              </span>
+              </p>
             </button>
           </div>
         </div>
@@ -105,7 +105,7 @@ const Links: FC = () => {
           <span className="text-sm">
             <FontAwesomeIcon icon={faEye} />
           </span>
-          Preview
+          <p>Preview</p>
         </span>
       </div>
     </div>

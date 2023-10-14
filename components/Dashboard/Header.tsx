@@ -3,7 +3,7 @@
 import { FC, useRef, useEffect, useState } from 'react'
 import { useAuth } from '@Context/AppContext';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import {  redirect } from 'next/navigation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCopy, faArrowRightFromBracket, faBell, faGear } from '@fortawesome/free-solid-svg-icons'
 import { ToastContainer, toast } from 'react-toastify';
@@ -13,7 +13,7 @@ const Header:FC = () => {
     const {user, logout} = useAuth()
     const logoutSecRef = useRef<HTMLDivElement>(null)
     const [logoutShow, setLogoutShow] = useState<boolean>(false)
-    const { push } = useRouter()
+   
 
     
   const notify = ()=>{
@@ -26,8 +26,8 @@ const handleShow =() =>{
   setLogoutShow(!logoutShow)
 }
 
-const handleOutsideclick = (e) =>{
-   if(logoutSecRef.current && !logoutSecRef.current.contains(e.target)){
+const handleOutsideclick = (e: MouseEvent) =>{
+   if(logoutSecRef.current && !logoutSecRef.current.contains(e.target as Node)){
     setLogoutShow(false)
    }
 }
@@ -41,7 +41,7 @@ useEffect(()=>{
     
   try{
       logout()
-      push('/login')
+      redirect('/login')
   } catch (e) {
       alert(e.message)
   }

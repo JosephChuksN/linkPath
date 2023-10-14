@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from "react";
-import { useRouter, usePathname } from "next/navigation";
+import { useRouter } from "next/router";
 import { useAuth } from "@/Context/AppContext";
 import Image from "next/image";
 import { User, Links } from "@types";
@@ -14,15 +14,15 @@ const Profile = () => {
   const [links, setLinks] = useState<Links[] | null>(null);
   const [error, setError] = useState<string>("");
   const { loading, setLoading } = useAuth();
-  const { push } = useRouter();
-   const pathname = usePathname();
+  const router = useRouter();
+  
 
   useEffect(() => {
     const getLinks = async (): Promise<void> => {
       try {
         setLoading(true);
         const { data } = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}link/${pathname}`
+          `${process.env.NEXT_PUBLIC_API_URL}link/${router.pathname}`
         );
         console.log(data);
         const { user, link } = data;
@@ -33,11 +33,11 @@ const Profile = () => {
       } catch (error) {
         setLoading(false);
         setError(error.response.data.msg);
-        push("*");
+        router.push("*");
       }
     };
     getLinks();
-  }, [pathname]);
+  }, [router.pathname]);
 
   return (
     <>

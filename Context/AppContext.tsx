@@ -45,7 +45,7 @@ export const AuthProvider = ({children}:Props) =>{
   
   const [links, setLinks] = useState<Links[] | null>(null)
   const currentUser: null | string = typeof window !== 'undefined' ? localStorage?.getItem("user") : null;
-  const user: User | null = currentUser ? JSON.parse(currentUser) : null;
+  const [user, setUser] = useState<User | null>(currentUser ? JSON.parse(currentUser) : null)
   const token: null | string = typeof window !== 'undefined' ? localStorage?.getItem("token") : null;
   const description: null | string = typeof window !== 'undefined' ? localStorage?.getItem("bio") : null;
   const [loading, setLoading] = useState<boolean>(false)
@@ -57,6 +57,19 @@ export const AuthProvider = ({children}:Props) =>{
   const { push }= useRouter();
   
 
+  useEffect(()=>{
+    const fetchUser = () => {
+      try {
+        const userData = localStorage.getItem("user");
+        const user = userData && JSON.parse(userData);
+        setUser(user);
+      } catch (error) {
+        console.error("No user session");
+      }
+    };
+
+    fetchUser();
+  },[])
 
   const authFetch = axios.create({
     baseURL: `${process.env.NEXT_PUBLIC_API_URL}`,
