@@ -44,10 +44,10 @@ export const AuthProvider = ({children}:Props) =>{
 
   
   const [links, setLinks] = useState<Links[] | null>(null)
-  const [currentUser, setCurrentUser] = useState<null | string>("");
-  const user: User | null = currentUser ? JSON.parse(currentUser) : null;
-  const [token, setToken] = useState<null | string>("")
-  const [description, setDescription] = useState<null | string>("");
+  const currentUser: null | string = typeof window !== 'undefined' ? localStorage?.getItem("user") : null;
+  const [user, setUser] = useState<User | null>(currentUser ? JSON.parse(currentUser) : null)
+  const token: null | string = typeof window !== 'undefined' ? localStorage?.getItem("token") : null;
+  const description: null | string = typeof window !== 'undefined' ? localStorage?.getItem("bio") : null;
   const [loading, setLoading] = useState<boolean>(false)
   const [regError, setRegError] = useState<string>('')
   const [loginError, setLoginError] = useState<string>('')
@@ -56,13 +56,20 @@ export const AuthProvider = ({children}:Props) =>{
   const [emailVerifiedLogin, setEmailVerifiedLogin] = useState<string>("");
   const { push }= useRouter();
   
-useEffect(()=>{
-  if(typeof window !== undefined){
-     setCurrentUser(localStorage?.getItem("user"));
-     setToken(localStorage?.getItem("token"));
-     setDescription(localStorage?.getItem("bio"));
-  }
-},[currentUser, token])
+
+  useEffect(()=>{
+    const fetchUser = () => {
+      try {
+        const userData = localStorage.getItem("user");
+        const user = userData && JSON.parse(userData);
+        setUser(user);
+      } catch (error) {
+        console.error("No user session");
+      }
+    };
+
+    fetchUser();
+  },[])
 
   const authFetch = axios.create({
     baseURL: `${process.env.NEXT_PUBLIC_API_URL}`,

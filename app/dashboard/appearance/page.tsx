@@ -12,11 +12,9 @@ const Appearance:FC = () => {
 
           <div className="flex md:flex-row-reverse  flex-col-reverse w-2/3  lg:px-0 px-5 items-center mx-auto gap-9 mt-3 ">
             <span className="absolute w-5 h-5 rounded-full bg-green-500 lg:left-[15.4rem] lg:top-20  md:left-[23.3rem]  right-[5.5rem] top-[4.6rem] flex items-center justify-center">
-              {" "}
               <FontAwesomeIcon className="text-white text-sm" icon={faCheck} />
             </span>
             <span className="absolute w-5 h-5 rounded-full bg-white lg:left-[27rem] lg:top-20 md:right-56 bottom-[18.5rem] right-[5.5rem] flex items-center justify-center border border-black/40">
-              {" "}
               <FontAwesomeIcon className=" text-sm" icon={faLock} />
             </span>
 
@@ -53,7 +51,6 @@ const Appearance:FC = () => {
           </div>
         </div>
       </div>
-      <div></div>
     </div>
   );
 };

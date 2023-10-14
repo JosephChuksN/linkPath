@@ -14,21 +14,21 @@ const Login:FC = () => {
     <>
       <div className="px-5 md:px-12 pt-10 h-screen lg:w-3/5 mx-auto relative">
         <div className="lg:w-[45%] mx-auto py-5 flex justify-center items-center">
-          <span className="text-cyan-600 text-2xl font-semibold">Linkpath</span>
+          <h1 className="text-cyan-600 text-2xl font-semibold">Linkpath</h1>
         </div>
         <LoginForm 
         />
         <div className="lg:w-[45%] mx-auto py-5">
           <div className=" flex flex-col gap-1 items-center justify-center ">
-            <span className="text-xs w-full flex  items-center justify-center">
+            <div className="text-xs w-full flex  items-center justify-center">
               <hr className="w-[45%] border-t-[0.01px] border-gray-300" />
               <span className="w-2/5 text-center">New to Linkpath?</span>
               <hr className="w-2/5 border-t-[0.01px] border-gray-300" />
-            </span>
+            </div>
             <Link className="w-full  flex my-2 " href="/signup">
-              <span className="border-[0.5px] border-gray-400 w-full p-1 rounded-md text-black text-base text-center transition-all duration-150 ease-in-out hover:bg-cyan-50">
+              <p className="border-[0.5px] border-gray-400 w-full p-1 rounded-md text-black text-base text-center transition-all duration-150 ease-in-out hover:bg-cyan-50">
                 Sign Up
-              </span>
+              </p>
             </Link>
           </div>
         </div>
